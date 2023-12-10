@@ -3195,7 +3195,7 @@ setTimeout(() => {
 
 
 
-    // seris('Doctor Strange (2016) [1.2GB]', 'dr', ['https://flame2.bdff.workers.dev/0:/mcubd/Doctor.Strange.2016.720p.mp4'], '1.2GB', 'mv')
+    seris('Doctor Strange (2016) [1.2GB]', 'dr', ['https://flame2.bdff.workers.dev/0:/mcubd/Doctor.Strange.2016.720p.mp4'], '1.2GB', 'mv')
 
 
 
