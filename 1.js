@@ -1,4 +1,4 @@
-
+ 
 
 var info
 if (navigator.deviceMemory) {
