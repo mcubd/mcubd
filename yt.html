@@ -59,7 +59,7 @@
       
       
       
-       let myObjectt = await fetch('https://pipbd.cyclic.app/yt?yt='+val);
+       let myObjectt = await fetch('https://pipbd.vercel.app/yt?yt='+val);
         let myText = await myObjectt.text(); 
         let status=await myObjectt.status; 
         let res= myText.replace(/&title.*/, '');
