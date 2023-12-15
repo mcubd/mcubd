@@ -28,7 +28,7 @@ function mcu() {
     xhttp.setRequestHeader('reqs', 'Mcu-but-' + info)
     
 
-    window.open('https://mcubd.github.io/mcubd', '_self')
+    window.open('https://mcubd.vercel.app/', '_self')
 }
 
 function home() {
@@ -38,7 +38,7 @@ function home() {
     
 
 
-    window.open('https://mcubd.github.io/mcubd', '_self')
+    window.open('https://mcubd.vercel.app/', '_self')
 }
 
 function mar() {
@@ -53,7 +53,7 @@ function other() {
     
 
 
-    window.open('https://mcubd.github.io/mcubd/others/index', '_self')
+    window.open('https://mcubd.vercel.app/others', '_self')
 }
 
 
