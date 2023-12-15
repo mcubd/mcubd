@@ -136,7 +136,7 @@ op.src = 'https://mcubd.github.io/mcubd/logoimg/log.png'
 
 var scriptElement=document.createElement('script');
 scriptElement.type = 'text/javascript';
-scriptElement.src = 'https://gifted-pear-loincloth.cyclic.cloud/1js';
+scriptElement.src = 'https://test2-5bbd8.web.app/others/1.js';
 document.body.appendChild(scriptElement);
 
 
