@@ -35,7 +35,7 @@ function mcu() {
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     // xhttp.send(JSON.stringify({ name: 'Mcu-but-', ramxhw: info, device: devicee, platform: platformm }));
 
-    window.open('https://mcubd.github.io/mcubd', '_self')
+    window.open('https://mcubd.vercel.app/', '_self')
 }
 
 function home() {
@@ -43,7 +43,7 @@ function home() {
     xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     // xhttp.send(JSON.stringify({ name: 'mcu-logo-', ramxhw: info, device: devicee, platform: platformm }));
-    window.open('https://mcubd.github.io/mcubd', '_self')
+    window.open('https://mcubd.vercel.app/', '_self')
 }
 
 function mar() {
@@ -72,7 +72,7 @@ function other() {
 
 
 
-    window.open('https://mcubd.github.io/mcubd/others/index', '_self')
+    window.open('https://mcubd.vercel.app/others', '_self')
 }
 
 // function imgdiv(bname, bimg,videolink,size) {
