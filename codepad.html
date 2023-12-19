@@ -30,10 +30,10 @@
         }
         .item{
             height: 215px;
-            width: 170px;
+            width: 270px;
             display: inline-block;
             overflow: hidden;
-            font-size: 16px;
+            font-size: 30px;
             padding: 20px;
             background-color: rgba(45, 46, 45,.8);
             border-radius: 4px;
@@ -69,10 +69,10 @@
     }
 
         #full{
-            color: #e8eaed;
-            margin-top: 40px;
+            color: white;
+            margin-top: 80px;
             white-space:pre;
-            font-size: 12px;
+            font-size: 20px;
 
         }
 
@@ -87,6 +87,7 @@ textarea{
     height: 90vh;
     background-color: #2A2C2B;
     color: white;
+    font-size: 16px;
 
 }
 #cut{
@@ -131,6 +132,10 @@ textarea{
 
 
   background-color: rgb(76, 175, 142);
+}
+.dont{
+  margin-top: 60px;
+
 }
 
 
@@ -199,7 +204,7 @@ textarea{
 
 
 </div> <div class='dont' id='full'></div>
-    <div id='copy' onclick='copy()'><abbr title='copy'>
+    <div id='copy' onclick='copy(event)'><abbr title='copy'>
       <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z" fill="#0F0F0F"/>
 <path d="M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z" fill="#0F0F0F"/>
@@ -219,13 +224,17 @@ textarea{
   </div>
 </div>
 
-     <div class='dont' ><textarea  autofocus id='textarea' value="" ></textarea></div>`
-    document.body.style.cssText=`background-color: rgb(0,0,0);`
-    document.getElementById('textarea').focus()
 
-    let  textareaf = document.getElementById('textarea');
-    textareaf.value=`${e.target.textContent}`
-    // document.getElementById('full').textContent=`${e.target.textContent}`
+    <div class='dont' id='full'></div>
+    
+    `
+    document.body.style.cssText=`background-color: rgb(0,0,0);`
+    // document.getElementById('textarea').focus()
+
+    // let  textareaf = document.getElementById('textarea');
+    // textareaf.value=`${e.target.textContent}`
+    // console.error(countLines(e.target.textContent))
+    document.getElementById('full').textContent=`${e.target.getAttribute('data')}`
     // document.getElementById('main').style.cssText=`opacity:.5`
 
 
@@ -239,6 +248,9 @@ textarea{
     
     }
 
+   window.getFirstLine= function (text) {
+    return text.split('\n')[0];
+}
     function cut(){
         document.getElementById('popup').style.display=`none`
         document.getElementById('popup').innerHTML=``
@@ -264,9 +276,21 @@ textarea{
     }
     }
 
+window.copy=async function (e){
+
+  if(document.getElementById('textarea')){
+    let res=await navigator.clipboard.writeText(document.getElementById('textarea').value)
+  }else{
+    let res=await navigator.clipboard.writeText(document.getElementById('full').innerHTML)
+
+  }
+
+}
+
+window.edit= async function (){
 
 
-
+}
 </script>
 
 
@@ -309,8 +333,8 @@ await querySnapshot.forEach((doc) => {
 
   let obj=doc.data()
 
-  console.log(doc.id)
  print(obj,doc.id)
+ 
 
 
 });
@@ -330,9 +354,10 @@ window.print=async function (obj,id){
 //     </div>
     var node = document.createElement('div')
     node.setAttribute("id", id)
+    node.setAttribute("data", obj.data)
     node.setAttribute("class", 'item')
     node.setAttribute("onclick", "popup(event)")
-    node.textContent = obj.data
+    node.textContent = getFirstLine(obj.data)
     document.getElementById('main').append(node);
 
 
@@ -418,13 +443,17 @@ const documentRef = doc(firestore, 'codepad', String(id));
                 const codepad =collection(firestore,'codepad')
     const docData = {
     data: docSnapshot.data().data,
+    created_date:docSnapshot.data().date,
     deleted_date: serverTimestamp(),
 
 };
 
     await setDoc(doc(codepad,String(id)), docData);
-    document.getElementById('textarea').remove()
-    document.getElementById('popup').insertAdjacentHTML('beforeend',`<h1>DELETED DOCUMENT</>`)
+    if( document.getElementById('textarea')){
+      document.getElementById('textarea').remove()
+
+    }
+    document.getElementById('popup').innerHTML=`<h1>DELETED DOCUMENT</>`
 
                // await updateDoc(docRef, {deleted_date:serverTimestamp()});
 
