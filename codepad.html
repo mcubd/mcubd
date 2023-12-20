@@ -10,7 +10,7 @@
     <style>
         body,
         html {
-            background-color: #202124;
+            background-color: #1E1E1E;
             color: #e8eaed;
             display: flex;
             flex-direction: row;
@@ -322,7 +322,7 @@
 
 
                         editor.getModel().onDidChangeContent(function (event) {
-                            edit(id,editor.getValue())
+                            edit(id, editor.getValue())
                         });
 
 
@@ -479,47 +479,139 @@
         }
 
         window.add = async function () {
-            let idd = String(Math.random())
-            document.getElementById('popup').style.cssText = `border:1px solid yellow`
+            let id = String(Math.random())
+            const codepad = collection(firestore, 'codepad')
+            const docData = {
+                data: '',
+                date: serverTimestamp()
+            };
 
+            let n = await setDoc(doc(codepad, String(id)), docData);
+
+            let navHtml = `<div id='nav' class='nav'>
+
+
+      <div id='cut' onclick="cut()">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="100%" height="100%" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g>
+	<path fill="white" d="M22.01,9.989c-0.195-0.195-0.512-0.195-0.707,0L16,15.293l-5.303-5.304c-0.195-0.195-0.512-0.195-0.707,0
+		s-0.195,0.512,0,0.707L15.293,16L9.99,21.304c-0.195,0.195-0.195,0.512,0,0.707c0.098,0.098,0.226,0.146,0.354,0.146
+		s0.256-0.049,0.354-0.146L16,16.707l5.303,5.304c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146
+		c0.195-0.195,0.195-0.512,0-0.707L16.707,16l5.303-5.304C22.206,10.501,22.206,10.185,22.01,9.989z"/>
+</g>
+</svg>
+
+
+
+</div>
+ <div class='dont' id='full'></div>
+    <div id='copy' onclick='copy(event)'><abbr title='copy'>
+      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21 8C21 6.34315 19.6569 5 18 5H10C8.34315 5 7 6.34315 7 8V20C7 21.6569 8.34315 23 10 23H18C19.6569 23 21 21.6569 21 20V8ZM19 8C19 7.44772 18.5523 7 18 7H10C9.44772 7 9 7.44772 9 8V20C9 20.5523 9.44772 21 10 21H18C18.5523 21 19 20.5523 19 20V8Z" fill="#0F0F0F"/>
+<path d="M6 3H16C16.5523 3 17 2.55228 17 2C17 1.44772 16.5523 1 16 1H6C4.34315 1 3 2.34315 3 4V18C3 18.5523 3.44772 19 4 19C4.55228 19 5 18.5523 5 18V4C5 3.44772 5.44772 3 6 3Z" fill="#0F0F0F"/>
+</svg></abbr></div>
+
+
+  <div id='html' onclick='html()'>
+    <svg fill="#000000" width="100%" height="100%" viewBox="0 -0.08 20 20" data-name="Capa 1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"><path d="M15.69,4.31H4.31A1.61,1.61,0,0,0,2.7,5.92v8a1.61,1.61,0,0,0,1.61,1.61H15.69a1.61,1.61,0,0,0,1.61-1.61v-8A1.61,1.61,0,0,0,15.69,4.31ZM4.31,4.92H15.69a1,1,0,0,1,1,1v.72H3.31V5.92A1,1,0,0,1,4.31,4.92Zm11.38,10H4.31a1,1,0,0,1-1-1V7.25H16.69v6.67A1,1,0,0,1,15.69,14.92Z"/><path d="M4.31,6.18A.34.34,0,1,0,4,5.85.34.34,0,0,0,4.31,6.18Z"/><path d="M5.16,6.18a.34.34,0,1,0-.33-.33A.34.34,0,0,0,5.16,6.18Z"/><path d="M6,6.18a.34.34,0,1,0-.33-.33A.34.34,0,0,0,6,6.18Z"/><path d="M11,10.19l-.39.88-.4-.88s0,0-.07-.07,0-.06-.08-.08h0s-.07,0-.11,0a.17.17,0,0,0-.12,0h0s-.06.06-.08.08-.06,0-.08.07l-.39.88-.39-.88A.32.32,0,0,0,8.45,10a.3.3,0,0,0-.15.4L9,12a.38.38,0,0,0,.14.14h0l.12,0,.12,0h0A.38.38,0,0,0,9.53,12l.39-.89.4.89a.38.38,0,0,0,.14.14h0a.28.28,0,0,0,.13,0l.12,0h0a.38.38,0,0,0,.14-.14l.68-1.51a.31.31,0,0,0-.16-.4A.3.3,0,0,0,11,10.19Z"/><path d="M14.42,10.19l-.39.88-.4-.88s-.05,0-.07-.07,0-.06-.08-.08h0a.17.17,0,0,0-.12,0s-.07,0-.11,0h0s-.05.05-.08.08-.06,0-.07.07l-.4.88-.39-.88a.3.3,0,0,0-.4-.15.3.3,0,0,0-.16.4L12.41,12a.38.38,0,0,0,.14.14h0l.12,0a.28.28,0,0,0,.13,0h0A.38.38,0,0,0,13,12l.4-.89.39.89a.38.38,0,0,0,.14.14h0a.31.31,0,0,0,.13,0l.12,0h0a.41.41,0,0,0,.15-.14L15,10.44a.3.3,0,0,0-.16-.4A.3.3,0,0,0,14.42,10.19Z"/><path d="M7.56,10.19l-.39.88-.39-.88a.24.24,0,0,0-.08-.06A.23.23,0,0,0,6.62,10h0a.17.17,0,0,0-.12,0s-.07,0-.11,0h0l-.08.08s-.06,0-.07.07l-.4.88-.39-.88A.3.3,0,0,0,5,10a.31.31,0,0,0-.16.4L5.55,12a.38.38,0,0,0,.14.14h0l.12,0a.28.28,0,0,0,.13,0H6A.38.38,0,0,0,6.1,12l.4-.89.39.89a.38.38,0,0,0,.14.14h0l.12,0,.12,0h0A.38.38,0,0,0,7.45,12l.67-1.51A.3.3,0,0,0,8,10,.32.32,0,0,0,7.56,10.19Z"/></svg>
+    </div>
+</div>`
 
             document.getElementById('popup').innerHTML = `
-    <div id='cut' onclick="cut()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#e8eaed" d="M5.146 5.146a.5.5 0 0 1 .708 0L12 11.293l6.146-6.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 0 .708L12.707 12l6.147 6.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.708 0L12 12.707l-6.146 6.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1 0-.708L11.293 12 5.146 5.854a.5.5 0 0 1-.057-.638z"></path></svg></div> <div class='dont' ><textarea  autofocus id='textarea' value="" ></textarea></div>`
-            document.body.style.cssText = `background-color: rgb(0,0,0);`
-            document.getElementById('main').style.cssText = `opacity:.5`
-            document.getElementById('textarea').focus()
+    ${navHtml}
+    <div class='dont' id='textarea'></div>
+    
+    `
 
-            window.textareaf = document.getElementById('textarea');
 
-            // Add an event listener for the 'input' event
-            textareaf.addEventListener('input', function () {
-                // Alert when the value changes
-                console.log('Textarea value changed: ' + textarea.value);
-                upload(document.getElementById('textarea').value, idd)
-            });
+            {
+                setTimeout(() => {
+                    window.CopySvg = document.getElementById('copy').innerHTML
+                    let language
+                    // let word = e.target.getAttribute('data')[0]
+                    // if (word == '#' || word == '"' || word == "'") {
+                    //     language = 'python'
+                    // } else if (word == '/') {
+                    //     if (e.target.getAttribute('data').split('\n')[1][0] == '<') {
+                    //         language = 'html'
+                    //     } else {
+
+                    //         language = 'javascript'
+                    //     }
+                    // } else if (word == '{' || word == '[') {
+                    //     language = 'json'
+                    // }
+                    // else {
+                    //     language = 'plaintext'
+                    // }
+
+
+
+
+                    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+                    const randomId = Math.random().toString(36).substring(7);
+                    const randomIdDiv = document.querySelector('#textarea');
+                    randomIdDiv.id = randomId;
+                    randomIdDiv.style.height = '100%';
+                    randomIdDiv.style.border = '1px solid black';
+                    require(["vs/editor/editor.main"], () => {
+                        window.editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
+                            value: ``,
+                            language: 'html',
+                            readOnly: false,
+                            theme: 'vs-dark',
+                            fontSize: 22,
+                            minimap: {
+                                enabled: false,
+                            },
+                            scrollbar: {
+                                horizontal: false,
+                                vertical: false,
+                            },
+                            mouseWheelZoom: true,
+                            wordWrap: 'on'
+                        });
+
+                        window.getContent = function () {
+                            var content = editor.getValue();
+                            return content
+                        }
+
+                        if (window.innerWidth < window.innerHeight) {
+                            editor.updateOptions({ fontSize: '10' });
+                        }
+
+
+                        editor.getModel().onDidChangeContent(async function (event) {
+                            document.getElementById('nav').style.backgroundColor = 'rgba(255, 95, 95,.3)'
+                            const codepad = collection(firestore, 'codepad')
+                            const docData = {
+                                data: editor.getValue(),
+                                date: serverTimestamp()
+                            };
+                    let n = await setDoc(doc(codepad, String(id)), docData);
+                    document.getElementById('nav').style.backgroundColor = 'rgb(76, 175, 142)'
+
+
+
+
+                        });
+
+
+
+                    });
+                }, 10);
+            }
+
+
+
 
 
 
             let timeout = setTimeout(() => {
                 document.getElementById('popup').style.display = ``
             }, 1);
-
-
-            window.inter = setInterval(async () => {
-                // document.getElementById('popup').style.cssText=`border:1px solid yellow`
-                const documentRef = doc(firestore, 'codepad', String(idd));
-
-                const docSnapshot = await getDoc(documentRef);
-                console.log(docSnapshot.data().data)
-                if (document.getElementById('textarea').value == docSnapshot.data().data) {
-                    let a = document.getElementById('popup').style.cssText = `border:3px solid green`
-                } else {
-                    let a = document.getElementById('popup').style.cssText = `border:2px solid red`
-                }
-
-
-            }, 2000);
 
 
 
@@ -563,21 +655,21 @@
             };
 
             await setDoc(doc(codepad, String(id)), docData);
-            
+
             if (document.getElementById('textarea')) {
                 document.getElementById('textarea').remove()
 
             }
             document.getElementsByClassName('dont')[0].innerHTML = `<h1>DELETED DOCUMENT</>`
-                await window.location.reload()
-                
+            await window.location.reload()
+
 
             // await updateDoc(docRef, {deleted_date:serverTimestamp()});
 
         }
 
 
-        window.edit = async function (id,new_data) {
+        window.edit = async function (id, new_data) {
             toggleReadOnly()
             document.getElementById('edit').innerHTML = ``
             document.getElementById('nav').style.backgroundColor = 'rgba(255, 95, 95,.3)'
@@ -587,16 +679,16 @@
             const docSnapshot = await getDoc(documentRef);
 
 
-            if(new_data!=undefined){
+            if (new_data != undefined) {
                 const codepad = collection(firestore, 'codepad')
-            const docData = {
-                data: new_data,
-                date: docSnapshot.data().date,
-            };
+                const docData = {
+                    data: new_data,
+                    date: docSnapshot.data().date,
+                };
 
-            let n = await setDoc(doc(codepad, String(id)), docData);
+                let n = await setDoc(doc(codepad, String(id)), docData);
                 document.getElementById('nav').style.backgroundColor = 'rgb(76, 175, 142)'
-            
+
             }
 
 
@@ -604,7 +696,7 @@
 
 
 
-           
+
 
         }
 
