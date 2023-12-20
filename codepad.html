@@ -563,11 +563,14 @@
             };
 
             await setDoc(doc(codepad, String(id)), docData);
+            
             if (document.getElementById('textarea')) {
                 document.getElementById('textarea').remove()
 
             }
-            document.getElementById('popup').innerHTML = `<h1>DELETED DOCUMENT</>`
+            document.getElementsByClassName('dont')[0].innerHTML = `<h1>DELETED DOCUMENT</>`
+                await window.location.reload()
+                
 
             // await updateDoc(docRef, {deleted_date:serverTimestamp()});
 
