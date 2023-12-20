@@ -187,11 +187,12 @@
 
 
     <script>var inter;
-        function popup(e) {
+        function popup(e, id) {
 
 
 
-            let navHtml = `<div class='nav'>
+
+            let navHtml = `<div id='nav' class='nav'>
     <div id='delete' onclick="delete0(${e.target.id})"><abbr title='DELETE'>
       
       <svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -231,7 +232,7 @@
 </svg></abbr></div>
 
 
-<div id='edit' onclick='edit()'><abbr title='Edit'>
+<div id='edit' onclick='edit(${id})'><abbr title='Edit'>
   <svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="页面-1" stroke="none" stroke-width="1" fill="black" fill-rule="evenodd">
         <g id="System" transform="translate(-576.000000, -192.000000)" fill-rule="nonzero">
@@ -291,7 +292,7 @@
                     randomIdDiv.style.height = '100%';
                     randomIdDiv.style.border = '1px solid black';
                     require(["vs/editor/editor.main"], () => {
-                        editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
+                        window.editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
                             value: `${e.target.getAttribute('data')}`,
                             language: language,
                             readOnly: true,
@@ -320,7 +321,9 @@
                         }
 
 
-
+                        editor.getModel().onDidChangeContent(function (event) {
+                            edit(id,editor.getValue())
+                        });
 
 
 
@@ -372,8 +375,8 @@
         }
 
         document.body.onclick = function (e) {
-            console.log(document.getElementById('popup').style.display)
-            console.log(document.getElementById('popup'))
+            // console.log(document.getElementById('popup').style.display)
+            // console.log(document.getElementById('popup'))
 
             if (e.target.className != 'dont' && document.getElementById('popup').style.display != 'none') {
                 // cut()
@@ -395,10 +398,7 @@
 
         }
 
-        window.edit = async function () {
-            toggleReadOnly()
-            document.getElementById('edit').innerHTML = ``
-        }
+
 
         window.html = async function () {
             getContent()
@@ -470,7 +470,7 @@
             node.setAttribute("id", id)
             node.setAttribute("data", obj.data)
             node.setAttribute("class", 'item')
-            node.setAttribute("onclick", "popup(event)")
+            node.setAttribute("onclick", `popup(event,${id})`)
             node.textContent = getFirstLine(obj.data)
             document.getElementById('main').append(node);
 
@@ -573,6 +573,37 @@
 
         }
 
+
+        window.edit = async function (id,new_data) {
+            toggleReadOnly()
+            document.getElementById('edit').innerHTML = ``
+            document.getElementById('nav').style.backgroundColor = 'rgba(255, 95, 95,.3)'
+
+
+            const documentRef = doc(firestore, 'codepad', String(id));
+            const docSnapshot = await getDoc(documentRef);
+
+
+            if(new_data!=undefined){
+                const codepad = collection(firestore, 'codepad')
+            const docData = {
+                data: new_data,
+                date: docSnapshot.data().date,
+            };
+
+            let n = await setDoc(doc(codepad, String(id)), docData);
+                document.getElementById('nav').style.backgroundColor = 'rgb(76, 175, 142)'
+            
+            }
+
+
+
+
+
+
+           
+
+        }
 
 
     </script>
