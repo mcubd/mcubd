@@ -7,6 +7,8 @@
     <title>CodePad</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+
+
     <style>
         body,
         html {
@@ -29,7 +31,7 @@
             width: 320px;
         }
 
-        .main {
+        .main0 {
             margin-top: 40px;
             margin-left: 10vw;
 
@@ -46,8 +48,6 @@
             border-radius: 4px;
             margin-bottom: 30px;
             margin-right: 3.8vw;
-
-
 
         }
 
@@ -165,7 +165,14 @@
             margin-top: 60px;
 
         }
+        .monaco-editor .suggest-widget {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 144, 144);
+}
+
     </style>
+
+
 </head>
 
 <body>
@@ -175,7 +182,7 @@
     <div id="popup" class="dont" style="display: none;"></div>
     <div id="navpopup"></div>
 
-    <div id="main" class="main">
+    <div id="main0" class="main0">
         <!-- <div class="item" onclick="popup(event)">
         '''
 
@@ -336,6 +343,11 @@
 
 
 
+
+
+
+
+
                     });
                 }, 10);
             }
@@ -363,7 +375,7 @@
             document.getElementById('popup').innerHTML = ``
 
             document.body.style.cssText = `background-color:#202124`
-            document.getElementById('main').style.cssText = `opacity:1`
+            document.getElementById('main0').style.cssText = `opacity:1`
 
             // document.getElementById('main').style.cssText=`background-color: #202124;`
             // document.getElementById('main').style.display=``
@@ -472,7 +484,7 @@
             node.setAttribute("class", 'item')
             node.setAttribute("onclick", `popup(event,${id})`)
             node.textContent = getFirstLine(obj.data)
-            document.getElementById('main').append(node);
+            document.getElementById('main0').append(node);
 
 
 
