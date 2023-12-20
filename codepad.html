@@ -112,7 +112,7 @@
 }
 
 textarea{
-    width: 100%;
+    width: 1vw;
     height: 90vh;
     background-color: #2A2C2B;
     color: white;
@@ -287,6 +287,7 @@ setTimeout(() => {
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
             });
             editor.setValue(e.target.getAttribute('data'));
+            editor.setSize("100%", "100%");
             CodeMirror.commands.foldAll(editor);
 }, 3);
             }
