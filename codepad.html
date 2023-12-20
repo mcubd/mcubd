@@ -1,8 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +8,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
     <style>
-        body,html{
+        body,
+        html {
             background-color: #202124;
             color: #e8eaed;
             display: flex;
@@ -20,36 +19,41 @@
 
 
         }
+
         ::-webkit-scrollbar {
-    width: 1px;
-    height: 1px
-}
-        .left{
+            width: 1px;
+            height: 1px
+        }
+
+        .left {
             width: 320px;
         }
-        .main{
+
+        .main {
             margin-top: 40px;
             margin-left: 10vw;
 
         }
-        .item{
+
+        .item {
             height: 215px;
             width: 270px;
             display: inline-block;
             overflow: hidden;
             font-size: 30px;
             padding: 20px;
-            background-color: rgba(45, 46, 45,.8);
+            background-color: rgba(45, 46, 45, .8);
             border-radius: 4px;
             margin-bottom: 30px;
             margin-right: 3.8vw;
-            
-            
-            
+
+
+
         }
-        #popup{
+
+        #popup {
             position: fixed;
-            top:0;
+            top: 0;
             bottom: 0;
             left: 0;
             right: 0;
@@ -59,44 +63,47 @@
             border-radius: 7px;
             z-index: 2;
             overflow: scroll;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      animation: fadeIn .3s linear;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn .3s linear;
 
         }
+
         @keyframes fadeIn {
 
-      from {
-        opacity: .6;
+            from {
+                opacity: .6;
 
-      }
-      to {
-        opacity: 1;
-      }
-    }
+            }
 
-        #full{
+            to {
+                opacity: 1;
+            }
+        }
+
+        #full {
             color: white;
             margin-top: 80px;
-            white-space:pre;
+            white-space: pre;
             font-size: 20px;
 
         }
 
-#add{
-    position: fixed;
-    top: 20px;
-    right:5vw ;
-}
+        #add {
+            position: fixed;
+            top: 20px;
+            right: 5vw;
+        }
 
-textarea{
-    /* width: 1vw;
+        textarea {
+            /* width: 1vw;
     height: 90vh;
     background-color: #2A2C2B;
     color: white;
     font-size: 16px; */
 
-}
-#cut{
+        }
+
+        #cut {
             width: 45px;
             height: 45px;
             position: absolute;
@@ -104,82 +111,87 @@ textarea{
             top: 5px;
 
         }
-        #cut:hover{
-          background-color: rgb(255, 0, 0,.9);
+
+        #cut:hover {
+            background-color: rgb(255, 0, 0, .9);
         }
-#copy{
+
+        #copy {
             width: 30px;
             height: 30px;
             position: absolute;
             right: 20vw;
             top: 11px;
 
-}
-#delete{
-  width: 30px;
+        }
+
+        #delete {
+            width: 30px;
             height: 30px;
             position: absolute;
             right: 35vw;
             top: 11px;
-}
-#html{
-  width: 35px;
+        }
+
+        #html {
+            width: 35px;
             height: 35px;
             position: absolute;
             right: 68vw;
             top: 8px;
-}
-#edit{
-             width: 45px;
+        }
+
+        #edit {
+            width: 45px;
             height: 45px;
             position: absolute;
             right: 50vw;
             top: 11px;
-}
-.nav{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 60px;
+        }
+
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
 
 
-  background-color: rgb(76, 175, 142);
-  z-index: 100000000;
-}
-.dont{
-  margin-top: 60px;
+            background-color: rgb(76, 175, 142);
+            z-index: 100000000;
+        }
 
-}
+        .dont {
+            margin-top: 60px;
 
-
-
+        }
     </style>
 </head>
+
 <body>
-  
+
     <div id="add" onclick="add()" class="add">Add+</div>
 
     <div id="popup" class="dont" style="display: none;"></div>
     <div id="navpopup"></div>
 
-<div id="main" class="main">
-    <!-- <div class="item" onclick="popup(event)">
+    <div id="main" class="main">
+        <!-- <div class="item" onclick="popup(event)">
         '''
 
           #  print(result)'''
     </div> -->
 
-</div>
+    </div>
 
 
 
-<script>var inter;
-    function popup(e){
-        
+    <script>var inter;
+        function popup(e) {
 
 
-    let navHtml=`<div class='nav'>
+
+            let navHtml = `<div class='nav'>
     <div id='delete' onclick="delete0(${e.target.id})"><abbr title='DELETE'>
       
       <svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -234,318 +246,330 @@ textarea{
     <svg fill="#000000" width="100%" height="100%" viewBox="0 -0.08 20 20" data-name="Capa 1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"><path d="M15.69,4.31H4.31A1.61,1.61,0,0,0,2.7,5.92v8a1.61,1.61,0,0,0,1.61,1.61H15.69a1.61,1.61,0,0,0,1.61-1.61v-8A1.61,1.61,0,0,0,15.69,4.31ZM4.31,4.92H15.69a1,1,0,0,1,1,1v.72H3.31V5.92A1,1,0,0,1,4.31,4.92Zm11.38,10H4.31a1,1,0,0,1-1-1V7.25H16.69v6.67A1,1,0,0,1,15.69,14.92Z"/><path d="M4.31,6.18A.34.34,0,1,0,4,5.85.34.34,0,0,0,4.31,6.18Z"/><path d="M5.16,6.18a.34.34,0,1,0-.33-.33A.34.34,0,0,0,5.16,6.18Z"/><path d="M6,6.18a.34.34,0,1,0-.33-.33A.34.34,0,0,0,6,6.18Z"/><path d="M11,10.19l-.39.88-.4-.88s0,0-.07-.07,0-.06-.08-.08h0s-.07,0-.11,0a.17.17,0,0,0-.12,0h0s-.06.06-.08.08-.06,0-.08.07l-.39.88-.39-.88A.32.32,0,0,0,8.45,10a.3.3,0,0,0-.15.4L9,12a.38.38,0,0,0,.14.14h0l.12,0,.12,0h0A.38.38,0,0,0,9.53,12l.39-.89.4.89a.38.38,0,0,0,.14.14h0a.28.28,0,0,0,.13,0l.12,0h0a.38.38,0,0,0,.14-.14l.68-1.51a.31.31,0,0,0-.16-.4A.3.3,0,0,0,11,10.19Z"/><path d="M14.42,10.19l-.39.88-.4-.88s-.05,0-.07-.07,0-.06-.08-.08h0a.17.17,0,0,0-.12,0s-.07,0-.11,0h0s-.05.05-.08.08-.06,0-.07.07l-.4.88-.39-.88a.3.3,0,0,0-.4-.15.3.3,0,0,0-.16.4L12.41,12a.38.38,0,0,0,.14.14h0l.12,0a.28.28,0,0,0,.13,0h0A.38.38,0,0,0,13,12l.4-.89.39.89a.38.38,0,0,0,.14.14h0a.31.31,0,0,0,.13,0l.12,0h0a.41.41,0,0,0,.15-.14L15,10.44a.3.3,0,0,0-.16-.4A.3.3,0,0,0,14.42,10.19Z"/><path d="M7.56,10.19l-.39.88-.39-.88a.24.24,0,0,0-.08-.06A.23.23,0,0,0,6.62,10h0a.17.17,0,0,0-.12,0s-.07,0-.11,0h0l-.08.08s-.06,0-.07.07l-.4.88-.39-.88A.3.3,0,0,0,5,10a.31.31,0,0,0-.16.4L5.55,12a.38.38,0,0,0,.14.14h0l.12,0a.28.28,0,0,0,.13,0H6A.38.38,0,0,0,6.1,12l.4-.89.39.89a.38.38,0,0,0,.14.14h0l.12,0,.12,0h0A.38.38,0,0,0,7.45,12l.67-1.51A.3.3,0,0,0,8,10,.32.32,0,0,0,7.56,10.19Z"/></svg>
     </div>
 </div>`
-    
-    document.getElementById('popup').innerHTML=`
+
+            document.getElementById('popup').innerHTML = `
     ${navHtml}
     <div class='dont' id='textarea'></div>
     
     `
-    // <textarea class='dont' id='full'></textarea>
+            // <textarea class='dont' id='full'></textarea>
 
-    document.body.style.cssText=`background-color: rgb(0,0,0);`
-    document.getElementById('textarea').focus()
+            document.body.style.cssText = `background-color: rgb(0,0,0);`
+            document.getElementById('textarea').focus()
 
-    let  textareaf = document.getElementById('textarea');
-    // textareaf.value=`${e.target.textContent}`
+            let textareaf = document.getElementById('textarea');
+            // textareaf.value=`${e.target.textContent}`
 
-{
-setTimeout(() => {
-    window.CopySvg=document.getElementById('copy').innerHTML
-    let language
-    let word=e.target.getAttribute('data')[0]
-    if( word=='#'||word=='"'||word=="'"){
-        language='python'
-    }else if( word=='/'){
-        language='javascript'
-    }else if(word=='<'){
-        language='html'
-    }else if(word=='{'||word=='['){
-        language='json'
-    }
-    else{
-        language='plaintext'
-    }
-
-  
-
-
-    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' }});
-const randomId = Math.random().toString(36).substring(7);
-const randomIdDiv = document.querySelector('#textarea');
-randomIdDiv.id = randomId;
-randomIdDiv.style.height = '100%';
-randomIdDiv.style.border = '1px solid black';
-require(["vs/editor/editor.main"], () => {
-   editor= monaco.editor.create(document.getElementById(randomIdDiv.id), {
-    value: `${e.target.getAttribute('data')}`,
-    language: language,
-    readOnly: true,
-    theme: 'vs-dark',
-    fontSize: 22,
-    minimap: {
-      enabled: false,
-    },
-    scrollbar: {
-      horizontal: false,
-      vertical: false,
-    },
-    mouseWheelZoom: true,
-    wordWrap:'on'
-  });
-  window.toggleReadOnly=function () {
-      editor.updateOptions({ readOnly: 'false' });
-    }
-   window.getContent= function () {
-      var content = editor.getValue();
-      return content
-    }
-    
+            {
+                setTimeout(() => {
+                    window.CopySvg = document.getElementById('copy').innerHTML
+                    let language
+                    let word = e.target.getAttribute('data')[0]
+                    if (word == '#' || word == '"' || word == "'") {
+                        language = 'python'
+                    } else if (word == '/') {
+                        language = 'javascript'
+                    } else if (word == '<') {
+                        language = 'html'
+                    } else if (word == '{' || word == '[') {
+                        language = 'json'
+                    }
+                    else {
+                        language = 'plaintext'
+                    }
 
 
 
-});
-}, 10);
+
+                    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+                    const randomId = Math.random().toString(36).substring(7);
+                    const randomIdDiv = document.querySelector('#textarea');
+                    randomIdDiv.id = randomId;
+                    randomIdDiv.style.height = '100%';
+                    randomIdDiv.style.border = '1px solid black';
+                    require(["vs/editor/editor.main"], () => {
+                        editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
+                            value: `${e.target.getAttribute('data')}`,
+                            language: language,
+                            readOnly: true,
+                            theme: 'vs-dark',
+                            fontSize: 22,
+                            minimap: {
+                                enabled: false,
+                            },
+                            scrollbar: {
+                                horizontal: false,
+                                vertical: false,
+                            },
+                            mouseWheelZoom: true,
+                            wordWrap: 'on'
+                        });
+                        window.toggleReadOnly = function () {
+                            editor.updateOptions({ readOnly: 'false' });
+                        }
+                        window.getContent = function () {
+                            var content = editor.getValue();
+                            return content
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    });
+                }, 10);
             }
-        
-    // console.error(countLines(e.target.textContent))
-    // document.getElementById('full').textContent=`${e.target.getAttribute('data')}`
-    // document.getElementById('main').style.cssText=`opacity:.5`
 
-
-    
-    let timeout= setTimeout(() => {
-        document.getElementById('popup').style.display=``
-    }, 1);
+            // console.error(countLines(e.target.textContent))
+            // document.getElementById('full').textContent=`${e.target.getAttribute('data')}`
+            // document.getElementById('main').style.cssText=`opacity:.5`
 
 
 
-    
-    }
-
-   window.getFirstLine= function (text) {
-    return text.split('\n')[0];
-}
-    function cut(){
-        document.getElementById('popup').style.display=`none`
-        document.getElementById('popup').innerHTML=``
-
-        document.body.style.cssText=`background-color:#202124`
-    document.getElementById('main').style.cssText=`opacity:1`
-
-    // document.getElementById('main').style.cssText=`background-color: #202124;`
-    // document.getElementById('main').style.display=``
-    clearInterval(inter)
+            let timeout = setTimeout(() => {
+                document.getElementById('popup').style.display = ``
+            }, 1);
 
 
-    
-    
-    }
 
-    document.body.onclick=function (e){
-        console.log(document.getElementById('popup').style.display)
-        console.log(document.getElementById('popup'))
 
-    if(e.target.className!='dont' && document.getElementById('popup').style.display!='none'){
-        // cut()
-    }
-    }
+        }
 
-window.copy=async function (e){
+        window.getFirstLine = function (text) {
+            return text.split('\n')[0];
+        }
+        function cut() {
+            document.getElementById('popup').style.display = `none`
+            document.getElementById('popup').innerHTML = ``
 
-  await navigator.clipboard.writeText(getContent())
-  
-  document.getElementById('copy').innerHTML=`<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            document.body.style.cssText = `background-color:#202124`
+            document.getElementById('main').style.cssText = `opacity:1`
+
+            // document.getElementById('main').style.cssText=`background-color: #202124;`
+            // document.getElementById('main').style.display=``
+            clearInterval(inter)
+
+
+
+
+        }
+
+        document.body.onclick = function (e) {
+            console.log(document.getElementById('popup').style.display)
+            console.log(document.getElementById('popup'))
+
+            if (e.target.className != 'dont' && document.getElementById('popup').style.display != 'none') {
+                // cut()
+            }
+        }
+
+        window.copy = async function (e) {
+
+            await navigator.clipboard.writeText(getContent())
+
+            document.getElementById('copy').innerHTML = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M7.75 12L10.58 14.83L16.25 9.17004" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`
-setTimeout(() => {
-    document.getElementById('copy').innerHTML=CopySvg
-    
-}, 1500);
+            setTimeout(() => {
+                document.getElementById('copy').innerHTML = CopySvg
 
-}
+            }, 1500);
 
-window.edit= async function (){
-    toggleReadOnly()
-    document.getElementById('edit').innerHTML=``
-}
+        }
 
-window.html=async function (){
-    getContent()
+        window.edit = async function () {
+            toggleReadOnly()
+            document.getElementById('edit').innerHTML = ``
+        }
 
-}
+        window.html = async function () {
+            getContent()
 
-</script>
+        }
 
-
+    </script>
 
 
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-    import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
-    import { getFirestore, collection, addDoc ,query, orderBy, limit,getDocs , doc, setDoc ,Timestamp,serverTimestamp ,getDoc,updateDoc  } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-    
-    
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, doc, setDoc, Timestamp, serverTimestamp, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+
         var messages = document.getElementById('messages');
         var form = document.getElementById('form');
         const firebaseConfig = {
-          apiKey: "AIzaSyBzaFL1XOU-_152duOo0baL1DfgVVuSwMI",
-          authDomain: "test2-5bbd8.firebaseapp.com",
-          databaseURL: "https://test2-5bbd8-default-rtdb.asia-southeast1.firebasedatabase.app",
-          projectId: "test2-5bbd8",
-          storageBucket: "test2-5bbd8.appspot.com",
-          messagingSenderId: "683307239625",
-          appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
+            apiKey: "AIzaSyBzaFL1XOU-_152duOo0baL1DfgVVuSwMI",
+            authDomain: "test2-5bbd8.firebaseapp.com",
+            databaseURL: "https://test2-5bbd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "test2-5bbd8",
+            storageBucket: "test2-5bbd8.appspot.com",
+            messagingSenderId: "683307239625",
+            appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
         };
-    
-    
+
+
         const app = initializeApp(firebaseConfig);
-    const firestore = getFirestore(app);
+        const firestore = getFirestore(app);
 
 
 
- window.get=async function () {
+        window.get = async function () {
 
 
 
-const chat =collection(firestore,'codepad')
-const q = query(chat, orderBy("date", "desc"), limit(1000));
-const querySnapshot = await getDocs(q);
+            const chat = collection(firestore, 'codepad')
+            const q = query(chat, orderBy("date", "desc"), limit(1000));
+            const querySnapshot = await getDocs(q);
 
-await querySnapshot.forEach((doc) => {
+            await querySnapshot.forEach((doc) => {
 
-  let obj=doc.data()
+                let obj = doc.data()
 
- print(obj,doc.id)
- 
-
-
-});
-
-// document.getElementById('messages').style.opacity = '1'
-// window.scroll(0, document.body.scrollHeight)
+                print(obj, doc.id)
 
 
 
-}; get()
+            });
 
-
-window.print=async function (obj,id){
-//     <div class="item" onclick="popup(event)">
-
-// ff
-//     </div>
-    var node = document.createElement('div')
-    node.setAttribute("id", id)
-    node.setAttribute("data", obj.data)
-    node.setAttribute("class", 'item')
-    node.setAttribute("onclick", "popup(event)")
-    node.textContent = getFirstLine(obj.data)
-    document.getElementById('main').append(node);
+            // document.getElementById('messages').style.opacity = '1'
+            // window.scroll(0, document.body.scrollHeight)
 
 
 
-}
-
-window.add=async function (){
-    let idd= String( Math.random())
-    document.getElementById('popup').style.cssText=`border:1px solid yellow`
-
-    
-    document.getElementById('popup').innerHTML=`
-    <div id='cut' onclick="cut()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#e8eaed" d="M5.146 5.146a.5.5 0 0 1 .708 0L12 11.293l6.146-6.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 0 .708L12.707 12l6.147 6.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.708 0L12 12.707l-6.146 6.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1 0-.708L11.293 12 5.146 5.854a.5.5 0 0 1-.057-.638z"></path></svg></div> <div class='dont' ><textarea  autofocus id='textarea' value="" ></textarea></div>`
-    document.body.style.cssText=`background-color: rgb(0,0,0);`
-    document.getElementById('main').style.cssText=`opacity:.5`
-    document.getElementById('textarea').focus()
-
-    window.textareaf = document.getElementById('textarea');
-
-// Add an event listener for the 'input' event
-textareaf.addEventListener('input', function() {
-  // Alert when the value changes
-  console.log('Textarea value changed: ' + textarea.value);
-  upload(document.getElementById('textarea').value,idd)
-});
+        }; get()
 
 
-    
-    let timeout= setTimeout(() => {
-        document.getElementById('popup').style.display=``
-    }, 1);
+        window.print = async function (obj, id) {
+            //     <div class="item" onclick="popup(event)">
+
+            // ff
+            //     </div>
+            var node = document.createElement('div')
+            node.setAttribute("id", id)
+            node.setAttribute("data", obj.data)
+            node.setAttribute("class", 'item')
+            node.setAttribute("onclick", "popup(event)")
+            node.textContent = getFirstLine(obj.data)
+            document.getElementById('main').append(node);
 
 
-   window.inter= setInterval(async () => {
-    // document.getElementById('popup').style.cssText=`border:1px solid yellow`
-    const documentRef = doc(firestore, 'codepad', String(idd));
-            
-    const docSnapshot = await getDoc(documentRef);
-        console.log(docSnapshot.data().data)
-        if(document.getElementById('textarea').value==docSnapshot.data().data){
-          let a=  document.getElementById('popup').style.cssText=`border:3px solid green`
-        }else{
-            let a=document.getElementById('popup').style.cssText=`border:2px solid red`
+
         }
 
-        
-    }, 2000);
-
-    
-
-}
+        window.add = async function () {
+            let idd = String(Math.random())
+            document.getElementById('popup').style.cssText = `border:1px solid yellow`
 
 
+            document.getElementById('popup').innerHTML = `
+    <div id='cut' onclick="cut()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#e8eaed" d="M5.146 5.146a.5.5 0 0 1 .708 0L12 11.293l6.146-6.147a.5.5 0 0 1 .638-.057l.07.057a.5.5 0 0 1 0 .708L12.707 12l6.147 6.146a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.708 0L12 12.707l-6.146 6.147a.5.5 0 0 1-.638.057l-.07-.057a.5.5 0 0 1 0-.708L11.293 12 5.146 5.854a.5.5 0 0 1-.057-.638z"></path></svg></div> <div class='dont' ><textarea  autofocus id='textarea' value="" ></textarea></div>`
+            document.body.style.cssText = `background-color: rgb(0,0,0);`
+            document.getElementById('main').style.cssText = `opacity:.5`
+            document.getElementById('textarea').focus()
 
-    
+            window.textareaf = document.getElementById('textarea');
 
-
-window.upload=async function (data,idd){
-    document.getElementById('popup').style.cssText=`border:1px solid yellow`
-    console.log(555555)
-
-    const codepad =collection(firestore,'codepad')
-    const docData = {
-    data: data,
-    date: serverTimestamp(),
-
-};
-
-    await setDoc(doc(codepad,String(idd)), docData);
+            // Add an event listener for the 'input' event
+            textareaf.addEventListener('input', function () {
+                // Alert when the value changes
+                console.log('Textarea value changed: ' + textarea.value);
+                upload(document.getElementById('textarea').value, idd)
+            });
 
 
 
+            let timeout = setTimeout(() => {
+                document.getElementById('popup').style.display = ``
+            }, 1);
 
 
-};
+            window.inter = setInterval(async () => {
+                // document.getElementById('popup').style.cssText=`border:1px solid yellow`
+                const documentRef = doc(firestore, 'codepad', String(idd));
 
-window.delete0=async function (id){
-const documentRef = doc(firestore, 'codepad', String(id));
+                const docSnapshot = await getDoc(documentRef);
+                console.log(docSnapshot.data().data)
+                if (document.getElementById('textarea').value == docSnapshot.data().data) {
+                    let a = document.getElementById('popup').style.cssText = `border:3px solid green`
+                } else {
+                    let a = document.getElementById('popup').style.cssText = `border:2px solid red`
+                }
+
+
+            }, 2000);
+
+
+
+        }
+
+
+
+
+
+
+        window.upload = async function (data, idd) {
+            document.getElementById('popup').style.cssText = `border:1px solid yellow`
+            console.log(555555)
+
+            const codepad = collection(firestore, 'codepad')
+            const docData = {
+                data: data,
+                date: serverTimestamp(),
+
+            };
+
+            await setDoc(doc(codepad, String(idd)), docData);
+
+
+
+
+
+        };
+
+        window.delete0 = async function (id) {
+            const documentRef = doc(firestore, 'codepad', String(id));
             const docSnapshot = await getDoc(documentRef);
-  
-
-                const codepad =collection(firestore,'codepad')
-    const docData = {
-    data: docSnapshot.data().data,
-    created_date:docSnapshot.data().date,
-    deleted_date: serverTimestamp(),
-
-};
-
-    await setDoc(doc(codepad,String(id)), docData);
-    if( document.getElementById('textarea')){
-      document.getElementById('textarea').remove()
-
-    }
-    document.getElementById('popup').innerHTML=`<h1>DELETED DOCUMENT</>`
-
-               // await updateDoc(docRef, {deleted_date:serverTimestamp()});
-
-}
 
 
+            const codepad = collection(firestore, 'codepad')
+            const docData = {
+                data: docSnapshot.data().data,
+                created_date: docSnapshot.data().date,
+                deleted_date: serverTimestamp(),
 
-        </script>
-    
+            };
+
+            await setDoc(doc(codepad, String(id)), docData);
+            if (document.getElementById('textarea')) {
+                document.getElementById('textarea').remove()
+
+            }
+            document.getElementById('popup').innerHTML = `<h1>DELETED DOCUMENT</>`
+
+            // await updateDoc(docRef, {deleted_date:serverTimestamp()});
+
+        }
+
+
+
+    </script>
+
 </body>
+
 </html>
