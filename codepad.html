@@ -260,7 +260,7 @@
             let textareaf = document.getElementById('textarea');
             // textareaf.value=`${e.target.textContent}`
 
-            {
+            {console.log(e.target.getAttribute('data').split('\n')[1][0])
                 setTimeout(() => {
                     window.CopySvg = document.getElementById('copy').innerHTML
                     let language
@@ -268,9 +268,12 @@
                     if (word == '#' || word == '"' || word == "'") {
                         language = 'python'
                     } else if (word == '/') {
-                        language = 'javascript'
-                    } else if (word == '<') {
-                        language = 'html'
+                        if (e.target.getAttribute('data').split('\n')[1][0] == '<') {
+                            language = 'html'
+                        } else {
+
+                            language = 'javascript'
+                        }
                     } else if (word == '{' || word == '[') {
                         language = 'json'
                     }
@@ -312,7 +315,7 @@
                             return content
                         }
 
-                        if(window.innerWidth<window.innerHeight){
+                        if (window.innerWidth < window.innerHeight) {
                             editor.updateOptions({ fontSize: '10' });
                         }
 
@@ -328,7 +331,7 @@
 
 
 
-                        
+
 
                     });
                 }, 10);
