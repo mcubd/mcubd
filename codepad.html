@@ -286,13 +286,13 @@
                     const randomIdDiv = document.querySelector('#textarea');
                     randomIdDiv.id = randomId;
                     randomIdDiv.style.height = '100%';
-                    randomIdDiv.style.border = '1px solid black';
+                    // randomIdDiv.style.border = '1px solid black';
                     require(["vs/editor/editor.main"], () => {
                         editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
                             value: `${e.target.getAttribute('data')}`,
                             language: language,
                             readOnly: true,
-                            theme: 'vs-dark',
+                            // theme: 'vs-dark',
                             fontSize: 22,
                             minimap: {
                                 enabled: false,
@@ -301,8 +301,8 @@
                                 horizontal: false,
                                 vertical: false,
                             },
-                            mouseWheelZoom: true,
-                            wordWrap: 'on'
+                            // mouseWheelZoom: true,
+                            // wordWrap: 'on'
                         });
                         window.toggleReadOnly = function () {
                             editor.updateOptions({ readOnly: 'false' });
