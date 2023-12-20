@@ -1,10 +1,39 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodePad</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/keymap/sublime.min.js"></script>
+
+
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/darcula.min.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/closebrackets.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/continuelist.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/matchtags.min.js"></script>
+
+
+
+
+
+        <script src="https://codemirror.net/5/addon/fold/foldcode.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/foldgutter.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/brace-fold.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/xml-fold.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/indent-fold.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/markdown-fold.js"></script>
+        <script src="https://codemirror.net/5/addon/fold/comment-fold.js"></script>
     <style>
         body,html{
             background-color: #202124;
@@ -132,6 +161,7 @@ textarea{
 
 
   background-color: rgb(76, 175, 142);
+  z-index: 100000000;
 }
 .dont{
   margin-top: 60px;
@@ -143,9 +173,11 @@ textarea{
     </style>
 </head>
 <body>
+  
     <div id="add" onclick="add()" class="add">Add+</div>
 
     <div id="popup" class="dont" style="display: none;"></div>
+    <div id="navpopup"></div>
 
 <div id="main" class="main">
     <!-- <div class="item" onclick="popup(event)">
@@ -160,7 +192,7 @@ textarea{
 
 <script>var inter;
     function popup(e){
-        console.log(e.target)
+        
     document.getElementById('popup').innerHTML=`
     <div id='delete' onclick="delete(event)">DELETE</div>
     <div id='cut' onclick="cut()">
@@ -171,7 +203,11 @@ textarea{
     `
 
 
-      document.getElementById('popup').innerHTML=`<div class='nav'>
+      document.getElementById('popup').innerHTML=`
+    <textarea class='dont' id='textarea'></textarea>
+    
+    `
+    document.getElementById('navpopup').innerHTML=`<div class='nav'>
     <div id='delete' onclick="delete0(${e.target.id})"><abbr title='DELETE'>
       
       <svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -222,19 +258,41 @@ textarea{
     </g>
 </svg><abbr/>
   </div>
-</div>
-
-
-    <div class='dont' id='full'></div>
+</div>`
     
-    `
-    document.body.style.cssText=`background-color: rgb(0,0,0);`
-    // document.getElementById('textarea').focus()
+    // <textarea class='dont' id='full'></textarea>
 
-    // let  textareaf = document.getElementById('textarea');
+    document.body.style.cssText=`background-color: rgb(0,0,0);`
+    document.getElementById('textarea').focus()
+
+    let  textareaf = document.getElementById('textarea');
     // textareaf.value=`${e.target.textContent}`
+
+{
+setTimeout(() => {
+  
+
+            var editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
+                value: e.target.textContent,
+                lineNumbers: true,
+                mode: "javascript",
+                keyMap: "sublime",
+                lineWrapping: true,
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "darcula",
+                tabSize: 2,
+                foldGutter: true,   // Enable the fold gutter
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+            });
+            editor.setValue(e.target.getAttribute('data'));
+            CodeMirror.commands.foldAll(editor);
+}, 3);
+            }
+        
     // console.error(countLines(e.target.textContent))
-    document.getElementById('full').textContent=`${e.target.getAttribute('data')}`
+    // document.getElementById('full').textContent=`${e.target.getAttribute('data')}`
     // document.getElementById('main').style.cssText=`opacity:.5`
 
 
