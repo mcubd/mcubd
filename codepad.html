@@ -6,17 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodePad</title>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script> -->
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js" integrity="sha512-I6CdJdruzGtvDyvdO4YsiAq+pkWf2efgd1ZUSK2FnM/u2VuRASPC7GowWQrWyjxCZn6CT89s3ddGI+be0Ak9Fg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
     <style>
         body,
         html {
@@ -169,7 +159,6 @@
 
             background-color: rgb(76, 175, 142);
             z-index: 100000000;
-            display: none;
         }
 
         .dont {
@@ -260,28 +249,89 @@
 
             document.getElementById('popup').innerHTML = `
     ${navHtml}
-    <textarea class='dont' id="textarea"></textarea>
+    <div class='dont' id='textarea'></div>
     
     `
             // <textarea class='dont' id='full'></textarea>
 
             document.body.style.cssText = `background-color: rgb(0,0,0);`
-            // document.getElementById('textarea').focus()
+            document.getElementById('textarea').focus()
 
-            // let textareaf = document.getElementById('textarea');
+            let textareaf = document.getElementById('textarea');
             // textareaf.value=`${e.target.textContent}`
 
             {
-
                 setTimeout(() => {
-                    var editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
-    lineNumbers: true,
-    mode: "javascript" // You can set the mode for syntax highlighting (e.g., "javascript", "html", "css")
-  });
-  editor.setValue(e.target.getAttribute('data'));
+                    window.CopySvg = document.getElementById('copy').innerHTML
+                    let language
+                    let word = e.target.getAttribute('data')[0]
+                    if (word == '#' || word == '"' || word == "'") {
+                        language = 'python'
+                    } else if (word == '/') {
+                        language = 'javascript'
+                    } else if (word == '<') {
+                        language = 'html'
+                    } else if (word == '{' || word == '[') {
+                        language = 'json'
+                    }
+                    else {
+                        language = 'plaintext'
+                    }
 
 
-                }, 1);
+
+
+                    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+                    const randomId = Math.random().toString(36).substring(7);
+                    const randomIdDiv = document.querySelector('#textarea');
+                    randomIdDiv.id = randomId;
+                    randomIdDiv.style.height = '100%';
+                    randomIdDiv.style.border = '1px solid black';
+                    require(["vs/editor/editor.main"], () => {
+                        editor = monaco.editor.create(document.getElementById(randomIdDiv.id), {
+                            value: `${e.target.getAttribute('data')}`,
+                            language: language,
+                            readOnly: true,
+                            theme: 'vs-dark',
+                            fontSize: 22,
+                            minimap: {
+                                enabled: false,
+                            },
+                            scrollbar: {
+                                horizontal: false,
+                                vertical: false,
+                            },
+                            mouseWheelZoom: true,
+                            wordWrap: 'on'
+                        });
+                        window.toggleReadOnly = function () {
+                            editor.updateOptions({ readOnly: 'false' });
+                        }
+                        window.getContent = function () {
+                            var content = editor.getValue();
+                            return content
+                        }
+
+                        if(window.innerWidth<window.innerHeight){
+                            editor.updateOptions({ fontSize: '10' });
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    });
+                }, 10);
             }
 
             // console.error(countLines(e.target.textContent))
