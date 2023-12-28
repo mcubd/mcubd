@@ -33,6 +33,3 @@ document.getElementsByTagName('video')[0].volume = Math.min(1, myVideo.volume - 
 
 
 
-setInterval(() => {
-  document.body.click()
-}, 50);
