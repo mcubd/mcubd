@@ -16,7 +16,7 @@ document.body.addEventListener("keydown", function(event) {
   
 document.getElementsByTagName('video')[0].volume = Math.min(1, myVideo.volume - 0.10);
   }else   if (event.key === "ArrowLeft") {
-    
+   let currentTime = document.getElementsByTagName('video')[0].currentTime
     document.getElementsByTagName('video')[0].currentTime =currentTime- 10;
   }else   if (event.key === "ArrowRight") {
     document.getElementsByTagName('video')[0].currentTime += 10;
