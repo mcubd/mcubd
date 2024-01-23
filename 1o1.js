@@ -61,7 +61,7 @@ order.setAttribute('onclick', 'order()')
 contact.innerText = 'Movies!'
 // contact.innerText = ''
 
-h4.innerText = 'call dia kaita dichili ken? (sohan)'
+h4.innerText = ' '
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
 button3.innerText = 'fox & sony'
