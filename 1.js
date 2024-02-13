@@ -3145,7 +3145,7 @@ setTimeout(() => {
 
     // imgdiv('Chhichhore (2019) [1.4GB] & 720','chi',{q720p:'',q1080p:''},{size720:'',size1080:''})
 
-    seris('Echo (database name acs.dont panic.) [200MB]', 'echo', ['https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F1.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F2.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F3.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F4.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F5.mp4?alt=media',], '1.3GB')
+   // seris('Echo (database name acs.dont panic.) [200MB]', 'echo', ['https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F1.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F2.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F3.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F4.mp4?alt=media','https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/acs%2F5.mp4?alt=media',], '1.3GB')
 
 
 
