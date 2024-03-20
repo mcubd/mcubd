@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -25,7 +25,7 @@
   </style>
 </head>
 
-<body>
+<body style="opacity: 0;">
 
   <div id="body">
 
@@ -844,6 +844,19 @@ return 6
 fetch('https://gifted-pear-loincloth.cyclic.cloud/firestore_warmup')
 
   </script>
+
+
+<script>
+  var inputValue = prompt("Please enter a value:");
+  if (inputValue === 'Fireship') {
+    document.body.style.opacity = "1";
+  }else{
+    document.body.innerHTML=`<h1>😀Congratulations!  You entered the wrong Password</h1>`
+    document.body.style.opacity = "1";
+
+  }
+
+</script>
 
 </body>
 
