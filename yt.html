@@ -164,7 +164,16 @@ opacity: .1;
     `
     }
 
+document.getElementById('contain').onclick=function (){
+  console.log(44)
+  //screen.orientation.lock('landscape')
+    document.getElementById('contain').requestFullscreen();
+    screen.orientation.lock('landscape')
+ 
+  
+  }
 
+             
 
              document.getElementById('pl').addEventListener('touchstart',function (){still='lyes'});
 document.getElementById('pl').addEventListener('touchend',function (){still='no'});
@@ -212,7 +221,15 @@ document.getElementById('pr').addEventListener('touchend',function (){still='no'
       video.play()
     };
 
-
+setInterval(() => {
+  if(still=='lyes'){
+    document.getElementById('video').currentTime = document.getElementById('video').currentTime- 10
+  }
+  if(still=='ryes'){
+    document.getElementById('video').currentTime += 10
+  }
+  console.log(still)
+}, 100);
 
              
     
