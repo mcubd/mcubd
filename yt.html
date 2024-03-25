@@ -93,11 +93,13 @@
         const result = match[1];
     let srcc=`https://www.googleapis.com/drive/v3/files/${result}?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc`
     document.body.innerHTML=`
-    <video width="98%" height="auto" controls>
-      <source src=${srcc} type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    
+   
+      <div id="contain" class="contain">
+  <p id="pr"> </p>
+  <p id="pl"> </p>
+
+  <video width="98%" height="auto" autoplay id="video" controls  src=${srcc}></video>
+</div>
     `
     }
     
@@ -105,10 +107,12 @@
         const result = match2[1];
     let srcc=`https://www.googleapis.com/drive/v3/files/${result}?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc`
     document.body.innerHTML=`
-    <video width="98%" height="auto" controls>
-      <source src=${srcc} type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+   <div id="contain" class="contain">
+  <p id="pr"> </p>
+  <p id="pl"> </p>
+
+  <video width="98%" height="auto" autoplay id="video" controls  src=${srcc}></video>
+</div>
     
     `
     }
@@ -118,10 +122,14 @@
     }else{
     ////////  console.log('other')
                document.body.innerHTML=`
-    <video loop width="98%" height="auto" controls>
-      <source src=${val} type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+<div id="contain" class="contain">
+  <p id="pr"> </p>
+  <p id="pl"> </p>
+
+  <video width="98%" height="auto" autoplay id="video" controls  src=${val}></video>
+</div>
+               
+   
     
     `
     }
