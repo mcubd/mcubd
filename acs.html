@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acs</title>
+    <style>
+        .lds-ring {
+            display: inline-block;
+            position: fixed;
+            top :50vh;
+            left: 50vw;
+            width: 1.875rem;
+            height: 1.875rem
+        }
+        
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            border: .3rem solid #595959;
+            border-radius: 50%;
+            border-color: #595959 transparent transparent;
+            width: 1.875rem;
+            height: 1.875rem;
+            animation: lds-ring 1.2s cubic-bezier(.5,0,.5,1) infinite
+        }
+        
+        .lds-ring div:nth-child(1) {
+            animation-delay: -.45s
+        }
+        
+        .lds-ring div:nth-child(2) {
+            animation-delay: -.3s
+        }
+        
+        .lds-ring div:nth-child(3) {
+            animation-delay: -.15s
+        }
+        
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0)
+            }
+        
+            to {
+                transform: rotate(360deg)
+            }
+        }
+            
+          </style>
+</head>
+<body>
+    <div id="loading" style="display: none;" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    
+
+<details>
+    <summary>ত্রিকোণমিতি</summary>
+    <p name="https://photos.app.goo.gl/a9vtodsdb3GkUdYb6" onclick="go(this)">Lec 1</p>
+     <p name="https://photos.app.goo.gl/Z2Qd18NNVY1RCYDX6" onclick="go(this)">Lec 2</p> 
+     <p name="https://photos.app.goo.gl/Vm8nutbujF3Fu7iq8" onclick="go(this)">Lec 3</p>
+  </details>
+  
+  <hr>
+  <details>
+    <summary>অন্তরীকরণ</summary>
+    <p name="https://photos.app.goo.gl/irhXvHqTmYpHLRxTA" onclick="go(this)">Lec 1</p>
+     <p name="https://photos.app.goo.gl/R8h9r2NLBoofVuPJ8" onclick="go(this)">Lec 2</p> 
+     <p name="https://photos.app.goo.gl/UQppvSzHN9kSX2k76" onclick="go(this)">Lec 3</p>
+      <p name="https://photos.app.goo.gl/Lku4zuBk9YNGcC4v6" onclick="go(this)">Lec 4</p>
+  </details>
+  
+  <hr>
+  
+  <details>
+    <summary>যোগজীকরণ</summary>
+    <p name="" onclick="go(this)">Lec 1</p>
+     <p name="" onclick="go(this)">Lec 2</p> 
+     <p name="" onclick="go(this)">Lec 3</p>
+      <p name="" onclick="go(this)">Lec 4</p>
+  </details>
+  
+
+
+  <script>
+
+    async function go(element){
+        document.getElementById('loading').style.display ="inline-block" 
+        console.log(  element.getAttribute("name"));
+        let ab=element.getAttribute("name")
+
+        let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", 'https://nodebd.vercel.app/uri', true);
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState === XMLHttpRequest.DONE) {
+                    if (xhttp.status === 200) {
+                        const responseData =  xhttp.responseText ;
+                        console.log('Response data:', responseData);
+                        if(responseData[0]=='h'){
+        document.getElementById('loading').style.display ="none" 
+
+
+                            window.open(responseData)
+                        } else{window.location.reload();}
+
+                    } else {
+                        console.error('Error sending POST request:', xhttp.statusText);
+                        window.location.reload();
+                    }
+                }
+            };
+
+
+            xhttp.send(JSON.stringify({ "a":ab}));
+
+    
+    }
+  </script>
+  
+  
+  
+  <style> 
+  *{
+    user-select: none;
+ 
+  }
+  a{
+    color: black;
+    text-decoration: none;
+  }
+  p{
+    font-size:20px;
+    margin-bottom:10px;
+    background-color:green;
+    padding:20px;
+    }
+    
+    summary{
+      font-size:50px;
+      
+      }
+      details{
+         margin-left:40px;
+        }
+  </style>
+  
+</body>
+</html>
