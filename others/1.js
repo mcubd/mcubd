@@ -490,8 +490,12 @@ function seris(bname, bimg, videolink, size, type,server) {
 
           }
 
+          console.log(66)
+
           down.onclick = function () {
-            if(server='ph'){
+            console.log(server)
+            if(server=='ph'){
+              console.log(99)
               ph(videolink[0])
             }else{
               window.open(videolink[0], '_self')
