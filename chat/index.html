@@ -122,7 +122,7 @@
     // -----------a-get
     function get() {
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", 'https://gifted-pear-loincloth.cyclic.cloud/chatdata', true);
+      xhttp.open("GET", 'https://nodebd.vercel.app/chatdata', true);
       xhttp.onload = function () {
 
         if (this.responseText == [] || this.responseText == '[]') {
@@ -512,7 +512,7 @@
 
 
       var xhttp = new XMLHttpRequest();
-      xhttp.open("POST", 'https://gifted-pear-loincloth.cyclic.cloud/chatdata', true);
+      xhttp.open("POST", 'https://nodebd.vercel.app/chatdata', true);
       xhttp.onload = function () {
         const arr = JSON.parse(this.responseText);
         const obj = arr[0]
@@ -529,7 +529,7 @@
 
           }
 
-          fetch("https://gifted-pear-loincloth.cyclic.cloud/chatnot",{
+          fetch("https://nodebd.vercel.app/chatnot",{
             method:"POST",
             body:obj.data
           })
@@ -564,7 +564,7 @@
       }
       else {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://gifted-pear-loincloth.cyclic.cloud/chatdatahis', true);
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatahis', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]') {
@@ -615,7 +615,7 @@
 
       if (ul.childElementCount > 0) {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://gifted-pear-loincloth.cyclic.cloud/chatdatanew', true);
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]' || this.responseText == []) { }
@@ -630,7 +630,7 @@
       }
       else {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'https://gifted-pear-loincloth.cyclic.cloud/chatdatanew', true);
+        xhttp.open("POST", 'https://nodebd.vercel.app/chatdatanew', true);
 
         xhttp.onload = function () {
           if (this.responseText == '[]' || this.responseText == []) { }
@@ -689,7 +689,7 @@
             dbsend(url, '', filename);
           }
           else {
-            fetch('https://gifted-pear-loincloth.cyclic.cloud/filetype', {
+            fetch('https://nodebd.vercel.app/filetype', {
               method: "POST",
               body: url
             }).then(async (res) => {
