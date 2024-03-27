@@ -1,4 +1,4 @@
-function me() { 
+ function me() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", 'https://nodebd.vercel.app/', true);
   xhttp.setRequestHeader('reqs', 'fb')
@@ -548,7 +548,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -610,8 +609,13 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
 
+          console.log(66)
+
           down.onclick = function () {
+            console.log(88)
+            console.log(server)
             if(server=='ph'){
+              console.log(99)
               ph(videolink[1])
             }else{
               window.open(videolink[1], '_self')
@@ -664,7 +668,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -781,7 +784,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -898,7 +900,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1013,7 +1014,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1130,7 +1130,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1247,7 +1246,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1363,7 +1361,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1481,7 +1478,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1598,7 +1594,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1715,7 +1710,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1832,7 +1826,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -1949,7 +1942,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2066,7 +2058,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2183,7 +2174,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2300,7 +2290,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2417,7 +2406,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2534,7 +2522,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
@@ -2651,7 +2638,6 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           document.body.append(onli, down)
-          document.body.insertAdjacentHTML("beforeend", '<div id="loading" class="loader"></div>');
 
 
           onli.onclick = function () {
