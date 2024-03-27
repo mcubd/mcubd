@@ -1,4 +1,4 @@
- function me() {
+function me() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", 'https://nodebd.vercel.app/', true);
   xhttp.setRequestHeader('reqs', 'fb')
@@ -611,7 +611,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[1])
             }else{
               window.open(videolink[1], '_self')
@@ -728,7 +728,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[2])
             }else{
               window.open(videolink[2], '_self')
@@ -845,7 +845,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[3])
             }else{
               window.open(videolink[3], '_self')
@@ -960,7 +960,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[4])
             }else{
               window.open(videolink[4], '_self')
@@ -1076,7 +1076,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[5])
             }else{
               window.open(videolink[5], '_self')
@@ -1194,7 +1194,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[6])
             }else{
               window.open(videolink[6], '_self')
@@ -1310,7 +1310,7 @@ function seris(bname, bimg, videolink, size, type,server) {
           }
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[7])
             }else{
               window.open(videolink[7], '_self')
@@ -1428,7 +1428,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[8])
             }else{
               window.open(videolink[8], '_self')
@@ -1545,7 +1545,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[9])
             }else{
               window.open(videolink[9], '_self')
@@ -1662,7 +1662,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[10])
             }else{
               window.open(videolink[10], '_self')
@@ -1779,7 +1779,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[11])
             }else{
               window.open(videolink[11], '_self')
@@ -1896,7 +1896,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[12])
             }else{
               window.open(videolink[12], '_self')
@@ -2013,7 +2013,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[13])
             }else{
               window.open(videolink[13], '_self')
@@ -2130,7 +2130,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[14])
             }else{
               window.open(videolink[14], '_self')
@@ -2247,7 +2247,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[15])
             }else{
               window.open(videolink[15], '_self')
@@ -2364,7 +2364,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[16])
             }else{
               window.open(videolink[16], '_self')
@@ -2481,7 +2481,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[17])
             }else{
               window.open(videolink[17], '_self')
@@ -2598,7 +2598,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[18])
             }else{
               window.open(videolink[18], '_self')
@@ -2715,7 +2715,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
 
           down.onclick = function () {
-            if(server='ph'){
+            if(server=='ph'){
               ph(videolink[19])
             }else{
               window.open(videolink[19], '_self')
