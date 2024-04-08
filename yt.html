@@ -100,7 +100,7 @@ opacity: .1;
             return 33
           }
       document.body.innerHTML=`
-      <video id="mv" width="100%" src=${myText} controls>
+      <video id="mv" width="100%" src=${myText} playbackRate="2" controls>
         Your browser does not support the video tag.
       </video><div id="ff"></div>`
       
@@ -128,7 +128,7 @@ opacity: .1;
   <p id="pr"> </p>
   <p id="pl"> </p>
 
-  <video width="98%" height="auto" autoplay id="video" controls  src=${srcc}></video>
+  <video width="98%" height="auto" autoplay id="video" playbackRate="2" controls  src=${srcc}></video>
 </div>
     `
     }
@@ -141,7 +141,7 @@ opacity: .1;
   <p id="pr"> </p>
   <p id="pl"> </p>
 
-  <video width="98%" height="auto" autoplay id="video" controls  src=${srcc}></video>
+  <video playbackRate="2" width="98%" height="auto" autoplay id="video" controls  src=${srcc}></video>
 </div>
     
     `
@@ -156,7 +156,7 @@ opacity: .1;
   <p id="pr"> </p>
   <p id="pl"> </p>
 
-  <video width="98%" height="auto" autoplay id="video" controls  >
+  <video playbackRate="2" width="98%" height="auto" autoplay id="video" controls  >
   <source src=${val} type="video/mp4">
   </video>
 </div>
