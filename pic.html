@@ -1,0 +1,204 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js" integrity="sha512-U9dKDqsXAE11UA9kZ0XKFyZ2gQCj+3AwZdBMni7yXSvWqLFEj8C1s7wRmWl9iyij8d5zb4wm56j4z/JVEwS77g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+.child{
+    height: 160px;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+    </style>
+</head>
+<body>
+
+    
+
+
+
+<div id="parent">
+
+</div>
+
+<script>
+   lightbox.option({
+      'resizeDuration': 2,
+      'wrapAround': true,
+      'fitImagesInViewport':true,
+      'positionFromTop':0,
+      'resizeDuration':5,
+      'maxHeight':"100%"
+    })
+</script>
+
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getStorage, ref, uploadBytesResumable, getDownloadURL,listAll,getMetadata } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+    import { getFirestore, collection, addDoc ,query, orderBy, limit,getDocs , doc, setDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+    
+    
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        const firebaseConfig = {
+          apiKey: "AIzaSyBzaFL1XOU-_152duOo0baL1DfgVVuSwMI",
+          authDomain: "test2-5bbd8.firebaseapp.com",
+          databaseURL: "https://test2-5bbd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "test2-5bbd8",
+          storageBucket: "test2-5bbd8.appspot.com",
+          messagingSenderId: "683307239625",
+          appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
+        };
+    
+    
+        const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    
+    
+        // Initialize Firestore
+        const firestore = getFirestore(app);
+        var fileitem, filename, percent
+
+
+
+        async function listItems(folder) {
+  try {
+
+   let storageRef = ref(storage, '/gallary/study');
+
+
+
+    const result = await listAll(storageRef);
+    console.log(result)
+    const fileMetadata = [];
+    let count=0
+
+
+//file
+    result.items.forEach(async (itemRef,index) => {
+      const metadata = await getMetadata(itemRef);
+      console.log(await getDownloadURL(itemRef));
+      //console.log(metadata)
+
+
+
+
+      fileMetadata.push({
+          lastModified: metadata.timeCreated , // Using 'updated' as last modified date
+          int:new Date(metadata.timeCreated).getTime(),
+                    url: await getDownloadURL(itemRef)
+                });
+
+
+                count=count+1
+
+                if(result.items.length==count){
+                    sort()
+                }
+//       let node = document.createElement('li')
+//       let name = document.createElement('span')
+//       let type = document.createElement('span')
+//       let size = document.createElement('span')
+//       let date = document.createElement('span')
+
+//       type.style.cssText = 'margin-right:12px'
+
+
+
+
+
+
+// touchlistfile[index]='no'
+//   console.log(touchlistfile)
+
+
+
+
+
+//       name.innerText = shortenFileName( itemRef.name);
+      
+//       node.append(type, name, size, date);
+//       let ul = document.getElementById('ul')
+//       ul.appendChild(node);
+
+    });
+
+
+   window.sort= function (){
+        console.log(fileMetadata)
+        fileMetadata.sort((a, b) => b.int - a.int);
+
+        setTimeout(() => {
+            
+            console.log(fileMetadata)
+
+            print0(fileMetadata)
+        }, 1000);
+    
+    }
+
+        
+window.print0= function (obj){
+
+    obj.forEach(file => {
+
+     let div = document.createElement('div')
+     let a = document.createElement('a')
+     let img = document.createElement('img')
+
+     img.setAttribute('src', file.url)
+     a.setAttribute('data-lightbox', "roadtrip")
+     a.setAttribute('href', file.url)
+     div.setAttribute('class', "child")
+
+     a.append(img)
+     div.append(a)
+
+     document.getElementById('parent').prepend(div);
+
+
+    
+
+//       type.style.cssText = 'margin-right:12px' 
+// <a href="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" data-lightbox="roadtrip">Image #3</a>
+
+
+
+});
+
+
+}
+
+
+  } catch (error) {
+    console.error('Error listing items:', error);
+  }
+};listItems()
+
+
+
+
+
+
+
+
+        </script>
+
+</body>
+</html>
