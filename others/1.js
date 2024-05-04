@@ -2799,6 +2799,7 @@ setTimeout(() => {
 
 
 
+ seris('Premalu [1.5GB]','pre',['https://www.googleapis.com/drive/v3/files/1-0OwErpU-V9kmgI9cF9CSc6GpS2Nu1hB?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1.5GB','mv')
   seris('Vincenzo [300MB]','vin',['https://photos.app.goo.gl/g2HxHbeoRm7g2Udb9','https://photos.app.goo.gl/1wKwFQhujDXcfJo7A','https://photos.app.goo.gl/1dw33C1c4cyq3q3S8','https://photos.app.goo.gl/NVrwCU1jYNMMwFNk6','https://photos.app.goo.gl/YURvgnBxEW85jNWW7','https://photos.app.goo.gl/gbQsm6tZowKZ4QR28','https://photos.app.goo.gl/L21MicuPnYRkWx917','https://photos.app.goo.gl/fJe5N7tY5J8YZAcV6','https://photos.app.goo.gl/pMEcshXa24evAfz57','https://photos.app.goo.gl/vHsNEmWvifyfKUhM9','https://photos.app.goo.gl/srp6Ea3oQZLmHmy3A','https://photos.app.goo.gl/nYgotbpBmWPfAosP8','https://photos.app.goo.gl/94tZWpVxx6Wx1knv8','https://photos.app.goo.gl/XMQX64zJGTASEFz4A','https://photos.app.goo.gl/xzzeoktWEWUTVTVU8','https://photos.app.goo.gl/fgoiSiDeG1RHqwGF9','https://photos.app.goo.gl/FgP5SWFiqx6nos2P6','https://photos.app.goo.gl/9AGnGCWwYTXDegvR7','https://photos.app.goo.gl/aQ3413dE8SXG7uJVA','https://photos.app.goo.gl/aHb57ywmcUwDkB26A',],'300MB','seris','ph')
 
 
