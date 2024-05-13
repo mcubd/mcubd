@@ -84,7 +84,7 @@ function other() {
   
 
 
-  window.open("https://mcubd.vercel.app/", '_self')
+  window.open("https://mcubd2.web.app/", '_self')
 }
 
 
