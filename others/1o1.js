@@ -59,7 +59,7 @@ button4.setAttribute('onclick', 'other()')
 
 
 
-button.innerText = ''
+button.innerText = 'Movie'
 h4.innerText = ''
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
@@ -115,7 +115,7 @@ document.getElementById('but1').style.display = ''
 document.getElementById('but2').style.display = ''
 document.getElementById('but3').style.display = ''
 document.getElementById('but4').style.display = ''
-document.getElementById('but4').style.backgroundColor = 'grey'
+// document.getElementById('but4').style.backgroundColor = 'grey'
 document.getElementById('hr').style.display = ''
 document.getElementById('buttt').style.display = ''
 
