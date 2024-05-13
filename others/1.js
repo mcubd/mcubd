@@ -1,10 +1,10 @@
  function me() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", 'https://nodebd.vercel.app/', true);
+  xhttp.open("POST", 'https://mcubd.vercel.app/', true);
   xhttp.setRequestHeader('reqs', 'fb')
   
 
-  window.open('https://nodebd.vercel.app/about.html', '_self') 
+  window.open('https://mcubd.vercel.app/about.html', '_self') 
   // window.open('https://www.facebook.com/zafar.niloy', '_self')
 
 
