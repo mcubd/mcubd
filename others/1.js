@@ -4,7 +4,7 @@
   xhttp.setRequestHeader('reqs', 'fb')
   
 
-  window.open('https://mcubd.github.io/mcubd/contact', '_self') 
+  window.open('https://nodebd.vercel.app/about', '_self') 
   // window.open('https://www.facebook.com/zafar.niloy', '_self')
 
 
