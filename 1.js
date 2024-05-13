@@ -43,7 +43,7 @@ function home() {
     xhttp.open("POST", 'https://nodebd.vercel.app/ram', true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     // xhttp.send(JSON.stringify({ name: 'mcu-logo-', ramxhw: info, device: devicee, platform: platformm }));
-    window.open(window.location.href '_self')
+    window.open(window.location.href ,'_self')
 }
 
 function mar() {
