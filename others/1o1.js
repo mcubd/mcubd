@@ -100,7 +100,7 @@ img.style.cssText = 'height:calc(100vh*.144*.5) ;padding-left:calc(100vw*.045) ;
 
 // button.style.cssText = 'float: right;padding: calc(100vh*.144*.03);background-color: #acacac;font-size: 10px;'
 
-button.style.cssText = 'float: right;padding: calc(100vh*.144*.03);background-color: #373737;font-size: 10px; outline: none !important;border: none !important;box-shadow: none !important;'
+button.style.cssText = 'float: right;padding: calc(100vh*.144*.03);background-color: #ACACAC;font-size: 10px; outline: none !important;border: none !important;box-shadow: none !important;'
 
 button1.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3);padding: 0   calc(100vw*.06) 0 calc(100vw*.06);'
 button2.style.cssText = 'height: calc(100vh*.056);font-size: calc(100vh*.056*.3);padding: 0   calc(100vw*.04) 0 calc(100vw*.04);'
@@ -115,7 +115,7 @@ document.getElementById('but1').style.display = ''
 document.getElementById('but2').style.display = ''
 document.getElementById('but3').style.display = ''
 document.getElementById('but4').style.display = ''
-// document.getElementById('but4').style.backgroundColor = 'grey'
+document.getElementById('but4').style.backgroundColor = 'grey'
 document.getElementById('hr').style.display = ''
 document.getElementById('buttt').style.display = ''
 
