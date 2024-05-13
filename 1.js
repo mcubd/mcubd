@@ -18,7 +18,7 @@ function me() {
     xhttp.open("POST", 'https://nodebd.vercel.app/', true);
     xhttp.setRequestHeader('reqs', 'fb')
     ;
-     window.open('https://mcubd.github.io/mcubd/contact', '_self')
+    // window.open('https://mcubd.github.io/mcubd/contact', '_self')
     
 
 
