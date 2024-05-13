@@ -59,7 +59,7 @@ function mcu() {
   xhttp.setRequestHeader('reqs', 'Mcu-but-' + info)
   
 
-  window.open(window.location.href, '_self')
+ // window.open("https://mcubd2.web.app/", '_self')
 }
 
 function home() {
@@ -69,7 +69,7 @@ function home() {
   
 
 
-  window.open(window.location.href, '_self')
+  window.open("https://mcubd2.web.app/", '_self')
 }
 
 function mar() {
@@ -84,7 +84,7 @@ function other() {
   
 
 
-  window.open(window.location.href+'/others', '_self')
+  window.open("https://mcubd.vercel.app/", '_self')
 }
 
 
