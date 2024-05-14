@@ -117,7 +117,7 @@ document.getElementById('but3').style.display = ''
 document.getElementById('but4').style.display = ''
 document.getElementById('but4').style.backgroundColor = 'grey'
 document.getElementById('hr').style.display = ''
-document.getElementById('buttt').style.display = ''
+//document.getElementById('buttt').style.display = ''
 
 
 
