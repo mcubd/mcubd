@@ -117,11 +117,12 @@ document.getElementById('but3').style.display = ''
 document.getElementById('but4').style.display = ''
 document.getElementById('but4').style.backgroundColor = 'grey'
 document.getElementById('hr').style.display = ''
-//document.getElementById('buttt').style.display = ''
 
 
 
 document.getElementById('buttt').style.float = 'right'
+document.getElementById('buttt').style.display = 'none'
+
 var op = document.getElementById('lp')
 op.src = 'https://mcubd.github.io/mcubd/logoimg/log.png'
 
