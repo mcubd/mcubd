@@ -2797,6 +2797,7 @@ setTimeout(() => {
  
 
 
+ seris('Weightlifting Fairy Kim Bok-joo [300 MB]','wei',["https://www.googleapis.com/drive/v3/files/10S2JouIFd_fHB7YswQUlKibMHQAm_ghS?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10YGsrpEkwhKseggFqfsdWesDU0PS-5sk?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10aD_f5d9sbBrXJtAMwHzpeylyXwjah-y?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10jwpiCqI3BWReM-h38W4Rp441vZSuFtD?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10l5bGhOa5Mff90Lig1ifpXQU1r4smEe9?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10n3mljl9tPbPKDHr6Lgk2xYS2g8VLpcV?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10tgKtUMC9TFy_6WF15pTzwS3-QxqCYYx?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10vbmYReZ-3s8v2ac6FceJI0ItiXc4KZI?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10wqNHpRAwm5tTxlAV5lgRZuyp06bDf0S?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'300 MB')
 
  seris('Flipped [800 MB]','fli',['https://www.googleapis.com/drive/v3/files/1-4ByUdwxpzvDGlXQ_TMgvfuC4Ts8CO2R?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'800 MB','mv')
 
