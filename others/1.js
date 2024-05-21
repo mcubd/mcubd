@@ -2796,6 +2796,8 @@ setTimeout(() => {
 
  
 
+ seris('Laapataa Ladies [1.5GB]','lapa',['https://www.googleapis.com/drive/v3/files/1-1P-t4UVm2RpITWPIu3k2d-f7eB3bAYH?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1.5GB','mv')
+ 
  seris('Raksha Bandhan [900MB]','raksa',['https://www.googleapis.com/drive/v3/files/1-3iiQIl8-_4glYxTpTyGe9QS-5WeaJLy?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'900MB','mv')
  
  seris('A Werewolf Boy [300MB]','ware',['https://www.googleapis.com/drive/v3/files/1-Jf8oS8KfstRbPhsHi17DyfcDp2eDG0j?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'300MB','mv')
