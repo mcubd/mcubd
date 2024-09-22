@@ -161,8 +161,8 @@
         async function get() {
 
 
-            const chat = collection(firestore, 'test-chat')
-            const q = query(chat, orderBy("timestamp", "desc"), limit(10));
+            const chat = collection(firestore, 'chatNew')
+            const q = query(chat, orderBy("date", "desc"), limit(10));
             const querySnapshot = await getDocs(q);
             // const lastdoc=querySnapshot.docs[0].data().num
 
@@ -223,7 +223,7 @@
 
 
         var print = function (obj, append_type, ne) {
-            console.log(obj.timestamp)
+            console.log(obj.date)
 
 
 
@@ -233,7 +233,7 @@
             var txt = document.createElement('span')
             var time = document.createElement('span')
             var copy = document.createElement('button')
-            node.setAttribute("id", obj.timestamp.seconds)
+            node.setAttribute("id", obj.date.seconds)
             copy.setAttribute("class", "copy")
             txt.setAttribute("class", "data-span")
             copy.setAttribute("onClick", "copy(this)")
@@ -242,7 +242,7 @@
             ip.setAttribute("class", "ipspan")
             txt.innerText = obj.data
             ip.textContent = ' ' + '[' + obj.ip + ']'
-            time.textContent = moment(obj.timestamp.seconds * 1000).format('MM/DD/YY, hh:mm A')
+            time.textContent = moment(obj.date.seconds * 1000).format('DD/MM/YY, hh:mm A')
             num.textContent = obj.num
             num.setAttribute("class", "block")
             copy.style.cssText = 'width:6.8%;opacity:.8;'
@@ -307,10 +307,10 @@
             var ip = document.createElement('span')
             var time = document.createElement('span')
             num.textContent = obj.num
-            node.setAttribute("id", obj.timestamp.seconds)
+            node.setAttribute("id", obj.date.seconds)
             num.setAttribute("class", "block")
             ip.setAttribute("class", "ipspan")
-            time.innerText = moment(obj.timestamp.seconds * 1000).format('MM/DD/YY, hh:mm A')
+            time.innerText = moment(obj.date.seconds * 1000).format('DD/MM/YY, hh:mm A')
             ip.innerText = '[' + obj.ip + ']'
             ip.style.cssText = `float:right;opacity:.2`
             node.style.cssText = `margin-bottom:calc(7vh)`
@@ -544,11 +544,11 @@
 
 
 
-            const docRef = await addDoc(collection(firestore, "test-chat"), {
+            const docRef = await addDoc(collection(firestore, "chatNew"), {
                 data: String(msgdata),
                 media: String(type),
                 fname: String(fname),
-                timestamp: Timestamp.now()
+                date: Timestamp.now()
             });
 
 
@@ -587,9 +587,9 @@
             let firstChildId = Number(last.children[0].id)
             console.log(firstChildId)
             const q = query(
-                collection(firestore, "test-chat"),
-                where("timestamp", "<", new Date(firstChildId * 1000)),
-                orderBy("timestamp", "desc"),
+                collection(firestore, "chatNew"),
+                where("date", "<", new Date(firstChildId * 1000)),
+                orderBy("date", "desc"),
                 limit(25)
             );
             const querySnapshot = await getDocs(q);
@@ -635,15 +635,15 @@
 
             // console.log(ul.lastElementChild.id)
 
-            const chat = collection(firestore, 'test-chat')
-            const q = query(chat, orderBy("timestamp", "desc"), limit(1));
+            const chat = collection(firestore, 'chatNew')
+            const q = query(chat, orderBy("date", "desc"), limit(1));
             const querySnapshot = await getDocs(q);
             // console.log(querySnapshot.docs[0].data().timestamp.seconds)
             let obj3 = querySnapshot.docs[0].data();
 
             // console.log(querySnapshot.docs[0].data().timestamp.seconds,ul.lastElementChild.id)
 
-            if (querySnapshot.docs[0].data().timestamp.seconds > ul.lastElementChild.id) {
+            if (querySnapshot.docs[0].data().date.seconds > ul.lastElementChild.id) {
                 console.log("new----------")
                 if (obj3.media != 'text') { print2(obj3, 'down') } else { print(obj3, 'down') }
             }
@@ -651,7 +651,7 @@
             return 6;
 
 
-            // const chat =collection(firestore,'test-chat')
+            // const chat =collection(firestore,'chatNew')
             // const q = query(chat, orderBy("timestamp", "desc"), limit(1));
             // const querySnapshot = await getDocs(q);
 
