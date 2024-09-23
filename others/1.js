@@ -2800,6 +2800,9 @@ setTimeout(() => {
 // seris('Weak [500MB]','weakk',[],'500MB')
  //seris('Pawn [500MB]','pawn',['https://www.googleapis.com/drive/v3/files/1-1pjiV2PAeQyKiIKI1W1h19ZKz9WpqcU?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'500MB','mv')
 
+ seris('আমিষ  [1GB]','amish',['https://www.googleapis.com/drive/v3/files/1-5jF3eQGK6S7KZ0ICvALMfOJBpHyfN83?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+ seris('12th Fail [1GB]','12',['https://www.googleapis.com/drive/v3/files/1kVjWFXnefbPUslCq-RAwxIeuLMAHDf6s?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+  
  seris("love aaj kal","llovee",["https://www.googleapis.com/drive/v3/files/1aJAeO4zqaSYdQ7rM4Jjpl9gQm5v30WwE?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],"500MB",'mv')
 
  
