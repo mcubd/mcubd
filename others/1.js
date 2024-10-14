@@ -2799,7 +2799,14 @@ setTimeout(() => {
  
 // seris('Weak [500MB]','weakk',[],'500MB')
  //seris('Pawn [500MB]','pawn',['https://www.googleapis.com/drive/v3/files/1-1pjiV2PAeQyKiIKI1W1h19ZKz9WpqcU?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'500MB','mv')
+ 
 
+ seris('October [1GB]','octo',['https://www.googleapis.com/drive/v3/files/1TF_WC9geOeONb3U0iVaFIqTNx_nWwWVc?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+ seris('angrezi medium [1GB]','angre',['https://www.googleapis.com/drive/v3/files/1x4wl6QA--Foa7buBkaAqi1dKZlmdB5IV?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+  seris('Piku [1GB]','piku',['https://www.googleapis.com/drive/v3/files/1T7DdeUe4MhJnSqKMux_nNbmCEM-v-NbV?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+ seris('The Sky Is Pink [1GB]','thepink',['https://www.googleapis.com/drive/v3/files/1j0rJ9IA7IlRY9Ts8BEuXa5tzf3pzOnAO?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+ seris('Dear Zindagi [1GB]','dearjin',['https://www.googleapis.com/drive/v3/files/1BYlUFT9V654uvQl9l3FtsFWAv7e9yjei?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
+ 
  seris('Yeh Meri Family -season1 [1GB]','merifam',['https://www.googleapis.com/drive/v3/files/10qwtvVjg8S-QR-4RshakKLvyuCyEeVWv?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
 seris('Yeh Meri Family -season2 [200MB]','merifam',["https://www.googleapis.com/drive/v3/files/1-t03Qw5qCKAgCmkf7kgCnLXVjnzf_d24?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1-v0ZaOaIvTL57l0oZ962ff8gGO7ilcqH?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1-zSXJsAbM6i19qIzbyGDjVWx2WuxjBBE?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1002X2ftmuQIVGWe7ZHgN71xZ7dFsPa_J?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/103o9LDDxWbWWvmJj7hH1_RuSqXlm_I14?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'200MB')
  seris('Yeh Meri Family -season3 [300MB]','merifam',["https://www.googleapis.com/drive/v3/files/10YcX-NZnPOzkNnbAeodePwzNVVOmn_ra?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10cPM3Vr7B9UCRbsxUuZUMLdnSU82aXMu?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10pMSWb4ZLiFJYW9tRqRK_uylVa0endRf?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10qym7M7sLOFvvgsinNEMLoXBL8uhuI0x?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/10Y_leYaz1BXKppasCbmw7E3DEY39Bkw1?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'300MB')
