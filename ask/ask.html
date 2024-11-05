@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #313944;
+            color: wheat;
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            width: 90%;
+            margin-left: 2%;
+            background-color: #4F5B6D;
+            color: #939EAE;
+            resize: none;
+            border-width: 0px;
+            height: 90px;
+        }
+
+        textarea:focus {
+            border-color: transparent;
+            outline: none
+        }
+
+        #image {
+            display: block;
+            width: 90%;
+            background-color: #4F5B6D;
+            margin-left: 2%;
+            margin-top: 40px;
+            margin-bottom: 26px;
+            font-size: 15px;
+            padding: 5px;
+        }
+
+        .btn {
+            float: right;
+            margin-right: 6%;
+            padding: 8px;
+            color: white;
+            font-size: 17px;
+            outline: none;
+            background-color: #4495FF;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ask</h1>
+
+    <textarea id="text" rows="4" class="textarea font-bangla" name="question"
+        placeholder="Enter your question here"></textarea>
+
+
+    <input onchange="gotfile(event)" type="file" id="image" name="image" accept="image/*" class="input">
+
+    <button onclick="submited()" class="btn variant-filled-secondary">
+        <div class="flex gap-1"> <span>Submit</span></div>
+    </button>
+
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, where, doc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+
+
+
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzaFL1XOU-_152duOo0baL1DfgVVuSwMI",
+            authDomain: "test2-5bbd8.firebaseapp.com",
+            databaseURL: "https://test2-5bbd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "test2-5bbd8",
+            storageBucket: "test2-5bbd8.appspot.com",
+            messagingSenderId: "683307239625",
+            appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+
+
+        // Initialize Firestore
+        const firestore = getFirestore(app);
+        var fileitem, filename, percent
+        let file = null;
+
+
+        window.submited = function () {
+            let value = document.getElementById('text').value.replace(/^\s+|\s+$/g, '')
+            // if (value.length>0) { dbsend(value, 'normal') }
+            if (value.length > 0) { dbsend(value, 'text') } else { alert("Please write some text") }
+
+        }
+
+        window.dbsend = async function (msgdata, type) {
+
+            // alert(value)
+
+
+            // const docRef = await addDoc(collection(firestore, "ask"), {
+            //             data: String(msgdata),
+            //             media: String(type),
+            //             fname: String(fname),
+            //             date: Timestamp.now()
+            //         });
+
+
+
+
+
+
+            //         if (docRef.id) {
+            //                document.getElementById('text').value=""
+            //             setTimeout(() => {
+            //                 alert("done")
+            //             }, 800);
+            //         }
+
+            if (file == null) {
+                const docRef = await addDoc(collection(firestore, "ask"), {
+                        data: String(msgdata),
+                        media: String("none"),
+                        fname: String("none"),
+                        date: Timestamp.now()
+                    });
+
+
+
+
+
+
+                    if (docRef.id) {
+                           document.getElementById('text').value=""
+                        setTimeout(() => {
+                            alert("done")
+                        }, 800);
+                    }
+            } else {
+                let uri= await upl();
+                console.log(uri.url)
+
+
+                            const docRef = await addDoc(collection(firestore, "ask"), {
+                        data: String(msgdata),
+                        media: String(uri.url),
+                        fname: String(uri.fname),
+                        date: Timestamp.now()
+                    });
+
+
+
+
+
+
+                    if (docRef.id) {
+                           document.getElementById('text').value=""
+                        setTimeout(() => {
+                            alert("done")
+                        }, 800);
+                    }
+
+            }
+
+
+
+
+
+        }
+
+        window.gotfile = async function (e) {
+
+            file = e.target.files[0];
+
+
+        }
+
+        window.upl = async function () {
+
+            return new Promise((resolve, reject) => {
+
+                let filename = file.name + Math.random().toString(36).substring(2, 10);
+                console.log(filename)
+
+                const storageRef = ref(storage, 'ask/' + filename);
+                var metadata = { contentDisposition: 'attachment' };
+                const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+
+                uploadTask.on("state_changed", (snapshot) => {
+                    const percent = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+                    console.log(percent)
+                    // document.getElementById('status').style.display = ''
+
+                    // document.getElementById('progress').style.width = percent + '%'
+                    // document.getElementById('two').innerText = percent + '%'
+
+                }, (err) => {
+                    console.log(err)
+                }, () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                        // document.getElementById('status').style.display = 'none'
+                        console.log(url)
+                        resolve({ url: url, fname: filename });
+                        // dbsend(url, 'media', file);
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+                })
+
+            })
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
