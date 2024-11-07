@@ -1,40 +1,16 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Multiple Files</title>
+    <title>Document</title>
 </head>
 <body>
 
-    <!-- Create links with download attribute -->
-    <a href="path/to/file1.txt" download="file1.txt" id="file1">File 1</a>
-    <a href="path/to/file2.txt" download="file2.txt" id="file2">File 2</a>
-    <a href="path/to/file3.txt" download="file3.txt" id="file3">File 3</a>
-
-    <!-- Button to trigger the download -->
-    <button onclick="downloadFiles()">Download All Files</button>
-
-    <script>
-        function downloadFiles() {
-            // Array of file IDs to download
-            var fileIds = ['file1', 'file2', 'file3'];
-
-            let win0=window.open('https://www.google.com/','_selfv')
-
-            setInterval(() => {
-              console.log(win0.closed)
-              
-            }, 1000);
-            return 7
-
-
-            // Loop through the file IDs and trigger the click event for each link
-            fileIds.forEach(function(fileId) {
-                window.open('','_self')
-            });
-        }
-    </script>
-
+    <ul>
+        <li><h1><a href="https://mcubd.netlify.app/chat/">Website 1</a></h1></li>
+        <li><h1><a href="https://mcubd.netlify.app/codepad/">Website 2</a></h1></li>
+    </ul>
+    
 </body>
 </html>
