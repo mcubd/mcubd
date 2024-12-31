@@ -1,4 +1,253 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+
+
+    <script>
+        var MQ = MathQuill.getInterface(2);
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+
+        }
+
+        #math-field {
+            width: 100%;
+            padding-left: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 10px;
+            height: 20px;
+            margin-bottom: 10px;
+
+        }
+
+
+        @media (min-width: 768px) {
+
+            .parent {
+                width: 66.666667%;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+
+
+
+        @media (min-width: 768px) {
+            .parent {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .item {
+
+            padding: 1.25rem;
+
+
+            margin-top: .75rem;
+            margin-bottom: .75rem;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #D1D5DB;
+
+
+
+
+
+
+
+
+
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+
+        }
+
+        .add {
+            position: fixed;
+            top: 20px;
+            right: 50px;
+        }
+
+        .qpart {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .math-field0 {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2px;
+        }
+
+        .math-field01 {
+            width: 75%;
+            border: 1px solid grey;
+            margin-left: 12px;
+            word-wrap: break-word;
+            margin-top: 2px;
+
+        }
+
+        .paste {
+            margin-left: auto;
+            margin-right: 15px;
+
+        }
+    </style>
+</head>
+
 <body>
-<video autoplay controls width="100%" src="https://flame.flameriser78.workers.dev/0:/DriveSeed/Aquaman.and.The.Lost.Kingdom.2023.1080p.WEB-DL.Hindi.English.ESubs.MoviesMod.org.mkv"></video>
-</body></html>
+
+
+    <div class="add" onclick="addd(event)">
+        <svg height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z"
+                fill="#1C274C" />
+        </svg>
+    </div>
+
+    <div id="parent" class="parent">
+        <div class="item">
+
+            <div class="qpart">
+
+                <svg width="28px" viewBox="0 0 24 24" fill="#C00000" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.75 5H8.25C7.55964 5 7 5.58763 7 6.3125V19L12 15.5L17 19V6.3125C17 5.58763 16.4404 5 15.75 5Z"
+                        stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+
+                <p class="math-field0">
+                    <span id="math-field"></span>
+                    <span>Type Question Above:</span>
+
+                </p>
+                <div class="paste" onclick="pastee(event)">
+                    <svg fill="#000000" height="30px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.03 2.6a3 3 0 0 1 5.94 0L15 3v1h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h1V3l2.03-.4zM5 6H4v12h12V6h-1v1H5V6zm5-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                    </svg>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="item">
+
+            <div class="qpart">
+
+                <svg width="28px" viewBox="0 0 24 24" fill="#C00000" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.75 5H8.25C7.55964 5 7 5.58763 7 6.3125V19L12 15.5L17 19V6.3125C17 5.58763 16.4404 5 15.75 5Z"
+                        stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+
+                <p class="math-field01">
+
+                    <span>Type ghj jgkj gj hhhhhhhhhhhhhhhhhhhhhhhhh jhk kgjk
+                        QuestioAbovhgnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnngfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe:</span>
+                    <span class="mathh">a^b</span>
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        var mathFieldSpan = document.getElementById('math-field');
+        var mathContainer = document.getElementById('math-field0');
+
+
+        var MQ = MathQuill.getInterface(2); // for backcompat
+        var mathField = MQ.MathField(mathFieldSpan, {
+            spaceBehavesLikeTab: false, // configurable
+            handlers: {
+                edit: function () { // useful event handlers
+                    // latexSpan.textContent = mathField.latex(); // simple API
+
+                    // mathField.moveToDirEnd();
+
+
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+
+        var elements = document.getElementsByClassName('mathh');
+
+
+        for (var ddx of elements) {
+            MQ.StaticMath(ddx);
+        }
+
+
+
+
+        window.addd = async function (e) {
+            let p = document.getElementById('parent')
+
+            p.insertAdjacentHTML("beforeend", '<div class="item"></div>');
+
+
+
+
+        };
+
+        window.pastee = async function () {
+            let currentLatex = mathField.latex();
+
+
+            if (navigator.clipboard) {
+                navigator.clipboard.readText().then(function (text) {
+                    mathField.latex(`${currentLatex} ${text}`);
+
+mathField.focus();
+                }).catch(function (error) {
+                    console.error("Error reading clipboard content: ", error);
+                });
+            } else {
+                console.log("Clipboard API not available in this browser.");
+            }
+
+        };
+
+    </script>
+</body>
+
+</html>
