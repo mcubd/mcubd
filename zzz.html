@@ -297,7 +297,7 @@
 
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("http://192.168.0.104:3000/get_all", {
+                const res = await fetch("https://exam-server2.vercel.app/get_all", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ "1": "1" }),
