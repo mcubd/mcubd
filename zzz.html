@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zzz</title>
+    <title>zxz</title>
     <style>
         body {
             background-color: rgb(202, 199, 199);
@@ -297,7 +297,7 @@
 
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("http://192.168.0.104:3000/get_all", {
+                const res = await fetch("https://exam-server2.vercel.app/get_all", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ "1": "1" }),
@@ -332,10 +332,10 @@
                 const box = document.createElement('div');
                 box.className = 'box';
                 box.innerHTML = `<p>${item.varsity.toUpperCase()} ${item.year}</p> 
-                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=bio&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Bio: ${item.data.bio.length}</p>
-                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=math&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Math: ${item.data.math.length}</p>
-                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=phy&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Phy: ${item.data.phy.length}</p>
-                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=chem&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Chem: ${item.data.chem.length}</p>`;
+                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=bio&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Bio: ${item.data.bio.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=math&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Math: ${item.data.math.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=phy&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Phy: ${item.data.phy.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=chem&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Chem: ${item.data.chem.length}</p>`;
                 container.appendChild(box);
             });
 
