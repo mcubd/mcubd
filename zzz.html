@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(202, 199, 199);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .add {
+            position: fixed;
+            right: 30px;
+            bottom: 90px;
+        }
+    </style>
+
+    <style>
+        .lds-ring {
+            display: inline-block;
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            width: 1.875rem;
+            height: 1.875rem
+        }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            border: .3rem solid #595959;
+            border-radius: 50%;
+            border-color: #595959 transparent transparent;
+            width: 1.875rem;
+            height: 1.875rem;
+            animation: lds-ring 1.2s cubic-bezier(.5, 0, .5, 1) infinite
+        }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -.45s
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -.3s
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -.15s
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+
+    <style>
+        /* Overlay Style */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Popup Box Style */
+        .popup {
+            background: white;
+            color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px #000;
+            position: relative;
+        }
+    </style>
+
+    <style>
+        .circle-select {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            /* spacing between options */
+            margin-top: 50px;
+        }
+
+        .circle-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .circle-option input[type="radio"] {
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #555;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+
+        .circle-option input[type="radio"]::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .circle-option input[type="radio"]:checked::before {
+            opacity: 1;
+        }
+
+        .circle-option label {
+            margin-top: 8px;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+    </style>
+
+    <style>
+        .next0 {
+            padding: 10px 15px;
+            margin: 18px 0px;
+            background-color: #4CAF50;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    </style>
+
+    <style>
+        .hidd {
+            display: none;
+        }
+    </style>
+
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .box {
+            width: 30%;
+            /* 3 boxes per row with spacing */
+            margin: 10px 0;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                width: 100%;
+                /* Responsive: full width on small screens */
+            }
+        }
+    </style>
+
+
+<style>
+    .subs{
+        padding: 10px 15px;
+        background-color: rgb(120, 204, 109);
+        display: inline-block;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+    }
+</style>
+<style>
+    .h33{
+        margin-left: 25px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+    }
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+
+    <h3 class="h33"> <a href="./zzz.html">Home</a></h3>
+
+    <div id="loadingg_slow_vercel" class="lds-ring ">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <div class="overlay" id="popupOverlay">
+        <div class="popup" id="popupBox">
+            <h1>Varsity Edition</h1>
+            <span>Varsity:</span>
+            <select id="selectVar">
+                <option value="du">Du</option>
+                <option value="buet">Buet</option>
+                <option value="gst">Gst</option>
+                <option value="medical">Medical</option>
+            </select>
+            <br>
+            <span>Year:</span>
+            <select id="year" name="year">
+
+                <script>
+                    const select = document.getElementById("year");
+                    for (let year = 2028; year >= 1971; year--) {
+                        const option = document.createElement("option");
+                        option.value = year;
+                        option.text = year;
+                        select.appendChild(option);
+                    }
+                </script>
+
+            </select>
+
+
+            <form>
+                <div class="circle-select">
+                    <div class="circle-option">
+                        <input type="radio" name="subject" id="math" value="math" checked>
+                        <label for="math">Math</label>
+                    </div>
+                    <div class="circle-option">
+                        <input type="radio" name="subject" id="chemistry" value="chem">
+                        <label for="chemistry">chem</label>
+                    </div>
+                    <div class="circle-option">
+                        <input type="radio" name="subject" id="biology" value="bio">
+                        <label for="biology">bio</label>
+                    </div>
+                    <div class="circle-option">
+                        <input type="radio" name="subject" id="physics" value="phy">
+                        <label for="physics">phy</label>
+                    </div>
+                </div>
+            </form>
+
+            <p onclick="newdoc()" class="next0">Next</p>
+
+        </div>
+    </div>
+
+    <div id="openPopupBtn" class="add">
+        <svg id="add6" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z"
+                fill="#1C274C"></path>
+        </svg>
+    </div>
+
+    <div class="container" id="boxContainer"></div>
+
+    <script>
+        window.startt = async function () {
+            try {
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const sub = urlParams.get('sub');
+
+
+
+                document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
+                const res = await fetch("http://192.168.0.104:3000/get_all", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ "1": "1" }),
+                });
+                if (res.status === 200) {
+                    document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                    let ress = await res.json()
+
+                    draw(ress.docs)
+
+
+                } else {
+                    document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                    alert("Update failed");
+                }
+            } catch (e) {
+                document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                alert("Update failed");
+            }
+        }; startt()
+
+
+        window.draw = async function (docs) {
+
+            console.log(docs);
+
+          
+
+            const container = document.getElementById('boxContainer');
+
+            docs.forEach(item => {
+                const box = document.createElement('div');
+                box.className = 'box';
+                box.innerHTML = `<p>${item.varsity.toUpperCase()} ${item.year}</p> 
+                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=bio&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Bio: ${item.data.bio.length}</p>
+                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=math&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Math: ${item.data.math.length}</p>
+                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=phy&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Phy: ${item.data.phy.length}</p>
+                <p onclick="window.open('http://192.168.0.104:5500/front/zedit.html?year=${item.year}&sub=chem&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Chem: ${item.data.chem.length}</p>`;
+                container.appendChild(box);
+            });
+
+
+        };
+
+
+        window.newdoc = async function () {
+            // new_doc44  onclick="newdoc()"
+
+            const select = document.getElementById("selectVar");
+            const selectedOptionText = select.options[select.selectedIndex].innerHTML;
+            console.log(selectedOptionText);
+
+            const select2 = document.getElementById("year");
+            const selectedOptionText2 = select2.options[select2.selectedIndex].innerHTML;
+            console.log(selectedOptionText2);
+
+
+            const selected = document.querySelector('input[name="subject"]:checked');
+
+            console.log(selected.value);
+
+
+
+
+            try {
+                const response = await fetch("http://localhost:3000/new_doc44", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'pas': 'lee_rock'
+                    },
+                    body: JSON.stringify({ "varsity": selectedOptionText, "year": selectedOptionText2, "sub": selected.value })
+                });
+
+                const result = await response.json();
+                console.log('Server response:', result);
+
+
+                if (response.ok) {
+                    window.open(`http://localhost:5500/front/zedit.html?year=${result.year}&sub=${result.sub}&varsity=${result.varsity}&id=${result.id}`, "_self")
+                } else {
+                    alert("Error");
+                }
+
+
+                console.log('Server response:', result);
+            } catch (error) {
+                console.error('Request failed:', error);
+                alert("Error");
+
+            }
+
+
+        };
+
+    </script>
+
+
+    <script>
+        const openBtn = document.getElementById('openPopupBtn');
+        const overlay = document.getElementById('popupOverlay');
+        const popupBox = document.getElementById('popupBox');
+
+        // Open popup
+        openBtn.addEventListener('click', () => {
+            overlay.style.display = 'flex';
+        });
+
+
+
+        // Close popup when clicking outside the box
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
