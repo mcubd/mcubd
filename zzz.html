@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>zzz</title>
     <style>
         body {
             background-color: rgb(202, 199, 199);
@@ -297,7 +297,7 @@
 
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/get_all", {
+                const res = await fetch("http://192.168.0.104:3000/get_all", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ "1": "1" }),
@@ -377,7 +377,7 @@
 
 
                 if (response.ok) {
-                    window.open(`http://localhost:5500/front/zedit.html?year=${result.year}&sub=${result.sub}&varsity=${result.varsity}&id=${result.id}`, "_self")
+                    window.open(`https://mcubd.vercel.app/zedit.html?year=${result.year}&sub=${result.sub}&varsity=${result.varsity}&id=${result.id}`, "_self")
                 } else {
                     alert("Error");
                 }
