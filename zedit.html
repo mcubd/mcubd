@@ -1716,6 +1716,10 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                         }
                         document.getElementById("loadingg_slow_vercel").classList.add("hidd");
                         loadd(ress.doc)
+                                 window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: 'smooth'
+                    });
                         document.getElementById("testt").innerHTML = ` ${urlParams.get('varsity')} ${urlParams.get('year')} - ${urlParams.get('sub')} `
 
                         // if (ress.doc.published != undefined) {
