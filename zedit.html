@@ -1292,6 +1292,7 @@
 
 
     <script>
+     //   window.uri87="http://192.168.0.104:3000";
         window.uri87="https://exam-server2.vercel.app";
         
         const url = new URL(window.location.href);
@@ -1903,7 +1904,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
 
-                        mathField2.focus();
+                 
 
 
                         return 8;
@@ -1917,8 +1918,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                     mathField.latex(`${currentLatex} \\text{${text}}`);
 
 
-
-                    mathField.focus();
+ 
                 }).catch(function (error) {
                     console.error("Error reading clipboard content: ", error);
                 });
@@ -1969,7 +1969,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             mcqpart.style.display = 'flex'
             temp2.style.display = 'flex'
             abcdpart.style.display = 'block'
-            mathField2.focus();
+            
 
 
         };
@@ -2420,7 +2420,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
             const bgOffset = WIDTH * n;
             btnContainer.style.setProperty("--bg-offset", `${bgOffset}%`);
-            mathField2.focus();
+         
             mathField2.latex('');
         }
 
