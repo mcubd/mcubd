@@ -181,7 +181,7 @@
         }
 
         .add {
-  
+
             z-index: 999;
             margin-left: 40%;
             margin-top: 60px;
@@ -983,13 +983,14 @@
         }
     </style>
     <style>
-        .h33{
+        .h33 {
             margin-left: 25px;
             margin-top: 20px;
             margin-bottom: 25px;
-    
+
         }
-        a{
+
+        a {
             color: #000;
             text-decoration: none;
         }
@@ -1062,7 +1063,7 @@
 
             <div id="mcqpart" class="mcqpart">
                 <div id="slide1" class="slide1">
-                    <div class='container55'>
+                    <div id="container55" class='container55'>
                         <button onClick="slideBg(0)">a</button>
                         <button onClick="slideBg(1)">b</button>
                         <button onClick="slideBg(2)">c</button>
@@ -1291,6 +1292,8 @@
 
 
     <script>
+        window.uri87="https://exam-server2.vercel.app";
+        
         const url = new URL(window.location.href);
         const params = new URLSearchParams(url.search);
 
@@ -1371,6 +1374,13 @@
 
                             if (itemm[0] == "\\") {
                                 document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
+                            }
+                            else if (itemm.startsWith("text{")) {
+
+                                let result = itemm.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
+
+                       
+                                document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
                             }
                             else if (itemm.includes("^")) {
                                 document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
@@ -1481,7 +1491,7 @@
                         let selectedValue = (Number.isInteger(validNum) && validNum >= 1 && validNum <= 14) ? validNum : 'none';
 
                         console.warn(selectedValue);
-                        
+
 
 
                         targetElement.insertAdjacentHTML("beforebegin", `
@@ -1494,9 +1504,9 @@
 
   <option value="none" ${selectedValue === 'none' ? 'selected' : ''}>none</option>
   ${[...Array(14)].map((_, i) => {
-    const val = i + 1;
-    return `<option value="${val}" ${val === selectedValue ? 'selected' : ''}>${val}</option>`;
-  }).join('')}
+                            const val = i + 1;
+                            return `<option value="${val}" ${val === selectedValue ? 'selected' : ''}>${val}</option>`;
+                        }).join('')}
 
 
 
@@ -1599,6 +1609,12 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                                 if (itemm[0] == "\\") {
                                     document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
                                 }
+                                else if (itemm.startsWith("text{")) {
+
+                                    let result = itemm.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
+
+                                    document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
+                                }
                                 else if (itemm.includes("^")) {
                                     document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
                                 }
@@ -1685,7 +1701,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                 try {
                     document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                    const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                    const res = await fetch(`${uri87}/ac_find_by_id`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ "name": "varsities", "id": id8 }),
@@ -1694,8 +1710,8 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                         let ress = await res.json()
                         console.log(ress.doc);
-                        if(ress.doc==null){
-                            window.open("./zzz.html","_self")
+                        if (ress.doc == null) {
+                            window.open("./zzz.html", "_self")
                         }
                         document.getElementById("loadingg_slow_vercel").classList.add("hidd");
                         loadd(ress.doc)
@@ -1732,7 +1748,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
         window.selectedChap = async function (order, select) {
-    
+
 
             try {
 
@@ -1741,7 +1757,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/chap_edit", {
+                const res = await fetch(`${uri87}/chap_edit`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ "order": order, "id": window.docidd, "sub": sub, "chap": select }),
@@ -1870,8 +1886,32 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
             if (navigator.clipboard) {
                 navigator.clipboard.readText().then(function (text) {
+
+
+                    let mcq = document.getElementById("mcqpart")
+                    let isHidden = window.getComputedStyle(mcq).display === "none";
+                    let container55 = document.getElementById("container55")
+                    let bgOffset = getComputedStyle(container55).getPropertyValue('--bg-offset');
+                    console.log(isHidden);
+
+
+                    console.log(bgOffset);
+
+                    if (isHidden == false) {
+                        let currentLatex2 = mathField2.latex();
+                        mathField2.latex(`${currentLatex2} \\text{${text}}`);
+
+
+
+                        mathField2.focus();
+
+
+                        return 8;
+                    }
+
+
                     // mathField.latex(`${currentLatex} ${text}`);
-                   
+
                     // let result = text.replace(/ /g, "\\");
                     // mathField.latex(`${currentLatex} ${result}`);
                     mathField.latex(`${currentLatex} \\text{${text}}`);
@@ -2027,7 +2067,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
 
-            let urll = "https://exam-server2.vercel.app/q_add"
+            let urll = `${uri87}/q_add`
 
 
 
@@ -2273,6 +2313,8 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             let i = 0;
 
             let arr66 = await latex_arr(input);
+            console.log(arr66);
+
 
             // if (itemm[0] == "\\") {
             //     document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
@@ -2297,6 +2339,12 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                     if (i[0] == "\\") {
                         document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
+                    }
+                    else if (i.startsWith("text{")) {
+
+                        let result = i.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
+
+                        document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
                     }
                     else if (i.includes("^")) {
                         document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
@@ -2324,6 +2372,12 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                     if (i[0] == "\\") {
                         document.getElementById("preview").insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
+                    }
+                    else if (i.startsWith("text{")) {
+
+                        let result = i.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
+
+                        document.getElementById("preview").insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
                     }
                     else if (i.includes("^")) {
                         document.getElementById("preview").insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
@@ -2520,7 +2574,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/q_dlt", {
+                const res = await fetch(`${uri87}/q_dlt`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ "order": result, "id": window.docidd, "sub": sub }),
@@ -2616,7 +2670,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                const res = await fetch(`${uri87}/ac_find_by_id`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2679,7 +2733,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                const res = await fetch(`${uri87}/ac_find_by_id`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2733,7 +2787,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                const res = await fetch(`${uri87}/ac_find_by_id`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2803,7 +2857,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                const res = await fetch(`${uri87}/ac_find_by_id`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2880,7 +2934,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                 }
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
 
-                const res = await fetch("https://exam-server2.vercel.app/q_update_one_feild", {
+                const res = await fetch(`${uri87}/q_update_one_feild`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2934,7 +2988,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                 }
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/q_update_one_feild", {
+                const res = await fetch(`${uri87}/q_update_one_feild`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -2989,7 +3043,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                 }
 
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/q_update_one_feild", {
+                const res = await fetch(`${uri87}/q_update_one_feild`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -3055,7 +3109,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/q_update_time", {
+                const res = await fetch(`${uri87}/q_update_time`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -3123,7 +3177,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             try {
                 let title = getCookie("boi_edtech");
                 document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                const res = await fetch("https://exam-server2.vercel.app/ac_find_by_id", {
+                const res = await fetch(`${uri87}/ac_find_by_id`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -3161,7 +3215,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                         try {
                             document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
-                            const res = await fetch("https://exam-server2.vercel.app/ac_publish", {
+                            const res = await fetch(`${uri87}/ac_publish`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ "name": getCookie("boi_edtech"), "id": docid, "public": "yes" }),
@@ -3352,7 +3406,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
             font-size: 10px;
             cursor: pointer;
             box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-            
+
         }
 
         .row button:active {
@@ -3390,17 +3444,17 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
 
         keyboard.classList.toggle("visible");
-            keyboard.classList.toggle("hidd");
+        keyboard.classList.toggle("hidd");
 
-        
-                keyboard.style.setProperty('display', 'none', 'important'); // Hide the element
-            
+
+        keyboard.style.setProperty('display', 'none', 'important'); // Hide the element
+
 
         var elements = document.querySelectorAll('.button');
 
 
         for (var ddx of elements) {
-      
+
 
             MQ.StaticMath(ddx);
         }
