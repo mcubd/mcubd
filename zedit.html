@@ -1292,8 +1292,8 @@
 
 
     <script>
-     //   window.uri87="http://192.168.0.104:3000";
-        window.uri87="https://exam-server2.vercel.app";
+    //   window.uri87="http://192.168.0.104:3000";
+       window.uri87="https://exam-server2.vercel.app";
         
         const url = new URL(window.location.href);
         const params = new URLSearchParams(url.search);
@@ -1686,6 +1686,12 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
                 console.error('Error:', err);
                 //  alert('Failed to load');
             }
+
+
+            window.scrollTo({
+                        top: document.documentElement.scrollHeight 
+                       
+                    });
 
         };
 
