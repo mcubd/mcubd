@@ -1380,7 +1380,7 @@
                                 let result = itemm.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
 
                        
-                                document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
+                                document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span  >${result} </span>`);
                             }
                             else if (itemm.includes("^")) {
                                 document.getElementById(`${idd}${iri0}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
@@ -1613,7 +1613,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                                     let result = itemm.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
 
-                                    document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
+                                    document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span  >${result} </span>`);
                                 }
                                 else if (itemm.includes("^")) {
                                     document.getElementById(`id-${iri + 1}`).insertAdjacentHTML("beforeend", `<span class="mathh">${arr66[i]} </span>`);
@@ -2344,7 +2344,7 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                         let result = i.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
 
-                        document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
+                        document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span  >${result} </span>`);
                     }
                     else if (i.includes("^")) {
                         document.getElementById(ele_id).insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
@@ -2377,7 +2377,9 @@ stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
 
                         let result = i.replace(/^text\{/, '').replace(/}(?=[^}]*$)/, '');
 
-                        document.getElementById("preview").insertAdjacentHTML("beforeend", `<span class="mathh">${result} </span>`);
+                        document.getElementById("preview").insertAdjacentHTML("beforeend", `<span  >${result} </span>`);
+                        console.log("preview bangla");
+                        
                     }
                     else if (i.includes("^")) {
                         document.getElementById("preview").insertAdjacentHTML("beforeend", `<span class="mathh">${i} </span>`);
