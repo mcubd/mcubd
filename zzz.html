@@ -332,10 +332,10 @@
                 const box = document.createElement('div');
                 box.className = 'box';
                 box.innerHTML = `<p>${item.varsity.toUpperCase()} ${item.year}</p> 
-                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=bio&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Bio: ${item.data.bio.length}</p>
-                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=math&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Math: ${item.data.math.length}</p>
-                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=phy&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Phy: ${item.data.phy.length}</p>
-                <p onclick="window.open('https://mcubd.vercel.app/zedit.html?year=${item.year}&sub=chem&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Chem: ${item.data.chem.length}</p>`;
+                <p onclick="window.open('https://mcubd.vercel.app/zedit2.html?year=${item.year}&sub=bio&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Bio: ${item.data.bio.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit2.html?year=${item.year}&sub=math&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Math: ${item.data.math.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit2.html?year=${item.year}&sub=phy&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Phy: ${item.data.phy.length}</p>
+                <p onclick="window.open('https://mcubd.vercel.app/zedit2.html?year=${item.year}&sub=chem&varsity=${item.varsity}&id=${item._id}','_self')" class="subs">Chem: ${item.data.chem.length}</p>`;
                 container.appendChild(box);
             });
 
@@ -377,7 +377,7 @@
 
 
                 if (response.ok) {
-                    window.open(`https://mcubd.vercel.app/zedit.html?year=${result.year}&sub=${result.sub}&varsity=${result.varsity}&id=${result.id}`, "_self")
+                    window.open(`https://mcubd.vercel.app/zedit2.html?year=${result.year}&sub=${result.sub}&varsity=${result.varsity}&id=${result.id}`, "_self")
                 } else {
                     alert("Error");
                 }
