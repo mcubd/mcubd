@@ -136,6 +136,7 @@ window.parseMathExpressions = async function (input) {
             pos += 1
             result.push(sqrt);
         }
+ 
 
         // Check for '\\lim_'
         else if (input.startsWith("\\lim_", pos)) {
@@ -196,6 +197,24 @@ window.parseMathExpressions = async function (input) {
             result.push("\\perp");
             pos += 5;
         }
+        else if (input.startsWith("\\pi", pos)) {
+            result.push("\\pi");
+            pos += 3;
+        }
+        else if (input.startsWith("\\vec{A}", pos)) {
+            result.push("\\vec{A}");
+            pos += 7;
+        }       else if (input.startsWith("\\mathbf{A}", pos)) {
+            result.push("\\mathbf{A}");
+            pos += 10;
+        }       else if (input.startsWith("\\mathbf{\\vec{B}}", pos)) {
+            result.push("\\mathbf{\\vec{B}}");
+            pos += 16;
+        }
+
+
+
+
         // Handle spaces after '\\'
         else if (input[pos + 1] === ' ') {
             result.push(" ");
@@ -274,7 +293,6 @@ window.latex_arr = async function (latexx) {
         return [item];
     });
 }
-
 
 
 
