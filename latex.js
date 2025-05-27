@@ -204,14 +204,36 @@ window.parseMathExpressions = async function (input) {
         else if (input.startsWith("\\vec{A}", pos)) {
             result.push("\\vec{A}");
             pos += 7;
-        }       else if (input.startsWith("\\mathbf{A}", pos)) {
-            result.push("\\mathbf{A}");
-            pos += 10;
-        }       else if (input.startsWith("\\mathbf{\\vec{B}}", pos)) {
-            result.push("\\mathbf{\\vec{B}}");
-            pos += 16;
-        }
+        }     else if (input.startsWith("\\mathbf", pos)) {
+            // result.push("\\mathbf{\\vec{B}}");
+            // pos += 16;
+      
+            
+    
+            
+ 
+            let fraction = "\\mathbf";
+            pos += 7; // Skip "\\mathbf" 
 
+            // Process numerator and denominator using balanced match
+            const numeratorMatch2 = balanced("{", "}", input.slice(pos));
+            fraction += `{${numeratorMatch2.body.replace(/\\\\/g, '\\')}}`;
+            pos += numeratorMatch2.end;
+
+            console.log(fraction);
+           
+
+            pos += 1
+            result.push(fraction);
+
+
+
+
+
+
+
+        }
+   
 
 
 
@@ -244,6 +266,8 @@ window.latex_arr = async function (latexx) {
 
     return newArr = await aaa.flatMap(item => {
         if (!item.startsWith('\\') && item.includes("^")) {
+    
+            
             let arr66 = []
 
             let i = 0;
@@ -290,6 +314,7 @@ window.latex_arr = async function (latexx) {
             }
             return arr66;
         }
+        
         return [item];
     });
 }
