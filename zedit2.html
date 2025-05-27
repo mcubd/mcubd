@@ -184,7 +184,7 @@
 
             z-index: 999;
             margin-left: 40%;
-       
+
             margin-bottom: 1px;
         }
 
@@ -583,8 +583,8 @@
             justify-content: center;
             align-items: center;
             font-size: 28px;
-            margin-top:6px;
-       
+            margin-top: 6px;
+
         }
 
         .ani {
@@ -985,7 +985,7 @@
     <style>
         .h33 {
             margin-left: 25px;
-  
+
 
         }
 
@@ -1027,23 +1027,28 @@
             <div id="cqq">c)</div>
             <div id="dqq">d)</div>
         </div>
-        <span onclick="dltt()">DELETE</span>
+        <span class="dl" onclick="dltt()">DELETE</span>
     </div>
 
     <style>
         .last {
-            font-size: 22px;
+            font-size: 14px;
         }
 
         .smalll {
             display: flex;
             flex-direction: row;
-          
-           
-          
+
+
+
         }
-        .smalll div{
+
+        .smalll div {
             margin-right: 28px;
+        }
+
+        .dl {
+            font-size: 8px;
         }
     </style>
 
@@ -1140,21 +1145,21 @@
 
                 }
 
-              console.log(arr[indexx]);
-              if(arr[indexx]==undefined){
-                window.ordeerrrr=0
-              }else{
-                window.ordeerrrr=arr[indexx].order
-              }
-              
-              if(arr[indexx]==undefined){
+                console.log(arr[indexx]);
+                if (arr[indexx] == undefined) {
+                    window.ordeerrrr = 0
+                } else {
+                    window.ordeerrrr = arr[indexx].order
+                }
 
-                document.getElementById("last").innerHTML=""
+                if (arr[indexx] == undefined) {
 
-                 document.getElementById("testt").innerHTML +=   "0 | "
-               return false
-              }
-               
+                    document.getElementById("last").innerHTML = ""
+
+                    document.getElementById("testt").innerHTML += "0 | "
+                    return false
+                }
+
 
                 // let qfinall = document.getElementById(`${cursorr}Final`);
                 let qfinal = document.getElementById(`qq`);
@@ -1341,22 +1346,22 @@
 
 
 
-          
+
 
 
             if (navigator.clipboard) {
                 navigator.clipboard.readText().then(function (text) {
 
 
-                    if(mode != "math"){
-                document.getElementById("textar").value += text;
-            }else{
-                meth()
-                document.getElementById("textar").value = text;
-            }
-     
-            document.getElementById("textar").focus()
- 
+                    if (mode != "math") {
+                        document.getElementById("textar").value += text;
+                    } else {
+                        meth()
+                        document.getElementById("textar").value = text;
+                    }
+
+                    document.getElementById("textar").focus()
+
                 }).catch(function (error) {
                     console.error("Error reading clipboard content: ", error);
                 });
@@ -1388,8 +1393,8 @@
 
 
         window.dltt = async function () {
-   
-             
+
+
 
 
             try {
@@ -1406,7 +1411,7 @@
                 });
                 if (res.status === 200) {
                     document.getElementById("loadingg_slow_vercel").classList.add("hidd");
-                   window.location.reload()
+                    window.location.reload()
 
 
                 }
@@ -1665,7 +1670,7 @@
             height: 130px;
             width: 80%;
             margin-left: 10%;
-            font-size: 22px;
+            font-size: 28px;
         }
 
         .abcdhh {
@@ -1677,17 +1682,19 @@
 
         .abcdhh button {
             padding: 2px 40px;
-            font-size: 26px;
+            font-size: 20px;
             margin-left: 20px;
-            margin-top: 5px;
+            /* margin-top: 5px; */
         }
 
         .submitt {
             padding: 2px 20px;
             font-size: 26px;
             text-align: center;
-            margin-left: 50%;
-            margin-top: 5px;
+
+            position: fixed;
+            top: 10px;
+            right: 18px;
 
 
         }
@@ -1778,6 +1785,16 @@
         .mcq4 {
             font-size: 28px;
             margin-top: 10px;
+          
+            flex-direction: column;
+           
+           
+        }
+        .b1,.b2{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
         }
 
         #aFinal,
@@ -1785,6 +1802,8 @@
         #cFinal,
         #dFinal {
             word-break: break-word;
+            
+           
         }
 
         .mcq5 {
@@ -1819,10 +1838,13 @@
         <div class="btmm">
             <div id="qfinal"></div>
             <div id="mcq4" class="mcq4 hidd">
-                <span class="mcq5">a) <span id="aFinal"></span></span>
-                <span class="mcq5">b) <span id="bFinal"></span></span>
-                <span class="mcq5">c) <span id="cFinal"></span></span>
-                <span class="mcq5">d) <span id="dFinal"></span></span>
+                <div class="b1">
+                    <span class="mcq5">a) <span id="aFinal"></span></span>
+                    <span class="mcq5">b) <span id="bFinal"></span></span>
+                </div>
+                <div class="b2"> <span class="mcq5">c) <span id="cFinal"></span></span>
+                    <span class="mcq5">d) <span id="dFinal"></span></span>
+                </div>
 
             </div>
 
@@ -2077,6 +2099,8 @@
             mathField6.latex('')
             document.getElementById("textar").classList.remove("hidd")
             document.getElementById("mcq4").classList.remove("hidd")
+            document.getElementById("mcq4").style.display="flex"
+
 
             document.getElementById("math-field6").classList.add("hidd")
 
