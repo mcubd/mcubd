@@ -64,17 +64,33 @@ window.inn = async function (e) {
         mm66.write(`\\sqrt[{}]{{}}`);
     } else if (e == "int_a^b") {
         mm66.write(`\\int_{}^{}`);
-    } else if (e == "fff") {
-        mm66.write(`ffffff`);
-    } else if (e == "fff") {
-        mm66.write(`ffffff`);
+    } else if (e == "pi") {
+        mm66.write(`\\pi`);
+    } else if (e == "λ") {
+        mm66.write(`λ`);
+    }else if (e == "î") {
+        mm66.write(`î`);
+    }else if (e == "ĵ") {
+        mm66.write(`ĵ`);
+    }else if (e == "k̂") {
+        mm66.write(`k̂`);
+    }else if (e == "vec{A}") {
+        mm66.write(`\\vec{A}`);
+    }else if (e == "mathbf{A}") {
+        mm66.write(`\\mathbf{A}`);
+    }else if (e == "mathbf{vec{B}}") {
+        mm66.write(`\\mathbf{\\vec{B}}`);
+    }else if (e == "fff") {
+        mm66.write(`fff`);
+    }else if (e == "fff") {
+        mm66.write(`fff`);
     }
+    
 
 
 
     mm66.focus();
 
 }
-
 
 
