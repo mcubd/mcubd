@@ -2,7 +2,7 @@ window.active_input66 = "one";
 window.inn = async function (e) {
     let mm66;
     if (window.active_input66 == "one") {
-        mm66 = window.mathField;
+        mm66 = window.mathField6;
     } else if (window.active_input66 == "two") {
         mm66 = mathField6;
     }
