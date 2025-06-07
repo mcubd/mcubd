@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <script>
+        var MQ = MathQuill.getInterface(2);
+    </script>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .hidd {
+            display: none;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+
+
+
+
+    <style>
+        .lds-ring {
+            display: inline-block;
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            width: 1.875rem;
+            height: 1.875rem
+        }
+
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            border: .3rem solid #AEC6CF;
+            border-radius: 50%;
+            border-color: #AEC6CF transparent transparent;
+            width: 1.875rem;
+            height: 1.875rem;
+            animation: lds-ring 1.2s cubic-bezier(.5, 0, .5, 1) infinite
+        }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -.45s
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -.3s
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -.15s
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .lds-ring {
+            z-index: 5000;
+        }
+    </style>
+
+    <style>
+        .item {
+            z-index: 99999 !important;
+            position: relative;
+        }
+    </style>
+
+    <style>
+        .title0 {
+            position: fixed;
+            top: 0;
+            left: 80px;
+        }
+
+        .last1221 {
+            font-size: 14px;
+        }
+
+        .smalll1221 {
+            display: flex;
+            flex-direction: row;
+
+
+
+        }
+
+        .smalll1221 div {
+            margin-right: 28px;
+        }
+
+        .dl1221 {
+            font-size: 8px;
+        }
+    </style>
+
+
+
+
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+
+        }
+
+        @media (min-width: 408px) {
+
+            .parent {
+                width: 66.666667%;
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+
+
+        @media (max-width: 408px) {
+
+            .parent {
+                width: 95%;
+
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+        }
+
+
+
+        @media (min-width: 768px) {
+            .parent {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .item {
+
+            padding: 1.25rem;
+
+
+            margin-top: .75rem;
+            margin-bottom: .75rem;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #D1D5DB;
+
+
+
+
+
+
+
+
+            --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+
+        }
+    </style>
+
+    <style>
+        .qpart {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+
+
+        }
+
+
+
+
+
+        #static1 {
+            width: 75%;
+
+
+            margin-left: 12px;
+            word-wrap: break-word;
+            margin-top: 2px;
+
+        }
+
+
+
+
+
+
+
+
+
+        button {
+            outline: none;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+
+        .container_abcd {
+            width: 100%;
+            margin-top: 30px;
+            margin-left: 10px;
+
+
+
+            display: flex;
+            justify-content: start;
+
+
+
+            row-gap: 30px;
+            flex-wrap: wrap;
+
+        }
+
+
+        .item_abcd {
+            /* display: flex;
+    flex-direction: row;
+
+    width: 30%;
+    align-items: center; */
+
+            min-width: 50%;
+
+
+        }
+
+        .abcdbar {
+            padding: 3px 5px;
+        }
+
+
+
+
+
+        .txt_cen {
+
+            text-align: center;
+        }
+
+
+        .hidd {
+            display: none;
+        }
+
+
+        .q_no {
+            height: 2rem;
+            /* Fixed height */
+            padding-left: .75rem;
+            padding-right: .75rem;
+            font-size: .875rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-radius: 8px;
+
+            background-color: hsl(219 14% 28% / 1);
+            color: white;
+            text-align: center;
+            display: inline-flex;
+            /* Use inline-flex for proper centering */
+            align-items: center;
+            /* Vertical centering */
+            justify-content: center;
+            /* Horizontal centering */
+            line-height: 1;
+            /* Remove potential spacing issues */
+            margin-top: 10px;
+
+
+        }
+
+
+        .anss {
+
+            background-color: rgba(34, 187, 51, 0.458);
+            border-radius: 4px;
+
+        }
+
+        .abcdbar {
+            padding: 3px 5px;
+        }
+
+        #ansHide {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+
+        }
+
+        .qlogo {
+
+
+            flex-shrink: 0;
+        }
+
+
+        .mq-supsub .mq-sup,
+        .mq-supsub .mq-sub {
+            font-size: 60% !important;
+            /* default is usually ~70% */
+            font-weight: 650;
+        }
+
+        .mathh {
+            font-weight: 500;
+            color: #AC522B;
+        }
+
+        .editt2 {
+            position: absolute;
+            top: 38px;
+            right: 16px;
+        }
+
+        .dltt2 {
+            position: absolute;
+            bottom: 40px;
+            right: 16px;
+        }
+
+        .save {
+            position: absolute;
+            top: 38px;
+            right: 16px;
+        }
+
+        .underline {
+
+            border: 1px solid black;
+        }
+        .btmm{
+            width: 100% !important;
+        }
+        .box{
+           margin-bottom: 180px;
+        }
+        .btmm{
+           position: relative;
+        }
+        #next{
+            padding: 2px 20px;
+            font-size: 26px;
+            text-align: center;
+
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+        }
+        .subm{
+            padding: 2px 20px;
+            font-size: 26px;
+            text-align: center;
+
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3 class="h33"> <a href="./admin.html">Home</a></h3>
+
+    <div id="loadingg_slow_vercel">
+        <div class="overlay overlay2 active"></div>
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+
+    <div class="title0">
+        <p id="testt"></p>
+    </div>
+
+    <div class="parent" id="parent">
+
+        <div id="itemmt">
+
+            <div class="box">
+                <div class="topp">
+                    <textarea oninput="textChanged(this.value)" class="hidd" name="" id="textar"></textarea>
+                    <span class="hidd" id="math-field6"></span>
+
+
+                    <div class="abcdhh ">
+                        <button id="slidea" onclick="slide('a')" class="aa aaa actt hidd">A^</button>
+                        <button id="slideb" onclick="slide('b')" class="aa aaa hidd">b</button>
+                        <button id="slidec" onclick="slide('c')" class="aa aaa hidd">c</button>
+                        <button id="slided" onclick="slide('d')" class="aa aaa hidd">D</button>
+
+                    </div>
+    
+
+                </div>
+                <div class="btmm parent">
+                    <div class="item">
+                        <button id="next" onclick="next()" class="submitt hidd">Next</button>
+                        <button onclick="Submitt()" class="submitt aaa subm hidd">Submit</button>
+
+                        <div class="qpart">
+                            <div class="static1" id="qfinal"></div>
+                        </div>
+                        <div id="mcq4" class="mcq4 hidd">
+                            <div class="b1">
+                                <span class="mcq5">a) <span id="aFinal"></span></span>
+                                <span class="mcq5">b) <span id="bFinal"></span></span>
+                            </div>
+                            <div class="b2"> <span class="mcq5">c) <span id="cFinal"></span></span>
+                                <span class="mcq5">d) <span id="dFinal"></span></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div id="last" class="last1221">
+        <div id="qq"></div>
+        <div class="smalll1221">
+
+
+            <div id="aqq">a)</div>
+            <div id="bqq">b)</div>
+            <div id="cqq">c)</div>
+            <div id="dqq">d)</div>
+        </div>
+        <span class="dl1221">DELETE</span>
+    </div>
+
+
+
+
+
+
+    <script>
+        window.uri87 = "http://192.168.0.104:3000";
+        //    window.uri87 = "https://exam-server2.vercel.app";
+
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.search);
+
+        const nValue = params.get('n');
+
+
+
+        window.cnamee = nValue;
+
+
+
+
+
+
+        window.getCookie = function (name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+
+        window.doccc
+        window.editq = []
+        window.edita = []
+        window.editb = []
+        window.editc = []
+        window.editd = []
+        window.indexw
+        window.underlineTarget
+
+        window.loadd = async function (doc8) {
+            try {
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const sub = urlParams.get('sub');
+
+                let arr00 = doc8.data
+                let shuffledArray = arr00[sub]
+                doccc = shuffledArray
+
+                for (let iri = 0; iri < shuffledArray.length; iri++) {
+                    const element = shuffledArray[iri];
+
+
+                    if (element.dlt != undefined) { if (element.dlt == "yes") { continue; } }
+
+                    await new Promise(async (resolve0) => {
+
+
+
+
+
+                        let order = `order_${element.order}`
+                        // let doc=resss.doc["submitedd"][order]
+
+
+
+
+
+
+
+                        let classs_a = 'yomcubd';
+                        let classs_b = 'yomcubd';
+                        let classs_c = 'yomcubd';
+                        let classs_d = 'yomcubd';
+
+                        let aa = 'a)';
+                        let bb = 'b)';
+                        let cc = 'c)';
+                        let dd = 'd)';
+
+                        let aaCircel = "";
+                        let bbCircel = "";
+                        let ccCircel = "";
+                        let ddCircel = "";
+
+
+
+                        if (element.ans == 0) {
+                            classs_a = "donee"
+                            aaCircel = "anss"
+                        }
+
+                        if (element.ans == 1) {
+                            classs_b = "donee"
+                            bbCircel = "anss"
+
+                        }
+
+                        if (element.ans == 2) {
+                            classs_c = "donee"
+                            ccCircel = "anss"
+
+                        }
+
+
+                        if (element.ans == 3) {
+                            classs_d = "donee"
+                            ddCircel = "anss"
+
+                        }
+
+
+
+
+
+
+                        document.getElementById("parent").insertAdjacentHTML("beforeend", `
+        <div class="item" id="orderrh_${element.order}"  >
+
+
+
+    <div class="qpart">
+          
+
+
+        <svg class="qlogo" width="28px" viewBox="0 0 24 24" fill="#C00000" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.75 5H8.25C7.55964 5 7 5.58763 7 6.3125V19L12 15.5L17 19V6.3125C17 5.58763 16.4404 5 15.75 5Z"
+                stroke="grey" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+ 
+        <span idd="${element.order}" id="id-${iri + 1}" class="static1" onclick="abcdedit(event,${element.order},'question')"></span>
+
+
+
+
+    </div>
+
+
+
+    <div id="abcdpart" class="abcdpart">
+        <div class="container_abcd">
+          
+                <div id="abcd_a" class="item_abcd"><span class="txt_cen abcdbar ${aaCircel}">${aa}</span> <span class="abcd_span"  idd="a${element.order}"
+                        id="abcd_span_a${iri}"  onclick="abcdedit(event,${element.order},'a')" ></span> </div>
+                <div id="abcd_b" class="item_abcd"><span class="txt_cen abcdbar ${bbCircel}">${bb}</span> <span class="abcd_span" idd="b${element.order}"
+                        id="abcd_span_b${iri}"  onclick="abcdedit(event,${element.order},'b')" ></span></div>
+          
+           
+                <div id="abcd_c" class="item_abcd"><span class="txt_cen abcdbar ${ccCircel}">${cc}</span> <span class="abcd_span" idd="c${element.order}"
+                        id="abcd_span_c${iri}"  onclick="abcdedit(event,${element.order},'c')" ></span></div>
+                <div id="abcd_d" class="item_abcd"><span class="txt_cen abcdbar ${ddCircel}">${dd}</span> <span class="abcd_span" idd="d${element.order}"
+                        id="abcd_span_d${iri}"  onclick="abcdedit(event,${element.order},'d')" ></span></div>
+    
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <span class="q_no">Q No. ${iri + 1}</span>
+
+
+    <svg class="editt2" onclick="editt(${element.order}); this.style.display='none'" xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+</svg>
+
+
+
+   <svg class="dltt2" onclick="dltt(${element.order})" xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+</svg>
+ 
+ <span onclick="save(${element.order})" id="save_${element.order}" + numm" class="save hidd"><svg xmlns="http://www.w3.org/2000/svg" width="30"   fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+  <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+</svg></span>
+
+
+ 
+
+
+</div>
+        `)
+
+
+
+                        const arr = [];
+                        let i = 0;
+
+
+                        let q1 = element.question;
+                        for (let i = 0; i < q1.length; i++) {
+                            await new Promise((resolve2) => {
+                                let itemm = q1[i]
+
+
+
+                                let q1Div = document.getElementById(`id-${iri + 1}`)
+                                if (itemm.startsWith("shit")) {
+                                    let str = itemm.slice(4);
+                                    q1Div.innerHTML += `<span class="mathh">${str}</span>`;
+                                } else {
+                                    q1Div.innerHTML += `<span>${itemm}</span>`;
+                                }
+
+
+                                resolve2();
+                            });
+                        };
+
+
+
+
+
+                        //abcd add
+
+                        let aaa = element.a;
+                        for (let i = 0; i < aaa.length; i++) {
+                            await new Promise((resolve3) => {
+                                let itemm = aaa[i]
+
+                                let aaaDiv = document.getElementById(`abcd_span_a${iri}`)
+                                if (itemm.startsWith("shit")) {
+                                    let str = itemm.slice(4);
+                                    aaaDiv.innerHTML += `<span class="mathh">${str}</span>`;
+                                } else {
+                                    aaaDiv.innerHTML += `<span>${itemm}</span>`;
+                                }
+
+
+                                resolve3();
+                            });
+                        };
+
+                        let bbb = element.b;
+                        for (let i = 0; i < bbb.length; i++) {
+                            await new Promise((resolve4) => {
+                                let itemm = bbb[i]
+
+                                let bbbDiv = document.getElementById(`abcd_span_b${iri}`)
+                                if (itemm.startsWith("shit")) {
+                                    let str = itemm.slice(4);
+                                    bbbDiv.innerHTML += `<span class="mathh">${str}</span>`;
+                                } else {
+                                    bbbDiv.innerHTML += `<span>${itemm}</span>`;
+                                }
+
+
+                                resolve4();
+                            });
+                        };
+
+                        let ccc = element.c;
+                        for (let i = 0; i < ccc.length; i++) {
+                            await new Promise((resolve5) => {
+                                let itemm = ccc[i]
+
+                                let cccDiv = document.getElementById(`abcd_span_c${iri}`)
+                                if (itemm.startsWith("shit")) {
+                                    let str = itemm.slice(4);
+                                    cccDiv.innerHTML += `<span class="mathh">${str}</span>`;
+                                } else {
+                                    cccDiv.innerHTML += `<span>${itemm}</span>`;
+                                }
+
+
+                                resolve5();
+                            });
+                        };
+
+                        let ddd = element.d;
+                        for (let i = 0; i < ddd.length; i++) {
+                            await new Promise((resolve6) => {
+                                let itemm = ddd[i]
+
+                                let dddDiv = document.getElementById(`abcd_span_d${iri}`)
+                                if (itemm.startsWith("shit")) {
+                                    let str = itemm.slice(4);
+                                    dddDiv.innerHTML += `<span class="mathh">${str}</span>`;
+                                } else {
+                                    dddDiv.innerHTML += `<span>${itemm}</span>`;
+                                }
+
+
+                                resolve6();
+                            });
+                        };
+
+
+
+
+
+
+
+
+
+
+                        resolve0();
+
+                    });
+
+
+                };
+
+
+                const elementss = document.querySelectorAll('.q_no');
+                elementss.forEach((elemenst, i) => {
+                    elemenst.innerHTML = `Q No.${i + 1}`
+
+                })
+
+                var elements = document.getElementsByClassName('mathh');
+                for (var ddx of elements) {
+                    MQ.StaticMath(ddx);
+                }
+
+
+
+
+                const parent = document.getElementById('parent');
+                const myDiv = document.getElementById('itemmt');
+
+                parent.appendChild(myDiv); // This moves myDiv to the last position
+
+
+
+
+
+
+
+
+            } catch (err) {
+                console.error('Error:', err);
+                //  alert('Failed to load');
+            }
+
+
+            window.scrollTo({
+                top: document.documentElement.scrollHeight
+
+            });
+
+        };
+
+
+        if (1 == 1) {
+
+            window.aa = async function () {
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const id8 = urlParams.get('id');
+                console.log(id8);
+                window.docidd = id8;
+
+
+                try {
+                    document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
+                    const res = await fetch(`${uri87}/ac_find_by_id`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ "name": "varsities", "id": id8 }),
+                    });
+                    if (res.status === 200) {
+
+                        let ress = await res.json()
+                        console.log(ress.doc);
+                        if (ress.doc == null) {
+                            window.open("./admin.html", "_self")
+                        }
+                        document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                        loadd(ress.doc)
+                        window.scrollTo({
+                            top: document.documentElement.scrollHeight,
+                            behavior: 'smooth'
+                        });
+                        document.getElementById("testt").innerHTML += ` ${urlParams.get('varsity')} ${urlParams.get('year')} - ${urlParams.get('sub')} `
+
+                        // if (ress.doc.published != undefined) {
+                        //     if (ress.doc.published == "yes") {
+                        //         document.getElementById("publishh").style.display = "none"
+
+                        //     }
+                        // }
+                    }
+                    else {
+                        alert("eror at finding doc");
+
+                        // alert('Error. Couldn`t Submit');
+                    }
+
+                } catch (err) {
+                    console.error('Error:', err);
+                    // alert('Error. Couldn`t Submit');
+                }
+            }; aa()
+
+
+
+        } else {
+            alert(44);
+
+
+            //window.location.href = './index.html';
+
+        }
+
+
+
+        window.paste = async function () {
+
+
+
+
+
+
+
+
+            if (navigator.clipboard) {
+                navigator.clipboard.readText().then(function (text) {
+
+
+                    if (mode != "math") {
+                        document.getElementById("textar").value += text;
+                        document.getElementById("textar").dispatchEvent(new Event('input'));
+                        document.getElementById("textar").focus()
+                    } else {
+                        meth()
+                        document.getElementById("textar").value = text;
+                        document.getElementById("textar").dispatchEvent(new Event('input'));
+                        document.getElementById("textar").focus()
+                    }
+
+                    document.getElementById("textar").focus()
+
+                }).catch(function (error) {
+                    console.error("Error reading clipboard content: ", error);
+                });
+            } else {
+                console.log("Clipboard API not available in this browser.");
+            }
+
+        };
+
+        window.inputt = async function (textt) {
+
+            if (mode != "math") {
+                document.getElementById("textar").value += textt;
+            } else {
+                meth()
+                document.getElementById("textar").value = textt;
+            }
+
+            document.getElementById("textar").focus()
+            document.getElementById("textar").dispatchEvent(new Event('input'));
+
+        };
+
+
+        window.dltt = async function (numm) {
+
+
+
+
+            try {
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const sub = urlParams.get('sub');
+
+
+                document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
+                const res = await fetch(`${uri87}/q_dlt`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ "order": numm, "id": window.docidd, "sub": sub }),
+                });
+                if (res.status === 200) {
+                    document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                    window.location.reload()
+
+
+                }
+                else {
+                    alert('Error Couldn`t Delete');
+                }
+
+            } catch (err) {
+                console.error('Error:', err);
+                alert('Error. Couldn`t Delete');
+            } finally {
+
+                e.target.closest("svg").style.pointerEvents = 'auto';
+
+            }
+
+
+
+        };
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+    <div id="keyboard-container" class="keyboard-container1221">
+        <button id="keyboard-toggle" class="toggle-btn ">⌨️</button>
+
+        <div id="keyboard1221" class="keyboard1221 visible">
+
+
+
+            <div id="key_roww_1" class="row">
+                <button onclick="hide_row(2)" class="darkk button">Sin</button>
+                <button class="mathh" onclick="inn('a^2')">a^2</button>
+                <button class="mathh" onclick="inn('a^b')">a^b</button>
+                <button class="mathh" onclick="inn('sqrt{x}')">
+                    \sqrt{x}</button>
+                <button class="mathh" onclick="inn('sqrt[n]{x}')">\sqrt[n]{x}</button>
+
+
+
+
+                <button class="mathh" onclick="inn('frac{d}{dx}')">\frac{d}{dx}</button>
+                <button class="mathh" onclick="inn('int_a^b')">\int_a^b</button>
+                <button class="mathh" onclick="inn('lim_{x\\to a}')">\lim_{x\to a}</button>
+                <button class="mathh" onclick="inn('frac{a}{b}')">\frac{a}{b}</button>
+                <button onclick="hide_row(3)" class="darkk mathh">\alpha</button>
+
+
+            </div>
+            <div id="key_roww_2" class="row">
+
+                <button onclick="hide_row(1)" class="mathh darkk">a^2</button>
+                <button class="mathh" onclick="inn('sin')">sin</button>
+                <button class="mathh" onclick="inn('cos')">cos</button>
+
+                <button class="mathh" onclick="inn('tan')">tan</button>
+                <button onclick="inn('sin1')">sin <sup>-1</sup></button>
+                <button onclick="inn('cos1')">cos <sup>-1</sup></button>
+                <button onclick="inn('tan1')">tan <sup>-1</sup></button>
+
+
+            </div>
+            <div id="key_roww_3" class="row">
+                <button onclick="hide_row(1)" class="mathh darkk">a^2</button>
+                <button class="mathh" onclick="inn('alpha')">\alpha</button>
+                <button class="mathh" onclick="inn('beta')">\beta</button>
+                <button class="mathh" onclick="inn('gamma')">\gamma</button>
+                <button class="mathh" onclick="inn('delta')">\delta</button>
+                <button class="mathh" onclick="inn('theta')">\theta</button>
+                <button class="mathh" onclick="inn('sigma')">\sigma</button>
+                <button class="mathh" onclick="inn('omega')">\omega</button>
+                <button class="mathh" onclick="inn('Omega')">\Omega</button>
+                <button class="mathh" onclick="inn('infty')">\infty</button>
+                <button class="mathh" onclick="inn('approx')">\approx</button>
+                <button class="mathh" onclick="inn('ne')">\ne</button>
+                <button class="mathh" onclick="inn('phi')">\phi</button>
+                <button class="mathh" onclick="inn('perp')">\perp</button>
+                <button class="mathh" onclick="inn('pi')">\pi</button>
+                <button class="mathh" onclick="inn('λ')">λ</button>
+                <button class="mathh" onclick="inn('î')">î</button>
+                <button class="mathh" onclick="inn('ĵ')">ĵ</button>
+                <button class="mathh" onclick="inn('k̂')">k̂</button>
+
+
+                <button class="mathh" onclick="inn('vec{A}')">\vec{A}</button>
+                <button class="mathh" onclick="inn('mathbf{A}')">\mathbf{A}</button>
+                <button class="mathh" onclick="inn('mathbf{vec{B}}')">\mathbf{\vec{B}}</button>
+                <button class="mathh" onclick="inn('mathrm{/}')">\mathrm{/}</button>
+                <button class="mathh" onclick="inn('times')">\times</button>
+                <button class="mathh" onclick="inn('°')">°</button>
+                <button class="mathh" onclick="inn('eta')">\eta</button>
+                <button class="mathh" onclick="inn('propto')">\propto</button>
+                <button class="mathh" onclick="inn('a^b')">a^x</button>
+                <button class="mathh" onclick="inn('a_x')">a_x</button>
+                <button class="mathh" onclick="inn('→')">→</button>
+                <button class="mathh" onclick="inn('⇌')">⇌</button>
+                <button class="mathh" onclick="inn('–')">–</button>
+                <button class="mathh" onclick="inn('≡')">≡</button>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+
+        }
+
+        .keyboard-container1221 {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .toggle-btn {
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 44px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            margin-right: auto;
+            margin-left: 18px;
+            display: none;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.95);
+        }
+
+        .keyboard1221 {
+            /* background: linear-gradient(45deg, #43fb1f, #2c89e7); */
+            border-radius: 10px 10px 0 0;
+            padding: 14px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(100%);
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .keyboard1221.visible {
+            transform: translateY(0);
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            /* margin-bottom: 10px; */
+        }
+
+        .row button {
+            background-color: white;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            padding: 1px;
+            margin: 0 5px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .row button:active {
+            transform: scale(0.9);
+            background-color: #ddd;
+        }
+
+        .row button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .darkk {
+            background-color: #CCCCCC !important;
+        }
+
+        #key_roww_2,
+        #key_roww_3 {
+            display: none;
+        }
+    </style>
+
+
+    <script>
+        const toggleBtn = document.getElementById("keyboard-toggle");
+        const keyboard = document.getElementById("keyboard1221");
+
+        toggleBtn.addEventListener("click", () => {
+            keyboard.classList.toggle("visible");
+            keyboard.classList.toggle("hidd");
+
+            if (keyboard.style.display === 'none') {
+                // keyboard.style.setProperty('display', 'block', 'important'); // Show the element
+                // keyboard.classList.remove("hidd")
+
+            } else {
+                // keyboard.classList.add("hidd")
+                // keyboard.style.setProperty('display', 'none', 'important'); // Hide the element
+            }
+        });
+
+
+        keyboard.classList.toggle("visible");
+        keyboard.classList.toggle("hidd");
+
+
+        // keyboard.style.setProperty('display', 'none', 'important');  
+        keyboard.classList.remove("hidd")
+        keyboard.classList.add("visible")
+
+
+
+
+
+        window.hide_row = async function (r) {
+            if (r == 1) {
+
+                document.getElementById("key_roww_1").style.display = "block"
+                document.getElementById("key_roww_2").style.display = "none"
+                document.getElementById("key_roww_3").style.display = "none"
+
+            } else if (r == 2) {
+
+                document.getElementById("key_roww_1").style.display = "none"
+                document.getElementById("key_roww_2").style.display = "block"
+                document.getElementById("key_roww_3").style.display = "none"
+            } else if (r == 3) {
+
+                document.getElementById("key_roww_1").style.display = "none"
+                document.getElementById("key_roww_2").style.display = "none"
+                document.getElementById("key_roww_3").style.display = "block"
+            }
+
+
+        }
+
+
+
+
+
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+
+
+        let elementss = document.getElementsByClassName('mathh');
+
+
+        for (let ddx of elementss) {
+            MQ.StaticMath(ddx);
+        }
+
+    </script>
+
+
+
+    <style>
+        textarea {
+            height: 100px;
+            width: 80%;
+            margin-left: 10%;
+            font-size: 28px;
+        }
+
+        .abcdhh {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abcdhh button {
+            padding: 2px 40px;
+            font-size: 20px;
+            margin-left: 20px;
+            /* margin-top: 5px; */
+        }
+
+    
+        #math-field6 {
+            width: 100%;
+            padding-left: 10px;
+
+            padding-right: 10px;
+
+            margin-bottom: 10px;
+            align-items: center;
+
+
+
+            height: 100px;
+            width: 80%;
+            margin-left: 10%;
+            font-size: 22px;
+
+        }
+
+        .tt {
+            font-size: 26px;
+            padding: 5px;
+            position: fixed;
+            top: 0;
+            left: 30%;
+            z-index: 1000000;
+        }
+
+        .ttm {
+            font-size: 26px;
+            padding: 5px;
+            position: fixed;
+            top: 0;
+            left: 60%;
+            z-index: 1000000;
+
+        }
+
+        .paste {
+            font-size: 22px;
+            padding: 1px;
+            position: fixed;
+            top: 60px;
+            left: 0%;
+            z-index: 999;
+        }
+
+        button {
+            border: 1px solid rgba(20, 20, 20, .3);
+            outline: none;
+            background: none;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+
+
+        body {
+            background-color: #1F1F1F;
+            background-color: white;
+            color: #000;
+
+        }
+
+        input,
+        textarea {
+            border: 1px solid rgba(0, 0, 0, 0.6);
+            /* black border with 30% opacity */
+            outline: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        .add {
+            font-size: 28px;
+
+        }
+
+        #qfinal {
+            font-size: 22px !important;
+            font-size: 14px;
+
+            word-break: break-word;
+        }
+
+        .actt {
+            background-color: #000;
+        }
+
+        .mcq4 {
+            font-size: 22px;
+            margin-top: 10px;
+
+            flex-direction: column;
+            z-index: 999;
+
+
+        }
+
+        .b1,
+        .b2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+
+        #aFinal,
+        #bFinal,
+        #cFinal,
+        #dFinal {
+            word-break: break-word;
+
+
+        }
+
+        .mcq5 {
+            display: block;
+            word-break: break-word;
+        }
+
+        #last {
+            display: none;
+        }
+
+        #testt,
+        .add,
+        .tt,
+        .ttm,
+        textarea,
+        .clrr {
+            /* color: #AC522B;
+            color: black; */
+
+        }
+
+        .tt,
+        .ttm{
+            color: #AC522B;
+        }
+
+        .aaa {
+            color: #AC522B;
+        }
+
+
+        .mq-supsub .mq-sup,
+        .mq-supsub .mq-sub {
+            font-size: 60% !important;
+            /* default is usually ~70% */
+        }
+    </style>
+
+
+    <button id="tt" onclick="meth()" class="tt hidd">TxT</button>
+    <button id="ttm" onclick="math()" class="ttm hidd">MatH</button>
+    <button id="paste" onclick="paste()" class="paste hidd">Past</button>
+
+
+
+
+    <div id="add1221" class="add" onclick="addd(event)">
+        Add
+    </div>
+
+
+
+
+
+    <script>
+        var mathFieldSpan = document.getElementById('math-field6');
+
+
+
+        var MQ6 = MathQuill.getInterface(2); // for backcompat
+        window.mathField6 = MQ6.MathField(mathFieldSpan, {
+            spaceBehavesLikeTab: false, // configurable
+            handlers: {
+                edit: function () { // useful event handlers
+                    // latexSpan.textContent = mathField.latex(); // simple API
+
+                    // mathField.moveToDirEnd();
+                    const fullLatex = mathField6.latex();
+
+                    if (mode == "math") {
+                        textChanged(fullLatex, "math")
+                    }
+
+
+
+
+
+                }
+            }
+        });
+    </script>
+
+
+
+    <script>
+        window.uri87 = "http://192.168.0.104:3000";
+        //   window.uri87 = "https://exam-server2.vercel.app";
+        window.q = []
+        window.mode = "txt"
+        window.cursorr = "q"
+
+
+        window.textChanged = async function (txt, math) {
+
+
+
+            if (cursorr == "q") {
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        q[q.length - 1] = "shit" + txt;
+                        console.log(q);
+                        finalQ()
+                        return false
+                    }
+                }
+
+
+
+
+                if (q.length == 0) {
+                    q = [txt]
+                } else {
+                    q[q.length - 1] = txt;
+                }
+                console.log(q);
+                finalQ()
+            }
+            else if (cursorr == "a" || cursorr == "b" || cursorr == "c" || cursorr == "d") {
+
+                let qq = abcdobj[cursorr]
+                let len = abcdobj[cursorr].length
+
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        abcdobj[cursorr][len - 1] = "shit" + txt;
+                        console.log(abcdobj);
+                        finalMcq()
+                        return false
+                    }
+                }
+
+
+
+
+                if (len == 0) {
+                    abcdobj[cursorr] = [txt]
+                } else {
+
+                    abcdobj[cursorr][len - 1] = txt;
+                }
+                console.log(abcdobj);
+                finalMcq()
+
+
+            } else if (cursorr == "edita") {
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        edita[window.indexw] = "shit" + txt;
+                        console.log(edita[window.indexw]);
+                        finalEditMcq("a")
+                        return false
+                    }
+                }
+
+                if (edita.length == 0) {
+                    edita = [txt]
+                } else {
+                    edita[window.indexw] = txt;
+                }
+                console.log(edita[window.indexw]);
+                console.log(edita);
+
+                finalEditMcq("a")
+
+
+            } else if (cursorr == "editb") {
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        editb[window.indexw] = "shit" + txt;
+                        console.log(editb[window.indexw]);
+                        finalEditMcq("b")
+                        return false
+                    }
+                }
+
+                if (editb.length == 0) {
+                    editb = [txt]
+                } else {
+                    editb[window.indexw] = txt;
+                }
+                console.log(editb[window.indexw]);
+                console.log(editb);
+
+                finalEditMcq("b")
+
+
+            } else if (cursorr == "editc") {
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        editc[window.indexw] = "shit" + txt;
+                        console.log(editc[window.indexw]);
+                        finalEditMcq("c")
+                        return false
+                    }
+                }
+
+                if (editc.length == 0) {
+                    editc = [txt]
+                } else {
+                    editc[window.indexw] = txt;
+                }
+                console.log(editc[window.indexw]);
+                console.log(editc);
+
+                finalEditMcq("c")
+
+
+            } else if (cursorr == "editd") {
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+                        editd[window.indexw] = "shit" + txt;
+                        console.log(editd[window.indexw]);
+                        finalEditMcq("d")
+                        return false
+                    }
+                }
+
+                if (editd.length == 0) {
+                    editd = [txt]
+                } else {
+                    editd[window.indexw] = txt;
+                }
+                console.log(editd[window.indexw]);
+                console.log(editd);
+
+                finalEditMcq("d")
+
+
+            } else if (cursorr == "editq") {
+
+
+
+                if (math != undefined) {
+                    if (math == "math") {
+
+                        editq[window.indexw] = "shit" + txt;
+                        console.log(editq);
+                        finalEditQ()
+                        return false
+                    }
+                }
+
+
+
+
+                if (editq.length == 0) {
+                    editq = [txt]
+                } else {
+                    editq[window.indexw] = txt;
+                }
+                console.log(editq);
+                finalEditQ()
+            }
+
+
+
+
+
+        };
+
+        window.addd = async function () {
+            document.getElementById("add1221").style.display = 'none';
+            document.getElementById("tt").classList.remove("hidd")
+            document.getElementById("paste").classList.remove("hidd")
+
+            document.getElementById("next").classList.remove("hidd")
+
+            document.getElementById("ttm").classList.remove("hidd")
+
+            document.getElementById("textar").classList.remove("hidd")
+
+            document.getElementById("textar").focus()
+            document.getElementById("tt").style.backgroundColor = "black"
+
+            q = []
+
+
+        }; addd()
+
+        window.math = async function () {
+            if (mode != "txt") { return false }
+
+
+            if (cursorr == "q") {
+
+
+
+                document.getElementById("ttm").style.backgroundColor = "black"
+                document.getElementById("tt").style.backgroundColor = "white"
+                document.getElementById("textar").classList.add("hidd")
+                document.getElementById("math-field6").classList.remove("hidd")
+
+                mathField6.focus()
+                q.push("")
+            } else if (cursorr == "a" || cursorr == "b" || cursorr == "c" || cursorr == "d") {
+                document.getElementById("ttm").style.backgroundColor = "black"
+                document.getElementById("tt").style.backgroundColor = "white"
+                document.getElementById("textar").classList.add("hidd")
+                document.getElementById("math-field6").classList.remove("hidd")
+
+                mathField6.focus()
+                abcdobj[cursorr].push("")
+            }
+
+            mode = "math"
+        };
+
+        window.meth = async function () {
+            if (mode != "math") { return false }
+
+
+            if (cursorr == "q") {
+                document.getElementById("ttm").style.backgroundColor = "white"
+                // document.getElementById("ttm").style.backgroundColor = "#1F1F1F"
+
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+
+                mode = "txt"
+                q.push("")
+                mathField6.latex('')
+                document.getElementById("textar").value = "";
+                document.getElementById("textar").focus()
+            } else if (cursorr == "a" || cursorr == "b" || cursorr == "c" || cursorr == "d") {
+                document.getElementById("ttm").style.backgroundColor = "white"
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+
+                mode = "txt"
+                abcdobj[cursorr].push("")
+                mathField6.latex('')
+                document.getElementById("textar").value = "";
+                document.getElementById("textar").focus()
+            }
+
+
+
+        };
+
+
+        window.finalQ = async function () {
+            const qfinal = document.getElementById("qfinal");
+            qfinal.innerHTML = ""
+
+            q.forEach(function (item, index) {
+                if (item.startsWith("shit")) {
+                    let str = item.slice(4);
+                    qfinal.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                } else {
+                    qfinal.innerHTML += `<span class="">${item}</span>`;
+
+
+                }
+            });
+
+
+            let elements = document.getElementsByClassName('mathh');
+
+
+            for (let ddx of elements) {
+                MQ6.StaticMath(ddx);
+            }
+
+        };
+
+        window.finalEditQ = async function () {
+            const qfinal = document.querySelector(`[idd="${editorder}"]`);
+
+            qfinal.innerHTML = ""
+            document.querySelectorAll('.underline').forEach(el => {
+                el.classList.remove('underline');
+            });
+
+
+
+            editq.forEach(function (item, index) {
+                if (item.startsWith("shit")) {
+                    let str = item.slice(4);
+                    qfinal.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                } else {
+                    qfinal.innerHTML += `<span  >${item}</span>`;
+
+
+                }
+            });
+
+            console.log(underlineTarget);
+
+            qfinal.children[indexw].classList.add("underline");
+
+
+            let elements = document.getElementsByClassName('mathh');
+
+
+            for (let ddx of elements) {
+                MQ6.StaticMath(ddx);
+            }
+
+        };
+
+        window.finalMcq = async function () {
+            let qfinall = document.getElementById(`${cursorr}Final`);
+            qfinall.innerHTML = ""
+
+            abcdobj[cursorr].forEach(function (item, index) {
+                if (item.startsWith("shit")) {
+                    let str = item.slice(4);
+                    qfinall.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                } else {
+                    qfinall.innerHTML += `<span>${item}</span>`;
+
+
+                }
+            });
+
+
+            let elements = document.getElementsByClassName('mathh');
+            for (let ddx of elements) {
+                MQ6.StaticMath(ddx);
+            }
+
+        };
+
+
+
+        window.finalEditMcq = async function (aaa) {
+            let qfinall = document.querySelector(`[idd="${aaa}${editorder}"]`);
+            qfinall.innerHTML = ""
+
+
+
+
+            document.querySelectorAll('.underline').forEach(el => {
+                el.classList.remove('underline');
+            });
+
+
+
+
+            if (aaa == "a") {
+                edita.forEach(function (item, index) {
+                    if (item.startsWith("shit")) {
+                        let str = item.slice(4);
+                        qfinall.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                    } else {
+                        qfinall.innerHTML += `<span  >${item}</span>`;
+
+
+                    }
+                });
+            } else if (aaa == "b") {
+                console.log("bbbbbb");
+
+
+
+                editb.forEach(function (item, index) {
+
+
+                    if (item.startsWith("shit")) {
+                        let str = item.slice(4);
+                        qfinall.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                    } else {
+                        qfinall.innerHTML += `<span  >${item}</span>`;
+
+
+                    }
+                });
+            } else if (aaa == "c") {
+                editc.forEach(function (item, index) {
+                    if (item.startsWith("shit")) {
+                        let str = item.slice(4);
+                        qfinall.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                    } else {
+                        qfinall.innerHTML += `<span  >${item}</span>`;
+
+
+                    }
+                });
+            } else if (aaa == "d") {
+                editd.forEach(function (item, index) {
+                    if (item.startsWith("shit")) {
+                        let str = item.slice(4);
+                        qfinall.innerHTML += `<span class="mathh clrr">${str}</span>`;
+
+                    } else {
+                        qfinall.innerHTML += `<span  >${item}</span>`;
+
+
+                    }
+                });
+            }
+
+
+
+
+
+            qfinall.children[indexw].classList.add("underline");
+
+
+
+
+
+
+
+            let elements = document.getElementsByClassName('mathh');
+            for (let ddx of elements) {
+                MQ6.StaticMath(ddx);
+            }
+
+
+
+
+
+
+        };
+
+        window.abcdobj = { "a": [], "b": [], "c": [], "d": [] }
+
+        window.next = async function () {
+            event.target.style.display = 'none';
+            window.mode = "txt"
+            cursorr = "a"
+
+            document.getElementById("textar").value = "";
+            mathField6.latex('')
+            document.getElementById("textar").classList.remove("hidd")
+            document.getElementById("mcq4").classList.remove("hidd")
+            document.getElementById("mcq4").style.display = "flex"
+
+
+            document.getElementById("math-field6").classList.add("hidd")
+
+
+            document.getElementById("textar").focus()
+            document.getElementById("tt").style.backgroundColor = "black"
+            document.getElementById("ttm").style.backgroundColor = "white"
+
+
+
+
+            let elements = document.getElementsByClassName('aaa');
+
+
+            for (let ddx of elements) {
+                ddx.classList.remove("hidd")
+            }
+
+        };
+
+        window.slide = async function (abcd) {
+            if (abcd == "a") {
+                document.getElementById("slidea").style.backgroundColor = "black"
+                document.getElementById("slideb").style.backgroundColor = "white"
+                document.getElementById("slidec").style.backgroundColor = "white"
+                document.getElementById("slided").style.backgroundColor = "white"
+
+                document.getElementById("slidea").innerHTML = "A^"
+                document.getElementById("slideb").innerHTML = "b"
+                document.getElementById("slidec").innerHTML = "c"
+                document.getElementById("slided").innerHTML = "D"
+
+                cursorr = "a"
+                window.mode = "txt"
+                document.getElementById("textar").value = "";
+                mathField6.latex('')
+
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+                document.getElementById("textar").focus()
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("ttm").style.backgroundColor = "white"
+                abcdobj[cursorr] = []
+                document.getElementById("aFinal").innerHTML = ""
+
+
+            } else if (abcd == "b") {
+                document.getElementById("slidea").style.backgroundColor = "white"
+                document.getElementById("slideb").style.backgroundColor = "black"
+                document.getElementById("slidec").style.backgroundColor = "white"
+                document.getElementById("slided").style.backgroundColor = "white"
+
+                document.getElementById("slidea").innerHTML = "A^"
+                document.getElementById("slideb").innerHTML = "b^"
+                document.getElementById("slidec").innerHTML = "c"
+                document.getElementById("slided").innerHTML = "D"
+                cursorr = "b"
+                window.mode = "txt"
+                document.getElementById("textar").value = "";
+                mathField6.latex('')
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+                document.getElementById("textar").focus()
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("ttm").style.backgroundColor = "white"
+                abcdobj[cursorr] = []
+                document.getElementById("bFinal").innerHTML = ""
+            } else if (abcd == "c") {
+                document.getElementById("slidea").style.backgroundColor = "white"
+                document.getElementById("slideb").style.backgroundColor = "white"
+                document.getElementById("slidec").style.backgroundColor = "black"
+                document.getElementById("slided").style.backgroundColor = "white"
+
+                document.getElementById("slidea").innerHTML = "A^"
+                document.getElementById("slideb").innerHTML = "b"
+                document.getElementById("slidec").innerHTML = "c^"
+                document.getElementById("slided").innerHTML = "D"
+                cursorr = "c"
+                window.mode = "txt"
+                document.getElementById("textar").value = "";
+                mathField6.latex('')
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+                document.getElementById("textar").focus()
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("ttm").style.backgroundColor = "white"
+                abcdobj[cursorr] = []
+                document.getElementById("cFinal").innerHTML = ""
+
+            } else if (abcd == "d") {
+                document.getElementById("slidea").style.backgroundColor = "white"
+                document.getElementById("slideb").style.backgroundColor = "white"
+                document.getElementById("slidec").style.backgroundColor = "white"
+                document.getElementById("slided").style.backgroundColor = "black"
+
+                document.getElementById("slidea").innerHTML = "A^"
+                document.getElementById("slideb").innerHTML = "b"
+                document.getElementById("slidec").innerHTML = "c"
+                document.getElementById("slided").innerHTML = "D^"
+                cursorr = "d"
+                window.mode = "txt"
+                document.getElementById("textar").value = "";
+                mathField6.latex('')
+
+                document.getElementById("textar").classList.remove("hidd")
+                document.getElementById("math-field6").classList.add("hidd")
+                document.getElementById("textar").focus()
+                document.getElementById("tt").style.backgroundColor = "black"
+                document.getElementById("ttm").style.backgroundColor = "white"
+                abcdobj[cursorr] = []
+                document.getElementById("dFinal").innerHTML = ""
+
+            }
+
+        };
+
+
+        window.Submitt = async function () {
+            console.log(q);
+            console.log(abcdobj);
+
+            if (abcdobj["a"].length == 0) {
+                alert("Empty text"); return 7
+            }
+            if (abcdobj["b"].length == 0) {
+                alert("Empty text"); return 7
+            }
+            if (abcdobj["c"].length == 0) {
+                alert("Empty text"); return 7
+            }
+            if (abcdobj["d"].length == 0) {
+                alert("Empty text"); return 7
+            }
+
+            let urll = `${uri87}/q_add`
+
+
+
+            try {
+                const url = new URL(window.location.href);
+                const params = new URLSearchParams(url.search);
+
+                let jsonn;
+
+
+                jsonn = { "Q": q, "a": abcdobj.a, "b": abcdobj.b, "c": abcdobj.c, "d": abcdobj.d, "ans": 2, "idd": window.docidd, sub: params.get('sub') }
+
+
+
+
+
+                document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
+                const res = await fetch(urll, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(jsonn),
+                });
+                if (res.status === 200) {
+
+                    document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                    window.location.reload()
+
+                }
+
+            } catch (err) {
+                console.log(err);
+                alert("err");
+
+
+            }
+
+
+        }
+
+        hide_row(3)
+
+
+
+
+
+        window.editorder = 400
+        window.editt = async function (numm) {
+            editorder = numm
+            const elementshs = document.querySelectorAll('.item');
+            elementshs.forEach((elemenst, i) => {
+                elemenst.style.borderColor = `#D1D5DB`
+
+            })
+
+
+            document.getElementById("orderrh_" + numm).style.borderColor = "black"
+            document.getElementById("save_" + numm).classList.remove("hidd")
+
+
+
+            const result = window.doccc.find(obj => obj.order == numm);
+
+
+
+
+            editq = result["question"]
+            edita = result["a"]
+            editb = result["b"]
+            editc = result["c"]
+            editd = result["d"]
+
+
+
+        };
+
+        window.abcdedit = async function (e, numm, qa) {
+
+
+
+
+            if (numm != window.editorder) { return 3 }
+
+
+
+            let parent = event.currentTarget; // the parent div
+            let target = event.target;
+
+            // Traverse up until we find a direct child of the parent
+            while (target && target.parentNode !== parent) {
+                target = target.parentNode;
+            }
+
+
+
+
+            if (target && target.parentNode === parent) {
+
+
+                document.querySelectorAll('.underline').forEach(el => {
+                    el.classList.remove('underline');
+                });
+                target.classList.add("underline");
+                underlineTarget = target;
+                let children = Array.from(parent.children);
+                let index = children.indexOf(target);
+                window.indexw = index;
+
+
+                let element = document.getElementById("orderrh_" + numm)
+
+                const parenttt = element.parentNode;
+                const children22 = Array.from(parenttt.children);
+                const index22 = children22.indexOf(element);
+                const nthChild = index22 + 1;
+
+
+                let myDiv = document.getElementById('itemmt');
+                const fourthChild = parenttt.children[nthChild];
+                parenttt.insertBefore(myDiv, fourthChild);
+
+
+                const result = window.doccc.find(obj => obj.order == numm);
+
+
+                // console.log(result[qa]);
+                // console.log(result[qa][index]);
+
+
+                console.log(qa);
+
+                if (qa == "question") {
+                    cursorr = "editq"
+                } else if (qa == "a") {
+                    cursorr = "edita"
+                } else if (qa == "b") {
+                    cursorr = "editb"
+                } else if (qa == "c") {
+                    cursorr = "editc"
+                } else if (qa == "d") {
+                    cursorr = "editd"
+                }
+                console.log(qa);
+
+
+
+
+
+                if (result[qa][index].startsWith("shit")) {
+                    mode = "math"
+                    let str = result[qa][index].slice(4);
+
+
+
+                    document.getElementById("textar").classList.add("hidd")
+                    document.getElementById("math-field6").classList.remove("hidd")
+
+
+
+                    mathField6.latex('')
+                    mathField6.latex(str)
+                    mathField6.focus()
+                } else {
+
+                    mode = "txt"
+
+
+
+
+
+
+
+
+                    document.getElementById("textar").classList.remove("hidd")
+                    document.getElementById("math-field6").classList.add("hidd")
+                    mathField6.latex('')
+                    document.getElementById("textar").value = "";
+                    document.getElementById("textar").value = result[qa][index]
+                    document.getElementById("textar").focus()
+
+
+
+
+
+
+
+                }
+
+
+
+            }
+
+        };
+
+
+
+
+        window.save = async function (num) {
+            console.log(num);
+            console.log(editq);
+            console.log(edita);
+            console.log(editb);
+            console.log(editc);
+            console.log(editd);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const id8 = urlParams.get('id');
+            const subb = urlParams.get('sub');
+
+
+
+
+            try {
+                document.getElementById("loadingg_slow_vercel").classList.remove("hidd");
+                const res = await fetch(`${uri87}/doc_update`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ "name": "varsities", "id": id8, "q": editq, "a": edita, "b": editb, "c": editc, "d": editd, sub: subb, "order": editorder }),
+                });
+                if (res.status === 200) {
+                    document.getElementById("loadingg_slow_vercel").classList.add("hidd");
+                    window.location.reload()
+
+                }
+
+            } catch (e) {
+                console.log(e);
+
+
+            }
+
+
+        };
+    </script>
+
+
+</body>
+
+</html>

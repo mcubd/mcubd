@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Image Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .order-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .order-item {
+            width: 250px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .order-item:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .order-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .order-item:hover img {}
+
+        .order-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery-container {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: f 1.2s forwards;
+        }
+        @keyframes f {to{opacity:1}}
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {}
+
+        /* Make the title always visible at the bottom */
+        .image-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            font-size: 0.9rem;
+            /* Removed transform and transition so it stays in place */
+        }
+
+        .active {
+            display: grid;
+        }
+
+        /* Animation for gallery items */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back button */
+        .back-btn {
+            display: none;
+            margin: 30px auto;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:active {
+            transform: translateY(1px);
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: #ffb347;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+
+
+        @media (max-width: 600px) {
+            .order-container {
+
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+
+    <style>
+        .filterr {
+            display: block;
+        }
+
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        #popup {
+
+            color: white;
+
+
+
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #2c3e50, #1a2a6c);
+            border-radius: 20px;
+
+
+        }
+
+
+        .ptop {
+
+
+            text-align: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+
+            color: white;
+            font-size: 1.8rem;
+            display: block;
+
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .pbtm {
+            display: flex;
+            justify-content: center;
+            /* Center the group of spans horizontally */
+            align-items: center;
+            /* Vertically center (if needed) */
+            gap: 80px;
+            /* Equal space between spans */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+
+        }
+
+        .pbtn {
+
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+        }
+
+        .lk {
+            color: #4CAF50;
+        }
+
+        .pp {
+            display: block;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+
+        .option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+           
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+
+            -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Android */
+  -webkit-touch-callout: none;              /* iOS Safari */
+  user-select: none;   
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.2);
+
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .option.selected {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .option i {
+            font-size: 1.8rem;
+        }
+
+        .pbody {
+            padding: 20px;
+        }
+
+        select {
+            outline: none;
+            width: 200px;
+            padding: 10px;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 16px;
+            appearance: none;
+            /* Removes default arrow in some browsers */
+            -webkit-appearance: none;
+            /* Safari */
+            -moz-appearance: none;
+            /* Firefox */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'5'%20viewBox%3D'0%200%2010%205'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200L5%205L10%200H0Z'%20fill%3D'%23333'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px 5px;
+        }
+
+
+        @media (max-width: 900px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .order-item {
+                width: 80px;
+                height: 70px;
+            }
+
+            .order-label {
+                padding: 0px;
+                font-size: 14px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0px;
+            }
+
+
+            .option {
+           
+            border-radius: 12px;
+            padding: 8px 6px;
+ 
+            gap: 8px;
+            font-weight: 500;
+ 
+        }
+        .option i {
+    font-size: 1.4rem;
+   
+}
+.ppp{
+    margin-top: 0px;
+}
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="overlay" onclick="closePopup(event)">
+        <div id="popup" onclick="event.stopPropagation()">
+            <span class="ptop">Select  Details
+            </span>
+
+            <div class="pbody">
+
+
+                <label class="pp ppp"><i class="fas fa-calendar lk"></i> Select Academic Year</label>
+                <select id="myDropdown">
+                    <option value="Select Year">Select Year</option>
+                </select>
+
+
+                <div class="subbb">
+                    <label class="pp"><i class="fas fa-graduation-cap lk"></i> Select Subject</label>
+
+
+                    <div class="options" id="subjectOptions">
+                        <div class="option" data-value="math">
+                            <i class="fas fa-calculator"></i> Mathematics
+                        </div>
+                        <div class="option" data-value="phy">
+                            <i class="fas fa-atom"></i> Physics
+                        </div>
+                        <div class="option" data-value="chem">
+                            <i class="fas fa-flask"></i> Chemistry
+                        </div>
+                        <div class="option" data-value="bio">
+                            <i class="fas fa-dna"></i> Biology
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="pbtm">
+
+
+
+                <span onclick="submitSolo('exam')" class="pbtn">take exam
+                </span>
+                <span onclick="submitSolo('view')" class="pbtn">view
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h1>Queston Era</h1>
+        <p class="subtitle">From Accademmy to Admission all type of question collection.</p>
+
+        <div class="order-container">
+            <div class="order-item" typee="ad" data-category="nature">
+                <img src="https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2F96105c50-2bc9-4197-80c7-5fd8ac459ce2.png?alt=media&token=daad5c7a-e2d4-4525-906a-077c339a56f2"
+                    alt="Nature">
+                <div class="order-label">Admission</div>
+            </div>
+
+            <div class="order-item" typee="board" data-category="architecture">
+                <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                    alt="Architecture">
+                <div class="order-label">Board</div>
+            </div>
+
+            <div class="order-item" typee="test" data-category="technology">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                    alt="Technology">
+                <div class="order-label">Model Test</div>
+            </div>
+        </div>
+
+
+        <div id="filterr" class="filterr">
+            Filter
+        </div>
+        <div class="gallery-container" id="nature-gallery">
+
+            <!-- Nature images will be populated here -->
+        </div>
+
+        <div class="gallery-container" id="architecture-gallery">
+            <!-- Architecture images will be populated here -->
+        </div>
+
+        <div class="gallery-container" id="technology-gallery">
+            <!-- Technology images will be populated here -->
+        </div>
+
+        <button class="back-btn" id="backBtn">
+            <i class="fas fa-arrow-left"></i> Back to Categories
+        </button>
+
+
+    </div>
+
+    <script>
+              window.type1=""
+        document.addEventListener('DOMContentLoaded', function () {
+            const orderItems = document.querySelectorAll('.order-item');
+            const galleries = {
+                'nature': document.getElementById('nature-gallery'),
+                'architecture': document.getElementById('architecture-gallery'),
+                'technology': document.getElementById('technology-gallery')
+            };
+            const backBtn = document.getElementById('backBtn');
+
+            // Image data for each category
+            const imageData = {
+                'nature': [
+                    { title: "DU", url: "https://www.duir.ac.bd/wp-content/uploads/2016/03/DU-logo-300x168.jpg" },
+                    { title: "BUET", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fbuet_1.avif?alt=media&token=03303e30-c6bc-44e5-95b4-a814613d9d73" },
+                    { title: "MEDICAL", url: "https://daktarachen.com/uploads/blog/f49946f649.jpg" },
+                    { title: "GST", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2F436275193_122193236654011087_1243783784966613937_n.jpg?alt=media&token=790d1624-879e-45f0-901c-21efe49018da" },
+                    { title: "CKRUET", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fimages.jpeg?alt=media&token=ec4c4dda-f67a-40b9-a0ef-2e310cb01235" },
+                    { title: "JU", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Flogo41.webp?alt=media&token=40c874e0-addd-4782-a730-e898b1731759" },
+                    { title: "SUST", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fshahjalal-university-of-science-and-technology-logo-png_seeklogo-344200.png?alt=media&token=fefef7b1-75d8-43f9-9101-9768096d4e64" },
+                    { title: "CUET", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fchittagong-university-of-engineering-and-technolog-logo-png_seeklogo-356714.png?alt=media&token=9d75d0ef-32ca-47e7-9eed-b2f290d0b8ec" },
+                    { title: "KUET", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fkuet-logo-png_seeklogo-423942.png?alt=media&token=5c448b9f-4c6c-4f12-95e7-a72a5a5a1113" },
+                    { title: "RUET", url: "https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fruett.jpeg?alt=media&token=1dad0745-9808-44de-bb5c-ae41c6184ae7" },
+
+                ],
+                'architecture': [
+
+                ],
+                'technology': [
+
+                ]
+            };
+
+            // Populate galleries with images
+            for (const category in galleries) {
+                const gallery = galleries[category];
+                imageData[category].forEach((image, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.onclick = (function (title) {
+
+
+                        return function () {
+                            selectt(title);
+                        };
+                    })(image.title);
+
+
+                    galleryItem.innerHTML = `
+                        <img src="${image.url}" alt="${image.title}">
+                        <div class="image-title">${image.title}</div>
+                    `;
+                    gallery.appendChild(galleryItem);
+                });
+            }
+
+      
+                        // Add click event to order items
+            orderItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const category = this.getAttribute('data-category');
+
+                    const typee = this.getAttribute('typee');
+
+
+                    window.type1=typee;                    
+
+
+
+                    // Hide all galleries first
+                    for (const key in galleries) {
+                        galleries[key].classList.remove('active');
+
+
+                    }
+
+                    // Show the selected gallery
+                    galleries[category].classList.add('active');
+
+                    // Show back button
+                    backBtn.style.display = 'block';
+
+                    // Animate gallery items
+                    const galleryItems = galleries[category].querySelectorAll('.gallery-item');
+                    galleryItems.forEach((item, index) => {
+                        // Apply animation with staggered delay
+                        // item.style.animation = `fadeInUp 0.1s ease forwards ${index * 0.01}s`;
+                    });
+
+                    // Scroll to the gallery
+                    galleries[category].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+
+            backBtn.addEventListener('click', function () {
+
+            });
+        });
+
+
+window.name1=''
+        window.selectt = async function (namee) {
+            document.body.style.overflow = 'hidden';
+
+            console.log(namee);
+            name1=namee.toLowerCase()
+
+
+            document.getElementById("overlay").style.display = "flex";
+            history.pushState(null, "", "#popup");
+
+
+
+
+            // Example list of options
+            const fruits = [];
+
+            fruits.length = 0;
+            for (let i = 2021; i >= 1996; i--) {
+                fruits.push(i); // Insert values
+            }
+
+            // Get the dropdown element
+            const dropdown = document.getElementById("myDropdown");
+
+            while (dropdown.options.length > 1) {
+                dropdown.remove(1);
+            }
+
+
+            if (namee == "DU") {
+                fruits.forEach(function (fruit) {
+                    const option = document.createElement("option");
+                    option.value = fruit;
+                    option.text = fruit;
+                    dropdown.appendChild(option);
+                });
+            }
+
+
+
+
+        };
+
+        function closePopup() {
+            document.body.style.overflow = 'auto';
+
+            document.getElementById("overlay").style.display = "none";
+            if (location.hash === "#popup") history.back();
+        }
+        window.onpopstate = () => closePopup();
+
+        window.selectedSubject = ''
+        const subjectOptions = document.querySelectorAll('#subjectOptions .option');
+        // Subject selection
+        subjectOptions.forEach(option => {
+            option.addEventListener('click', function () {
+                subjectOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                window.selectedSubject = this.getAttribute('data-value');
+            });
+        });
+
+
+
+        window.submitSolo = async function (wh) {
+
+            const dropdown = document.getElementById("myDropdown");
+            let selectedValue = dropdown.value;
+
+            if (!/^\d+$/.test(selectedValue)) {
+                alert("Select a Year");
+                return 7;
+            }
+            if (selectedSubject.trim() == '') {
+                alert("Select a  Subject");
+                return 7;
+            }
+
+            console.log("Selected value:", selectedValue);
+            console.log(selectedSubject);
+
+
+            history.back()
+
+            if(wh=="view"){
+                window.open(`./view.html?type=${type1}&name=${window.name1}&sub=${selectedSubject}&year=${selectedValue}`,"_self")
+            }else{
+                window.open(`./test.html?type=${type1}&name=${window.name1}&sub=${selectedSubject}&year=${selectedValue}`,"_self")
+            }
+            
+
+
+
+
+
+
+
+        };
+    </script>
+</body>
+
+</html>
