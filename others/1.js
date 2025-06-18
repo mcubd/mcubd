@@ -109,7 +109,7 @@ function seris(bname, bimg, videolink, size, type,server) {
 
   chidiv.classList.add('chi');
   iiidiv.classList.add('iii');
-  image.src = 'https://mcubd.github.io/mcubd/logoimg/' + bimg + '.jpg'
+  image.src = 'https://mcubd.vercel.app/logoimg/' + bimg + '.jpg'
 
   iiidiv.append(image)
   chidiv.append(iiidiv, p, links)
