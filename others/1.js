@@ -2799,6 +2799,10 @@ setTimeout(() => {
  
 // seris('Weak [500MB]','weakk',[],'500MB')
 
+  seris('Ru Bio  [142MB]','ffff',['https://www.googleapis.com/drive/v3/files/1SGdYAThAb_dmro_65EiaNAr2UYOlJY7l?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'142MB','mv')
+  seris('Ru Bio Extra [308MB]','fffff',['https://www.googleapis.com/drive/v3/files/1FsfiXa-pkghQq2AvPDTnJ2aOr-ubF3r_?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'308MB','mv')
+ 
+
  
  //seris('Pawn [500MB]','pawn',['https://www.googleapis.com/drive/v3/files/1-1pjiV2PAeQyKiIKI1W1h19ZKz9WpqcU?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'500MB','mv')
  //  seris('October [1GB]','octo',['https://www.googleapis.com/drive/v3/files/1TF_WC9geOeONb3U0iVaFIqTNx_nWwWVc?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'1GB','mv')
