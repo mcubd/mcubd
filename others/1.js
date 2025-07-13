@@ -2799,8 +2799,8 @@ setTimeout(() => {
  
 // seris('Weak [500MB]','weakk',[],'500MB')
 
-  seris('Ru Bio  [142MB]','ffff',['https://www.googleapis.com/drive/v3/files/1SGdYAThAb_dmro_65EiaNAr2UYOlJY7l?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'142MB','mv')
-  seris('Ru Bio Extra [308MB]','fffff',['https://www.googleapis.com/drive/v3/files/1FsfiXa-pkghQq2AvPDTnJ2aOr-ubF3r_?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'308MB','mv')
+ // seris('Ru Bio  [142MB]','ffff',['https://www.googleapis.com/drive/v3/files/1SGdYAThAb_dmro_65EiaNAr2UYOlJY7l?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'142MB','mv')
+//  seris('Ru Bio Extra [308MB]','fffff',['https://www.googleapis.com/drive/v3/files/1FsfiXa-pkghQq2AvPDTnJ2aOr-ubF3r_?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'308MB','mv')
  
 
  
