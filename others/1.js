@@ -2799,8 +2799,8 @@ setTimeout(() => {
  
 // seris('Weak [500MB]','weakk',[],'500MB')
 
- // seris('Ru Bio  [142MB]','ffff',['https://www.googleapis.com/drive/v3/files/1SGdYAThAb_dmro_65EiaNAr2UYOlJY7l?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'142MB','mv')
-//  seris('Ru Bio Extra [308MB]','fffff',['https://www.googleapis.com/drive/v3/files/1FsfiXa-pkghQq2AvPDTnJ2aOr-ubF3r_?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc'],'308MB','mv')
+ // seris('Ru Bio  [142MB]','ffff',['https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fru.pdf?alt=media&amp;token=c3423492-897b-438d-b45b-75ee4030dcc1'],'142MB','mv')
+//  seris('Ru Bio Extra [308MB]','fffff',['https://firebasestorage.googleapis.com/v0/b/test2-5bbd8.appspot.com/o/chat%2Fru-extra.pdf?alt=media&amp;token=6e10abe3-e94b-4e5c-96f0-4fb6e8ef3023'],'308MB','mv')
  
 
  
