@@ -2799,6 +2799,10 @@ setTimeout(() => {
  
 // seris('Weak [500MB]','weakk',[],'500MB')
 
+ seris('হাওয়া [300MB]','hawaa',["https://www.googleapis.com/drive/v3/files/1XwlzlfejQAaw5r4E5erxhIiTowdLJ4Lp?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'300MB','mv')
+ seris('little miss chaos  [600MB]','limica',["https://www.googleapis.com/drive/v3/files/1VEX2h7_HQD_b7h6Jafz3cgtJppZKQHHG?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'600MB','mv')
+seris('অসময় [1.4GB]','osomo',["https://www.googleapis.com/drive/v3/files/1NVf6s1fAhqheHrLzy3fjll1Qes6Ni2tj?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'1.4GB','mv')
+
 
 
  seris('Stranger Things Season 1 [200MB]','sttn',["https://www.googleapis.com/drive/v3/files/1FY9Vxb9t20kNRd86zJWCIGbvWwbhLSJ8?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1dQsW_6AslRauVbTEyZ9d_t90tsPB7AbX?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1Dr2UdzeeI20jmrnlaUVYGGj7nNCu_Hps?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1HdzHQGkOCUyIChNuq_7QGdA0UhYbivyY?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1lh1pD1CvOmp5hFG663TWp0gcm61Z0jgJ?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1RDiHGxumv5mVAWoq4muOVp5TdJb2ip3c?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1bsFNMtSO3FHQ3yzmeeE12wDf926j9acM?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc","https://www.googleapis.com/drive/v3/files/1dxauJHs86imNn2d_tRl4txTXZGVDDusA?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'200MB')
