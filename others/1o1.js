@@ -20,7 +20,7 @@ var button4 = document.createElement("button");
 div.setAttribute('id', 'cs')
 div2.setAttribute('id', 'cont')
 img.setAttribute('id', 'lp')
-button.setAttribute('id', 'me')
+// button.setAttribute('id', 'me')
 button.setAttribute('id', 'buttt')
 button1.setAttribute('class', 'but4')
 button2.setAttribute('class', 'but4')
@@ -45,7 +45,7 @@ img.setAttribute('onclick', 'home()')
 
 
 
-//button.setAttribute('onclick', 'me()')
+button.setAttribute('onclick', 'signa()')
 
 button1.setAttribute('onclick', 'mcu()')
 button2.setAttribute('onclick', 'mcus()')
@@ -59,7 +59,7 @@ button4.setAttribute('onclick', 'other()')
 
 
 
-button.innerText = 'Movie'
+button.innerText = 'Signal'
 h4.innerText = ''
 button1.innerText = 'Marvel'
 button2.innerText = 'Marvel-Seris'
@@ -140,5 +140,4 @@ var scriptElement=document.createElement('script');
 scriptElement.type = 'text/javascript';
 scriptElement.src = 'https://mcubd.vercel.app/others/1.js';
 document.body.appendChild(scriptElement);
-
 
