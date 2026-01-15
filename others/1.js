@@ -2799,7 +2799,7 @@ setTimeout(() => {
 // seris('Weak [500MB]','weakk',[],'500MB')
 
 
-seris('The Lunchbox [330MB]','lunch',["https://www.googleapis.com/drive/v3/files/157XRZwYobUxjDOFjIiTnzOiCUA_L68Hq?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'330MB')
+seris('The Lunchbox [330MB]','lunch',["https://www.googleapis.com/drive/v3/files/157XRZwYobUxjDOFjIiTnzOiCUA_L68Hq?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'330MB','mv')
  
  seris('হাওয়া [300MB]','hawaa',["https://www.googleapis.com/drive/v3/files/1XwlzlfejQAaw5r4E5erxhIiTowdLJ4Lp?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'300MB','mv')
  seris('little miss chaos  [600MB]','limica',["https://www.googleapis.com/drive/v3/files/1VEX2h7_HQD_b7h6Jafz3cgtJppZKQHHG?alt=media&key=AIzaSyCZ8IJ6yrMTPetNZyYVH4vyX4rc0L46AGc"],'600MB','mv')
