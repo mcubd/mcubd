@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Live MCQ Quiz Bot (Bangla)</title>
+    <!-- Import Google GenAI SDK -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai"
+        }
+      }
+    </script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #3b82f6;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { font-size: 1.8rem; margin-bottom: 10px; color: var(--text-color); }
+        p { color: var(--text-muted); margin-bottom: 25px; }
+        .status-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ef4444;
+            transition: background-color 0.3s ease;
+        }
+        .status-dot.connected { background-color: var(--success); }
+        .status-text { font-weight: 500; font-size: 0.95rem; }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        button:disabled { background-color: #475569; cursor: not-allowed; transform: none; }
+        #stopBtn { background-color: #ef4444; display: none; }
+        .log-box {
+            margin-top: 25px;
+            background-color: #090d16;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            font-size: 0.9rem;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #334155;
+        }
+        .log-entry { margin-bottom: 6px; line-height: 1.4; }
+        .log-user { color: #60a5fa; }
+        .log-gemini { color: #f43f5e; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gemini Live MCQ ভয়েস কুইজ</h1>
+    <p>লাইভ অডিও সেশন শুরু করুন এবং বাংলায় উত্তর দিন।</p>
+
+    <div class="status-container">
+        <div id="statusDot" class="status-dot"></div>
+        <div id="statusText" class="status-text">Disconnected</div>
+    </div>
+
+    <div class="controls">
+        <button id="startBtn">কুইজ শুরু করুন (Start Quiz)</button>
+        <button id="stopBtn">কুইজ বন্ধ করুন (Stop Quiz)</button>
+    </div>
+
+    <div class="log-box" id="logBox">
+        <div class="log-entry" style="color: var(--text-muted)">সিস্টেম লগ এখানে দেখা যাবে...</div>
+    </div>
+</div>
+
+<script type="module">
+    import { GoogleGenAI } from '@google/genai';
+
+    // 1. আপনার API Key এবং MCQ ডেটা স্ট্রাকচার
+    const API_KEY = "AIzaSyDPiSRbZrkXqbZiWqassehrwYYPvMuVleI"; 
+    const mcqList = [
+        {
+            "id": 1,
+            "question": "বাংলাদেশের রাজধানী কোথায়?",
+            "options": ["A) চট্টগ্রাম", "B) ঢাকা", "C) খুলনা", "D) সিলেট"],
+            "answer": "B"
+        },
+        {
+            "id": 2,
+            "question": "আমাদের জাতীয় ফুল কোনটি?",
+            "options": ["A) গোলাপ", "B) শাপলা", "C) জবা", "D) সূর্যমুখী"],
+            "answer": "B"
+        },
+        {
+            "id": 3,
+            "question": "কোন গ্রহকে লাল গ্রহ বলা হয়?",
+            "options": ["A) বুধ", "B) শুক্র", "C) মঙ্গল", "D) বৃহস্পতি"],
+            "answer": "C"
+        }
+    ];
+
+    // 2. জেমিনি লাইভ সিস্টেম ইন্সট্রাকশন (Bangla System Instructions)
+    const systemInstruction = `
+    তুমি একটি ইন্টারেক্টিভ MCQ কুইজ সহকারী। তোমার সাথে ব্যবহারকারী সম্পূর্ণ বাংলায় ভয়েস টু ভয়েস (Audio to Audio) কথা বলবে।
+    তোমার কাজের নিয়মাবলী নিচে দেওয়া হলো:
+    
+    ১. কুইজের ডেটা এই JSON লিস্ট থেকে নিবে: ${JSON.stringify(mcqList)}.
+    ২. সেশন শুরু হলে প্রথম প্রশ্ন এবং এর অপশনগুলো স্পষ্ট করে বাংলায় পড়ে শোনাবে।
+    ৩. ব্যবহারকারী সঠিক অপশন (যেমন: 'B' বা 'ঢাকা') বললে বলবে "সঠিক উত্তর হয়েছে!" এবং পরবর্তী প্রশ্নটি করবে।
+    ৪. ব্যবহারকারী ভুল উত্তর দিলে বলবে "ভুল উত্তর"। তবে ব্যবহারকারী যদি তৎক্ষণাৎ অন্য কোনো উত্তর দিয়ে যাচাই করতে বলে ("validate it"), তবে সেটি আবার যাচাই করবে।
+    ৫. ব্যবহারকারী যদি বলে "skip" বা "পরের প্রশ্নে যাও", তবে বর্তমান প্রশ্ন বাদ দিয়ে পরবর্তী প্রশ্নে চলে যাবে।
+    ৬. কথা বলার ভঙ্গি একদম স্বাভাবিক ও বন্ধুত্বপূর্ণ রাখবে। অতিরিক্ত কোনো ইংরেজি বা টেক্সট ফরম্যাটিং মুখে বলবে না।
+    `;
+
+    // UI elements
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const logBox = document.getElementById('logBox');
+
+    // Audio context pipelines
+    let aiSession = null;
+    let audioContext = null;
+    let micStream = null;
+    let processorNode = null;
+    let nextAudioPlaybackTime = 0;
+
+    const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+    startBtn.addEventListener('click', startLiveQuiz);
+    stopBtn.addEventListener('click', stopLiveQuiz);
+
+    function log(msg, type = 'system') {
+        const div = document.createElement('div');
+        div.className = `log-entry log-${type}`;
+        div.innerText = type === 'system' ? `[System] ${msg}` : `${type === 'user' ? 'আপনি' : 'জেমিনি'}: ${msg}`;
+        logBox.appendChild(div);
+        logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    async function startLiveQuiz() {
+        try {
+            log("মাইক্রোফোন এবং অডিও সিস্টেম চালু করা হচ্ছে...");
+            
+            // Web Audio Setup
+            audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+            nextAudioPlaybackTime = audioContext.currentTime;
+
+            // Request Mic Access
+            micStream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, sampleRate: 16000 } });
+            
+            // Connect to Gemini Live API over WebSockets via SDK wrapper
+            log("জেমিনি লাইভ সেশনের সাথে যুক্ত হচ্ছে...");
+            aiSession = await ai.live.connect({
+                model: 'gemini-3.1-flash-live-preview',
+                config: {
+                    responseModalities: ['audio'],
+                    systemInstruction: { parts: [{ text: systemInstruction }] }
+                },
+                callbacks: {
+                    onopen: () => {
+                        statusDot.classList.add('connected');
+                        statusText.innerText = "Connected (Live)";
+                        startBtn.style.display = 'none';
+                        stopBtn.style.display = 'block';
+                        log("সেশন সফলভাবে শুরু হয়েছে! কুইজ মাস্টার প্রস্তুত।");
+                        startAudioRecording();
+                    },
+                    onmessage: (response) => {
+                        handleServerMessage(response);
+                    },
+                    onerror: (err) => {
+                        console.error(err);
+                        log("ত্রুটি ঘটেছে: " + err.message);
+                        stopLiveQuiz();
+                    },
+                    onclose: () => {
+                        log("সেশন বন্ধ হয়ে গেছে।");
+                        stopLiveQuiz();
+                    }
+                }
+            });
+
+        } catch (error) {
+            console.error(error);
+            log("কুইজ শুরু করতে ব্যর্থ: " + error.message);
+        }
+    }
+
+    function startAudioRecording() {
+        // Capture 16kHz audio natively using an AudioContext layout
+        const inputContext = new AudioContext({ sampleRate: 16000 });
+        const source = inputContext.createMediaStreamSource(micStream);
+        
+        // Creating a script processor to capture PCM buffer bits
+        processorNode = inputContext.createScriptProcessor(4096, 1, 1);
+        
+        processorNode.onaudioprocess = (e) => {
+            if (!aiSession) return;
+            const inputData = e.inputBuffer.getChannelData(0);
+            
+            // Convert Float32Array into standard Int16 raw Linear PCM data
+            const pcmBuffer = new Int16Array(inputData.length);
+            for (let i = 0; i < inputData.length; i++) {
+                let s = Math.max(-1, Math.min(1, inputData[i]));
+                pcmBuffer[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+            }
+            
+            // Convert Int16 buffer into raw binary base64 bytes
+            const base64Audio = btoa(String.fromCharCode(...new Uint8Array(pcmBuffer.buffer)));
+            
+            // Stream raw PCM input fragments to Gemini
+            aiSession.sendRealtimeInput({
+                audio: {
+                    data: base64Audio,
+                    mimeType: 'audio/pcm;rate=16000'
+                }
+            });
+        };
+
+        source.connect(processorNode);
+        processorNode.connect(inputContext.destination);
+    }
+
+    function handleServerMessage(response) {
+        const content = response.serverContent;
+        if (!content) return;
+
+        // 1. Process and append incremental transcriptions for local tracking
+        if (content.inputTranscription) {
+            log(content.inputTranscription.text, 'user');
+        }
+        if (content.outputTranscription) {
+            log(content.outputTranscription.text, 'gemini');
+        }
+
+        // 2. Play incoming audio parts sequentially
+        if (content.modelTurn?.parts) {
+            for (const part of content.modelTurn.parts) {
+                if (part.inlineData && part.inlineData.data) {
+                    playIncomingAudioChunk(part.inlineData.data);
+                }
+            }
+        }
+    }
+
+    function playIncomingAudioChunk(base64Data) {
+        // Parse incoming base64 payload to binary array
+        const binaryString = atob(base64Data);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        
+        // Read incoming 24kHz Int16 array structures
+        const int16Data = new Int16Array(bytes.buffer);
+        
+        // Convert back to browser-compatible Float32 values
+        const float32Data = new Float32Array(int16Data.length);
+        for (let i = 0; i < int16Data.length; i++) {
+            float32Data[i] = int16Data[i] / 32768.0;
+        }
+
+        // Build a fresh PCM buffer stream track block inside our playing context
+        const audioBuffer = audioContext.createBuffer(1, float32Data.length, 24000);
+        audioBuffer.getChannelData(0).set(float32Data);
+
+        const sourceNode = audioContext.createBufferSource();
+        sourceNode.buffer = audioBuffer;
+        sourceNode.connect(audioContext.destination);
+
+        // Schedule playback linearly to dodge overlaps or cracks
+        const startTime = Math.max(nextAudioPlaybackTime, audioContext.currentTime);
+        sourceNode.start(startTime);
+        nextAudioPlaybackTime = startTime + audioBuffer.duration;
+    }
+
+    function stopLiveQuiz() {
+        statusDot.classList.remove('connected');
+        statusText.innerText = "Disconnected";
+        startBtn.style.display = 'block';
+        stopBtn.style.display = 'none';
+
+        if (processorNode) { processorNode.disconnect(); processorNode = null; }
+        if (micStream) { micStream.getTracks().forEach(track => track.stop()); micStream = null; }
+        if (audioContext) { audioContext.close(); audioContext = null; }
+        if (aiSession) { aiSession = null; }
+        
+        log("সেশন বন্ধ করা হয়েছে।");
+    }
+</script>
+
+</body>
+</html>
