@@ -119,6 +119,11 @@ document.getElementById('but4').style.backgroundColor = 'grey'
 document.getElementById('hr').style.display = ''
 document.getElementById('buttt').style.display = ''
 
+document.getElementById('buttt').style.display = 'none'
+
+
+
+
 
 
 
