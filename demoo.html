@@ -513,10 +513,42 @@
 
 
 
-    <button id="copyy" class="hidd"
-        onclick="navigator.clipboard.writeText('https://mcubd.vercel.app/testz.html');this.textContent='Copied';setTimeout(()=>this.textContent='Copy link',1200)"
-        style="position:fixed;top:8%;right:4%;background:#4CAF50;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer">Copy
-        link</button>
+   <button id="copyy" class="hidd" 
+    onclick="copyToClipboard('https://mcubd.vercel.app/testz.html', this)" 
+    style="position:fixed;top:8%;right:8%;background:#4CAF50;color:#fff;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;z-index:9999;">
+    Copy link
+</button>
+
+
+
+    <script>
+async function copyToClipboard(textToCopy, btnElement) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(textToCopy);
+        } else {
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+        }
+
+        btnElement.textContent = "Copied!";
+        setTimeout(() => { btnElement.textContent = "Copy link"; }, 1200);
+    } catch (err) {
+        console.error("Copy failed:", err);
+    }
+}
+</script>
+
+
+
+    
 
     <style>
         .hidd {
