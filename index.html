@@ -65,20 +65,20 @@
  
 
 window.signa = async function () {
-  
-               const codepad = collection(firestore, 'signaldb')
-                const docData = {
-                    data: "yes",
-                    date: serverTimestamp(),
-                };
-
-                let n = await setDoc(doc(codepad, String("signal1")), docData);
-
-               alert("Signal Success")
-                
-
-
-}; 
+    try {
+        const codepad = collection(firestore, 'signaldb');
+        const docData = {
+            data: "yes",
+            date: serverTimestamp(),
+        };
+        
+        await setDoc(doc(codepad, "signal1"), docData);
+        alert("Signal Success");
+    } catch (error) {
+        console.error("Failed to write signal:", error);
+        alert("Signal Failed: " + error.message);
+    }
+};
 
  
   </script>
